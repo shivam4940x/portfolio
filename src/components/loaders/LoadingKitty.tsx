@@ -22,7 +22,7 @@ const LoadingKitty = () => {
     <div className="w-max h-max" ref={root}>
       <div className="center flex-col">
         <div className="w-20 aspect-square ">
-          <img src="/loadingKitty.png" className="logo" />
+          <img src="/eppyKitty.webp" className="logo" />
         </div>
         <div className="flex gap-3  h-full">
           {Array.from({ length: 7 }, (_, i) => (

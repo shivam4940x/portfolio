@@ -30,7 +30,7 @@ const DefaultLayout = () => {
         </div>
         <div className="kitty aspect-square w-full">
           <div className="div fadeIn">
-            <img src="/loadingKitty.png" alt="kitty" className="div pointer-events-none" />
+            <img src="/eppyKitty.webp" alt="kitty" className="div pointer-events-none" />
           </div>
         </div>
       </div>

@@ -35,7 +35,7 @@ body {
   }
 }
 
-.kitty:hover {
+.kitty {
   animation: kitty 1.5s steps(3) alternate infinite;
 }
 .fadeIn {

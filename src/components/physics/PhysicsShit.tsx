@@ -142,7 +142,7 @@ const PhysicsShit = () => {
 
     const ball2 = getShape.Ball({
       posX: containerWidth * plusShapesConfig[0].posXRatio - 30,
-      posY: containerHeight * plusShapesConfig[0].posYRatio,
+      posY: containerHeight * plusShapesConfig[0].posYRatio - 50,
       plusWidth,
       ballRadius: 90,
     });

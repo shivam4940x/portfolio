@@ -1,0 +1,44 @@
+body {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-family: "NunitoSans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100dvh;
+  overflow: hidden;
+}
+* ::selection {
+  background-color: var(--color-text);
+  color: var(--color-primary);
+}
+/* Scrollbar track */
+::-webkit-scrollbar {
+  --len: 0px;
+  width: var(--len); /* Width of the scrollbar */
+  height: var(--len); /* Height of the scrollbar */
+}
+.overflow-y-scroll {
+  scrollbar-width: none;
+}
+
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes kitty {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+.kitty:hover {
+  animation: kitty 1.5s steps(3) alternate infinite;
+}
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}

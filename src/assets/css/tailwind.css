@@ -1,0 +1,55 @@
+@import "tailwindcss";
+@config "../../../tailwind.config.ts";
+
+@layer base {
+  :root {
+    --color-primary: #0e2745;
+    --color-secondary: #b93920;
+    --color-complimentary: #f1be6d;
+    --color-text: #b9cfdd;
+    --color-dusty-blue: #7691ae;
+    --color-deep-steel: #537189;
+    --color-paper-black: #2a2a2a;
+  }
+
+  .dark {
+    --color-primary: #151618;
+    /* --color-secondary: #eae195; */
+    --color-secondary: #d5effe;
+  }
+}
+
+@layer utilities {
+  .font-wdth-normal {
+    font-variation-settings: "wdth" 100;
+  }
+  .hover\:font-wdth-wide {
+    transition: font ease-in-out 100ms;
+  }
+  .hover\:font-wdth-wide:hover {
+    font-variation-settings: "wdth" 125;
+  }
+
+  .center {
+    @apply flex justify-center items-center;
+  }
+  .takeScreen {
+    @apply top-0 left-0 bottom-0 right-0;
+  }
+  .center_ab {
+    @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+button {
+  @apply cursor-pointer;
+}
+.div {
+  @apply h-full w-full;
+}
+a {
+  @apply cursor-pointer duration-150;
+}
+.tracking-tighter {
+  word-spacing: 3px;
+}

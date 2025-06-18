@@ -203,7 +203,7 @@ const PhysicsShit = () => {
   return (
     <div
       ref={containerRef}
-      className="absolute takeScreen -z-50 pointer-events-auto"
+      className="absolute takeScreen -z-50"
     >
       <canvas ref={canvasRef} className="block bg-transparent div" />
     </div>

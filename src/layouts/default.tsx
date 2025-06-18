@@ -18,7 +18,7 @@ const DefaultLayout = () => {
 
   return (
     <div className="h-dvh w-screen flex overflow-x-hidden overflow-y-scroll">
-      <main className="grow">
+      <main className="grow fadeIn duration-500">
         <Outlet />
       </main>
       <div
@@ -30,7 +30,11 @@ const DefaultLayout = () => {
         </div>
         <div className="kitty aspect-square w-full">
           <div className="div fadeIn">
-            <img src="/eppyKitty.webp" alt="kitty" className="div pointer-events-none" />
+            <img
+              src="/eppyKitty.webp"
+              alt="kitty"
+              className="div pointer-events-none"
+            />
           </div>
         </div>
       </div>

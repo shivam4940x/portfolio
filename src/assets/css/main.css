@@ -4,6 +4,9 @@ body {
   font-family: "NunitoSans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   height: 100dvh;
   overflow: hidden;
+  -webkit-font-smoothing: antialiased; /* For WebKit (Chrome, Safari) */
+  -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
+  text-rendering: optimizeLegibility;
 }
 * ::selection {
   background-color: var(--color-text);
@@ -18,7 +21,6 @@ body {
 .overflow-y-scroll {
   scrollbar-width: none;
 }
-
 
 @keyframes fadeIn {
   to {
@@ -40,5 +42,5 @@ body {
 }
 .fadeIn {
   opacity: 0;
-  animation: fadeIn 2s forwards;
+  animation: fadeIn 1s forwards;
 }

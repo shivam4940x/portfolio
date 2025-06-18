@@ -1,4 +1,4 @@
-import {  Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Loading from "./components/loaders/Loading";
 import LoadingKitty from "./components/loaders/LoadingKitty";
@@ -9,10 +9,8 @@ import Home from "./pages/Home";
 import DefaultLayout from "./layouts/default";
 import Testing from "@/pages/Testing";
 
-
-
 function App() {
-  const [isRouteLoading, setIsRouteLoading] = useState(false);
+  const [isRouteLoading, setIsRouteLoading] = useState(true);
   const { root, scope } = useAnimeScope();
   const location = useLocation();
 
@@ -48,7 +46,7 @@ function App() {
       <div
         ref={root}
         className={`fixed inset-0 z-50 h-dvh w-screen left-0 top-0 justify-center items-center  overflow-hidden ${
-          isRouteLoading ? "hidden" : "hidden"
+          isRouteLoading ? "flex" : "hidden"
         }`}
       >
         <div className="relative h-full w-full z-10 cover">
@@ -69,14 +67,14 @@ function App() {
           </div>
         }
       >
-        {/* {!isRouteLoading && ( */}
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/test" element={<Testing />} />
-          </Route>
-        </Routes>
-        {/* )} */}
+        {!isRouteLoading && (
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/test" element={<Testing />} />
+            </Route>
+          </Routes>
+        )}
       </Suspense>
     </>
   );

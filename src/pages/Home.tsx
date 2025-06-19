@@ -3,7 +3,7 @@ import Hero from "@/components/home/Hero";
 const Home = () => {
   return (
     <>
-      <section id="hero">
+      <section id="hero" className="h-full">
         <Hero />
       </section>
 

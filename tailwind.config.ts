@@ -6,15 +6,8 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
-      colors: {
-        text: "var(--color-text)",
-        primary: "var(--color-primary)",
-        border: "var(--color-deep-steel)",
-        secondary: "var(--color-secondary)",
-        complimentary: "var(--color-complimentary)",
-        dustyBlue: "var(--color-dusty-blue)",
-        deepSteel: "var(--color-deep-steel)",
-        paperBlack: "var(--color-paper-black)",
+      borderColor: {
+        DEFAULT: "#53718955",
       },
       fontFamily: {
         nunito: ['"NunitoSans"', "sans-serif"],

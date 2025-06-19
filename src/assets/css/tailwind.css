@@ -11,14 +11,17 @@
     --color-deep-steel: #537189;
     --color-paper-black: #2a2a2a;
   }
-
-  .dark {
-    --color-primary: #151618;
-    /* --color-secondary: #eae195; */
-    --color-secondary: #d5effe;
-  }
 }
-
+@theme {
+  --color-primary: #0e2745;
+  --color-secondary: #b93920;
+  --color-complimentary: #f1be6d;
+  --color-text: #b9cfdd;
+  --color-dusty-blue: #7691ae;
+  --color-deep-steel: #537189;
+  --color-paper-black: #2a2a2a;
+  --color-border-light: #53718933;
+}
 @layer utilities {
   .font-wdth-normal {
     font-variation-settings: "wdth" 100;
@@ -41,6 +44,13 @@
   }
 }
 
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-deep-steel);
+  }
+}
 button {
   @apply cursor-pointer;
 }

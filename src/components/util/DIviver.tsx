@@ -8,10 +8,10 @@ type DiviverProps = {
 const Diviver = ({ children, className }: DiviverProps) => {
   return (
     <div
-      className={`border-t border-b border-border/50 h-8 px-[var(--side)] flex justify-between ${className}`}
+      className={`border-t border-b /50 h-8 px-[var(--side)] flex justify-between ${className}`}
     >
       <div className="w-8"></div>
-      <div className="border-border/50 border-l bg-secondary grow">
+      <div className="/50 border-l bg-secondary grow">
         {children}
       </div>
       <div className="w-8"></div>

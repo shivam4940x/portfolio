@@ -57,7 +57,7 @@ const Easings = () => {
   return (
     <div ref={containerRef} className="p-5 space-y-2">
       {ease.map((easing, idx) => (
-        <div key={idx} className="flex my-2 py-1 border-b border-border/20 items-center">
+        <div key={idx} className="flex my-2 py-1 border-b /20 items-center">
           <span className="w-30 ">{easing}</span>
           <div className="grow">
             <div

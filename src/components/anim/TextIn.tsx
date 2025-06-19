@@ -31,7 +31,10 @@ const TextIn = ({ children, delay = 0 }: Props) => {
   }, [scope, delay]);
 
   return (
-    <div ref={root} className="div overflow-hidden inline-block">
+    <div
+      ref={root}
+      className="div overflow-hidden inline-block pointer-events-none"
+    >
       <div className="inline-block">{letterSpans}</div>
     </div>
   );

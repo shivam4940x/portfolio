@@ -46,24 +46,35 @@ const MenuIcon = ({ fn }: { fn: () => void }) => {
       self.add("click", () => {
         setTrack((pre) => ({ ...pre, active: !pre.active }));
 
-        Object.entries(movers).forEach(([index, transform]) => {
-          animate(`.dot-${index}`, {
-            ...transform,
-            duration: 300,
-            ease: "inOutExpo",
-          });
-        });
-
         animate(".burgerWrapper", {
           rotate: track.active ? "0deg" : "45deg",
           duration: 300,
           ease: "inOutExpo",
+          delay: 1,
           onComplete: () => {
             if (fn) {
               fn();
             }
           },
         });
+        if (!track.active) {
+          Object.entries(movers).forEach(([index, transform]) => {
+            animate(`.dot-${index}`, {
+              ...transform,
+              duration: 300,
+              ease: "inOutExpo",
+            });
+          });
+        } else {
+          Object.keys(movers).forEach((index) => {
+            animate(`.dot-${index}`, {
+              translateX: 0,
+              translateY: 0,
+              duration: 300,
+              ease: "inOutExpo",
+            });
+          });
+        }
       });
     });
   }, [scope, track, fn]);
@@ -74,7 +85,7 @@ const MenuIcon = ({ fn }: { fn: () => void }) => {
         onMouseEnter={() => scope.current?.methods.hoverIn()}
         onMouseLeave={() => scope.current?.methods.hoverOut()}
         onClick={() => scope.current?.methods.click()}
-        className="cursor-pointer grid-cols-3 grid-rows-3 grid gap-2 overflow-hidden p-2 relative burgerWrapper"
+        className="cursor-pointer grid-cols-3 grid-rows-3 grid md:gap-2 gap-1 overflow-hidden md:p-2 relative burgerWrapper"
       >
         {Array.from({ length: 9 }, (_, i) => (
           <div key={i}>

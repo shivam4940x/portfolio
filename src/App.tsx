@@ -16,7 +16,7 @@ function App() {
 
   const toggleLoading = () => {
     if (isRouteLoading) {
-      scope.current?.methods.coverOut();
+      // scope.current?.methods.coverOut();
     }
   };
   useEffect(() => {
@@ -52,7 +52,7 @@ function App() {
         <div className="relative h-full w-full z-10 cover">
           <div className="center relative z-40 div bg-[#101113]">
             <LoadingKitty />
-            <div className="absolute bottom-0 right-0 w-20 mr-20 mb-5">
+            <div className="absolute bottom-0 right-0 w-full md:w-20 md:mr-20 mb-10">
               <NumLoader fn={toggleLoading} />
             </div>
           </div>

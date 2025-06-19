@@ -15,8 +15,8 @@ const GridBg = () => {
       if (bgRef.current) {
         const width = bgRef.current.offsetWidth;
         const height = bgRef.current.offsetHeight;
-        const cols = Math.floor(width / SQUARE_SIZE) + 1;
-        const rows = Math.floor(height / SQUARE_SIZE) + 1;
+        const cols = Math.floor(width / SQUARE_SIZE) + 2;
+        const rows = Math.floor(height / SQUARE_SIZE) + 2;
 
         const newPositions: { top: number; left: number }[] = [];
 
@@ -88,7 +88,7 @@ const GridBg = () => {
         {positions.map((pos, i) => (
           <div
             key={i}
-            className="absolute border border-border/20 square"
+            className="absolute border border-border-light square"
             style={{
               width: `${SQUARE_SIZE}px`,
               height: `${SQUARE_SIZE}px`,

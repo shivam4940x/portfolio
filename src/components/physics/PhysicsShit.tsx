@@ -45,95 +45,95 @@ function getBreakpoint(width: number): keyof typeof breakPoints {
   if (width >= breakPoints.xs) return "xs";
   return "base";
 }
-const layoutMap= {
-  base: {
-    plusWidth: 90,
-    balls: [
-      { offsetX: +20, offsetY: 0, radius: 30 },
-      { offsetX: +30, offsetY: -30, radius: 50 },
-    ],
-    pluses: [
-      { posXRatio: 0.25, posYRatio: 0.35 },
-      { posXRatio: 0.6, posYRatio: 0.55 },
-      { posXRatio: 0.75, posYRatio: 0.3 },
-    ],
-  },
-  xs: {
-    plusWidth: 100,
-    balls: [
-      { offsetX: +20, offsetY: -20, radius: 30 },
-      { offsetX: +30, offsetY: -70, radius: 60 },
-    ],
-    pluses: [
-      { posXRatio: 0.25, posYRatio: 0.35 },
-      { posXRatio: 0.63, posYRatio: 0.52 },
-      { posXRatio: 0.75, posYRatio: 0.25 },
-    ],
-  },
-  sm: {
-    plusWidth: 110,
-    balls: [
-      { offsetX: +20, offsetY: 0, radius: 35 },
-      { offsetX: +40, offsetY: -30, radius: 70 },
-    ],
-    pluses: [
-      { posXRatio: 0.35, posYRatio: 0.4 },
-      { posXRatio: 0.65, posYRatio: 0.61 },
-      { posXRatio: 0.8, posYRatio: 0.3 },
-    ],
-  },
-  md: {
-    plusWidth: 120,
-    balls: [
-      { offsetX: -20, offsetY: 0, radius: 50 },
-      { offsetX: -60, offsetY: -50, radius: 80 },
-    ],
-    pluses: [
-      { posXRatio: 0.45, posYRatio: 0.45 },
-      { posXRatio: 0.7, posYRatio: 0.6 },
-      { posXRatio: 0.8, posYRatio: 0.25 },
-    ],
-  },
-  lg: {
-    plusWidth: 130,
-    balls: [
-      { offsetX: -20, offsetY: 0, radius: 60 },
-      { offsetX: -80, offsetY: -50, radius: 90 },
-    ],
-    pluses: [
-      { posXRatio: 0.55, posYRatio: 0.42 },
-      { posXRatio: 0.73, posYRatio: 0.61 },
-      { posXRatio: 0.85, posYRatio: 0.25 },
-    ],
-  },
-  xl: {
-    plusWidth: 140,
-    balls: [
-      { offsetX: -30, offsetY: -10, radius: 65 },
-      { offsetX: -90, offsetY: -60, radius: 100 },
-    ],
-    pluses: [
-      { posXRatio: 0.65, posYRatio: 0.34 },
-      { posXRatio: 0.78, posYRatio: 0.6 },
-      { posXRatio: 0.9, posYRatio: 0.22 },
-    ],
-  },
-  "2xl": {
-    plusWidth: 150,
-    balls: [
-      { offsetX: -50, offsetY: -10, radius: 70 },
-      { offsetX: -140, offsetY: -60, radius: 110 },
-    ],
-    pluses: [
-      { posXRatio: 0.68, posYRatio: 0.42 },
-      { posXRatio: 0.8, posYRatio: 0.6 },
-      { posXRatio: 0.92, posYRatio: 0.22 },
-    ],
-  },
+const baseThickness = 10;
+const baseWidth = 90;
+const breakpoints = ["base", "xs", "sm", "md", "lg", "xl", "2xl"] as const;
+const balls = {
+  base: [
+    { offsetX: +20, offsetY: 0, radius: 30 },
+    { offsetX: +30, offsetY: -30, radius: 50 },
+  ],
+  xs: [
+    { offsetX: +20, offsetY: -20, radius: 30 },
+    { offsetX: +30, offsetY: -70, radius: 60 },
+  ],
+  sm: [
+    { offsetX: +20, offsetY: 0, radius: 35 },
+    { offsetX: +40, offsetY: -30, radius: 70 },
+  ],
+  md: [
+    { offsetX: -20, offsetY: 0, radius: 50 },
+    { offsetX: -60, offsetY: -50, radius: 80 },
+  ],
+  lg: [
+    { offsetX: -20, offsetY: 0, radius: 60 },
+    { offsetX: -80, offsetY: -50, radius: 90 },
+  ],
+  xl: [
+    { offsetX: -30, offsetY: -10, radius: 65 },
+    { offsetX: -90, offsetY: -60, radius: 100 },
+  ],
+  "2xl": [
+    { offsetX: -50, offsetY: -10, radius: 70 },
+    { offsetX: -140, offsetY: -60, radius: 110 },
+  ],
 };
 
+const pluses = {
+  base: [
+    { posXRatio: 0.25, posYRatio: 0.35 },
+    { posXRatio: 0.6, posYRatio: 0.55 },
+    { posXRatio: 0.75, posYRatio: 0.3 },
+  ],
+  xs: [
+    { posXRatio: 0.25, posYRatio: 0.35 },
+    { posXRatio: 0.63, posYRatio: 0.52 },
+    { posXRatio: 0.75, posYRatio: 0.25 },
+  ],
+  sm: [
+    { posXRatio: 0.35, posYRatio: 0.4 },
+    { posXRatio: 0.65, posYRatio: 0.61 },
+    { posXRatio: 0.8, posYRatio: 0.3 },
+  ],
+  md: [
+    { posXRatio: 0.45, posYRatio: 0.45 },
+    { posXRatio: 0.7, posYRatio: 0.6 },
+    { posXRatio: 0.8, posYRatio: 0.25 },
+  ],
+  lg: [
+    { posXRatio: 0.55, posYRatio: 0.42 },
+    { posXRatio: 0.73, posYRatio: 0.61 },
+    { posXRatio: 0.85, posYRatio: 0.25 },
+  ],
+  xl: [
+    { posXRatio: 0.65, posYRatio: 0.34 },
+    { posXRatio: 0.78, posYRatio: 0.6 },
+    { posXRatio: 0.9, posYRatio: 0.22 },
+  ],
+  "2xl": [
+    { posXRatio: 0.68, posYRatio: 0.42 },
+    { posXRatio: 0.8, posYRatio: 0.6 },
+    { posXRatio: 0.92, posYRatio: 0.22 },
+  ],
+};
+const layoutMap = Object.fromEntries(
+  breakpoints.map((bp, index) => {
+    const thickness = baseThickness + index;
+    const width = baseWidth + index * 10;
+    return [
+      bp,
+      {
+        plusWidth: width,
+        plusThickness: thickness,
+        balls: balls[bp],
+        pluses: pluses[bp],
+      },
+    ];
+  })
+);
+
 const getShape = {
-  Plus: ({ posX, posY, plusWidth, plusThickness = 10 }: PlusProps) => {
+  Plus: ({ posX, posY, plusWidth, plusThickness = 15 }: PlusProps) => {
     const settings = {
       render: {
         fillStyle: "#b93920",
@@ -141,7 +141,7 @@ const getShape = {
         lineWidth: 0,
       },
       restitution: 0.95,
-      frictionAir: 0.01,
+      frictionAir: 0.001,
     };
     const verticalBar = Bodies.rectangle(
       posX,
@@ -161,8 +161,8 @@ const getShape = {
 
     const plusShape = Body.create({
       parts: [verticalBar, horizontalBar],
-      restitution: 0.3,
-      frictionAir: 0.02,
+      restitution: 0.1,
+      frictionAir: 0.01,
       density: 0.002,
     });
 
@@ -170,7 +170,7 @@ const getShape = {
       pointA: { x: posX, y: posY },
       bodyB: plusShape,
       pointB: { x: 0, y: 0 },
-      stiffness: 1,
+      stiffness: 0.5,
       length: 0,
     });
 
@@ -236,6 +236,7 @@ const PhysicsShit = () => {
         posX: containerWidth * posXRatio,
         posY: containerHeight * posYRatio,
         plusWidth: layout.plusWidth,
+        plusThickness: layout.plusThickness,
       })
     );
 
@@ -310,8 +311,15 @@ const PhysicsShit = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute takeScreen -z-50">
-      <canvas ref={canvasRef} className="block bg-transparent div" />
+    <div
+      ref={containerRef}
+      className="absolute takeScreen -z-50"
+      id="PhysicsShit"
+    >
+      <canvas
+        ref={canvasRef}
+        className="block bg-transparent div pointer-events-auto touch-none"
+      />
     </div>
   );
 };

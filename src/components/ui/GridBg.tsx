@@ -41,43 +41,30 @@ const GridBg = () => {
   useEffect(() => {
     const $squares = utils.$(".square");
     if (!$squares.length) return;
+
     const cols =
       Math.floor((bgRef.current?.offsetWidth || 0) / SQUARE_SIZE) + 1;
     const rows = Math.ceil(positions.length / cols);
+    const total = cols * rows;
 
-    let isFirstRun = true;
+    const bottomRightIndex = total - 1;
 
     scope.current?.add(() => {
-      animateGrid();
-    });
-
-    function animateGrid() {
-      const total = cols * rows;
-
-      const fromIndex = isFirstRun
-        ? cols - 5 // Top-right is at index of last col in first row
-        : utils.random(0, total - 1);
-
-      isFirstRun = false;
-
       animate(".square", {
         backgroundColor: [
-          { to: "rgba(83, 113, 137, 0.4)" },
+          { to: "rgba(83, 113, 137, 0.2)" },
           { to: "rgba(83, 113, 137, 0)" },
         ],
-        duration: 3500,
-        delay: stagger(80, {
+        duration: 4500,
+        loop: true,
+        delay: stagger(90, {
           grid: [cols, rows],
-          from: fromIndex,
+          from: bottomRightIndex,
         }),
-        onComplete: () => {
-          animateGrid();
-        },
-        ease: "easeInOutSine",
+        easing: "linear",
       });
-    }
+    });
   }, [positions, scope]);
-  
 
   return (
     <div ref={root}>

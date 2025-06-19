@@ -1,12 +1,12 @@
 import TextIn from "../anim/TextIn";
 import PhysicsShit from "../physics/PhysicsShit";
-import GridBg from "../ui/GridBg";
+import cover from "@/assets/img/cover.jpg";
 import Logo from "../util/Logo";
 
 const Hero = () => {
   return (
-    <>
-      <div className="md:h-3/5 h-4/6 relative border-b  md:px-10 md:pt-7">
+    <div className="flex div flex-col">
+      <div className="grow relative border-b  md:px-10 md:pt-7">
         <div className="flex justify-between flex-col div">
           <div className="h-15 border-b md:border-0 md:h-max flex items-center px-5 md:px-0 bg-primary z-20 md:w-max md:bg-transparent">
             <Logo />
@@ -35,26 +35,37 @@ const Hero = () => {
           <PhysicsShit />
         </div>
       </div>
-      <div className="relative h-2/6 md:md:h-2/5 overflow-hidden p-4 md:py-0 font-[200] width-[85] tracking-widest w-full flex items-center md:block">
-        <div className="md:max-w-max ml-auto h-max px-4 md:px-0">
-          <div className="md:text-4xl text-2xl max-w-72 md:max-w-[26rem]">
+      <div className="relative h-max p-4 md:px-8 md:py-0 font-[200] width-[75] tracking-wide w-full flex items-center md:block">
+        <div className="md:max-w-max ml-auto px-4 md:px-0 z-10 relative">
+          <div className="md:text-4xl text-2xl max-w-72 md:max-w-[26rem] md:h-64 h-40 py-6 flex justify-between flex-col">
             {[
               "Design. Code. Develop.",
               "A Full-Cycle Web Journey",
               "by One Developer",
             ].map((txt) => (
-              <div key={txt} className="flex items-end md:min-h-20 leading-10">
-                <TextIn delay={500}>{txt}</TextIn>
+              <div key={txt} className="flex items-end md:min-h-16">
+                <TextIn alternative={true} delay={600}>
+                  {txt}
+                </TextIn>
               </div>
             ))}
           </div>
         </div>
 
-        <div>
-          <GridBg />
+        <div
+          className="absolute top-0 left-0 div -z-50 opacity-20"
+          style={{
+            backgroundImage: `url(${cover})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="div bg-black/30"></div>
+          {/* <GridBg /> */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

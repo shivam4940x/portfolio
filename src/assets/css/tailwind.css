@@ -6,22 +6,26 @@
     --color-primary: #0e2745;
     --color-secondary: #b93920;
     --color-complimentary: #f1be6d;
-    --color-text: #b9cfdd;
+    --color-text: #babcc7;
     --color-dusty-blue: #7691ae;
     --color-deep-steel: #537189;
     --color-paper-black: #2a2a2a;
+    --color-border-light: #53718933;
+    --color-dull-black: #1e1e1e;
   }
 }
+
 @theme {
-  --color-primary: #0e2745;
-  --color-secondary: #b93920;
-  --color-complimentary: #f1be6d;
-  --color-text: #b9cfdd;
-  --color-dusty-blue: #7691ae;
-  --color-deep-steel: #537189;
-  --color-paper-black: #2a2a2a;
-  --color-border-light: #53718933;
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-complimentary: var(--color-complimentary);
+  --color-text: var(--color-text);
+  --color-dusty-blue: var(--color-dusty-blue);
+  --color-deep-steel: var(--color-deep-steel);
+  --color-paper-black: var(--color-paper-black);
+  --color-border-light: var(--color-border-light);
 }
+
 @layer utilities {
   .font-wdth-normal {
     font-variation-settings: "wdth" 100;

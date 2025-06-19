@@ -15,12 +15,6 @@ const config: Config = {
         satoshi: ['"Satoshi"', "sans-serif"],
         pixel: ['"pixel"', "sans-serif"],
       },
-      fontWeight: {
-        light: 300,
-        normal: 400,
-        thin: "100",
-        extrabold: "800",
-      },
       fontStretch: {
         normal: "100%",
         condensed: "75%",

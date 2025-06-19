@@ -1,14 +1,15 @@
 import Hero from "@/components/home/Hero";
+import Section2 from "@/components/home/Section2";
 
 const Home = () => {
   return (
     <>
-      <section id="hero" className="h-full">
+      <section id="hero" className="h-full -z-20">
         <Hero />
       </section>
 
-      <section id="section2">
-        {/* <Section2 /> */}
+      <section id="section2" className="z-10 relative">
+        <Section2 />
       </section>
     </>
   );

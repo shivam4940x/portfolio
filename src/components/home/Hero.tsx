@@ -8,7 +8,7 @@ const Hero = () => {
     <>
       <div className="md:h-3/5 h-4/6 relative border-b  md:px-10 md:pt-7">
         <div className="flex justify-between flex-col div">
-          <div className="h-15 border-b md:border-0 md:h-max flex items-center px-5 md:px-0 bg-primary z-20 md:z-0">
+          <div className="h-15 border-b md:border-0 md:h-max flex items-center px-5 md:px-0 bg-primary z-20 md:w-max md:bg-transparent">
             <Logo />
           </div>
           <div className="z-20 w-max">

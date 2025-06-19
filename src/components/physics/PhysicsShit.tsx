@@ -28,6 +28,7 @@ interface BallProps {
 }
 const breakPoints = {
   base: 0,
+  xs: 400,
   sm: 640,
   md: 768,
   lg: 1024,
@@ -41,26 +42,39 @@ function getBreakpoint(width: number): keyof typeof breakPoints {
   if (width >= breakPoints.lg) return "lg";
   if (width >= breakPoints.md) return "md";
   if (width >= breakPoints.sm) return "sm";
+  if (width >= breakPoints.xs) return "xs";
   return "base";
 }
-const layoutMap = {
+const layoutMap= {
   base: {
     plusWidth: 90,
     balls: [
-      { offsetX: +10, offsetY: 0, radius: 30 },
-      { offsetX: +30, offsetY: -30, radius: 40 },
+      { offsetX: +20, offsetY: 0, radius: 30 },
+      { offsetX: +30, offsetY: -30, radius: 50 },
     ],
     pluses: [
-      { posXRatio: 0.3, posYRatio: 0.35 },
+      { posXRatio: 0.25, posYRatio: 0.35 },
       { posXRatio: 0.6, posYRatio: 0.55 },
       { posXRatio: 0.75, posYRatio: 0.3 },
     ],
   },
-  sm: {
+  xs: {
     plusWidth: 100,
     balls: [
+      { offsetX: +20, offsetY: -20, radius: 30 },
+      { offsetX: +30, offsetY: -70, radius: 60 },
+    ],
+    pluses: [
+      { posXRatio: 0.25, posYRatio: 0.35 },
+      { posXRatio: 0.63, posYRatio: 0.52 },
+      { posXRatio: 0.75, posYRatio: 0.25 },
+    ],
+  },
+  sm: {
+    plusWidth: 110,
+    balls: [
       { offsetX: +20, offsetY: 0, radius: 35 },
-      { offsetX: +40, offsetY: -30, radius: 50 },
+      { offsetX: +40, offsetY: -30, radius: 70 },
     ],
     pluses: [
       { posXRatio: 0.35, posYRatio: 0.4 },
@@ -69,50 +83,50 @@ const layoutMap = {
     ],
   },
   md: {
-    plusWidth: 110,
+    plusWidth: 120,
     balls: [
       { offsetX: -20, offsetY: 0, radius: 50 },
-      { offsetX: -60, offsetY: -50, radius: 60 },
+      { offsetX: -60, offsetY: -50, radius: 80 },
     ],
     pluses: [
-      { posXRatio: 0.55, posYRatio: 0.45 },
+      { posXRatio: 0.45, posYRatio: 0.45 },
       { posXRatio: 0.7, posYRatio: 0.6 },
       { posXRatio: 0.8, posYRatio: 0.25 },
     ],
   },
   lg: {
-    plusWidth: 120,
+    plusWidth: 130,
     balls: [
       { offsetX: -20, offsetY: 0, radius: 60 },
       { offsetX: -80, offsetY: -50, radius: 90 },
     ],
     pluses: [
-      { posXRatio: 0.67, posYRatio: 0.42 },
-      { posXRatio: 0.8, posYRatio: 0.61 },
+      { posXRatio: 0.55, posYRatio: 0.42 },
+      { posXRatio: 0.73, posYRatio: 0.61 },
       { posXRatio: 0.85, posYRatio: 0.25 },
     ],
   },
   xl: {
-    plusWidth: 130,
+    plusWidth: 140,
     balls: [
       { offsetX: -30, offsetY: -10, radius: 65 },
       { offsetX: -90, offsetY: -60, radius: 100 },
     ],
     pluses: [
-      { posXRatio: 0.7, posYRatio: 0.45 },
-      { posXRatio: 0.83, posYRatio: 0.6 },
-      { posXRatio: 0.9, posYRatio: 0.25 },
+      { posXRatio: 0.65, posYRatio: 0.34 },
+      { posXRatio: 0.78, posYRatio: 0.6 },
+      { posXRatio: 0.9, posYRatio: 0.22 },
     ],
   },
   "2xl": {
-    plusWidth: 140,
+    plusWidth: 150,
     balls: [
-      { offsetX: -40, offsetY: -10, radius: 70 },
-      { offsetX: -100, offsetY: -60, radius: 110 },
+      { offsetX: -50, offsetY: -10, radius: 70 },
+      { offsetX: -140, offsetY: -60, radius: 110 },
     ],
     pluses: [
-      { posXRatio: 0.72, posYRatio: 0.47 },
-      { posXRatio: 0.85, posYRatio: 0.6 },
+      { posXRatio: 0.68, posYRatio: 0.42 },
+      { posXRatio: 0.8, posYRatio: 0.6 },
       { posXRatio: 0.92, posYRatio: 0.22 },
     ],
   },

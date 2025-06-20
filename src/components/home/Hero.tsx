@@ -36,7 +36,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="relative h-max p-4 md:px-8 md:py-0 font-[200] width-[75] tracking-wide w-full flex items-center md:block">
-        <div className="md:max-w-max ml-auto px-4 md:px-0 z-10 relative">
+        <div className="md:max-w-max ml-auto px-4 md:px-0 z-10 relative text-mute-white">
           <div className="md:text-4xl text-2xl max-w-72 md:max-w-[26rem] md:h-64 h-40 py-6 flex justify-between flex-col">
             {[
               "Design. Code. Develop.",

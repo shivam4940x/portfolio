@@ -85,7 +85,7 @@ const MenuIcon = ({ fn }: { fn: () => void }) => {
         onMouseEnter={() => scope.current?.methods.hoverIn()}
         onMouseLeave={() => scope.current?.methods.hoverOut()}
         onClick={() => scope.current?.methods.click()}
-        className="cursor-pointer grid-cols-3 grid-rows-3 grid md:gap-2 gap-1 overflow-hidden md:p-2 relative burgerWrapper"
+        className="cursor-pointer grid-cols-3 grid-rows-3 grid xl:gap-2 gap-1 overflow-hidden md:p-2 relative burgerWrapper"
       >
         {Array.from({ length: 9 }, (_, i) => (
           <div key={i}>

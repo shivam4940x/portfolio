@@ -16,11 +16,33 @@ export function useMomentumScroll({
   const startYRef = useRef<number>(0);
   const targetScrollRef = useRef<number>(0);
   const currentScrollRef = useRef<number>(0);
+  const resetScroll = useCallback(() => {
+    const to = 0;
+    const container = containerRef.current;
+    if (!container) return;
+
+    targetScrollRef.current = to;
+    cancelAnimationFrame(rafIdRef.current);
+
+    const updateScroll = () => {
+      const delta = targetScrollRef.current - currentScrollRef.current;
+      currentScrollRef.current += delta * damping;
+
+      container.scrollTop = currentScrollRef.current;
+      onScrollUpdate?.(container.scrollTop);
+
+      if (Math.abs(delta) > 0.5) {
+        rafIdRef.current = requestAnimationFrame(updateScroll);
+      }
+    };
+
+    rafIdRef.current = requestAnimationFrame(updateScroll);
+  }, [onScrollUpdate]);
 
   const attach = useCallback((node: HTMLElement | null) => {
     if (node) {
-      node.style.overflow = "hidden"; // Prevent native scroll
-      node.style.touchAction = "none"; // Disable double-tap zoom/pinch
+      node.style.overflow = "hidden";
+      node.style.touchAction = "none";
     }
     containerRef.current = node;
   }, []);
@@ -64,10 +86,12 @@ export function useMomentumScroll({
       startYRef.current = e.touches[0].clientY;
     };
 
+    const SCROLL_ACCELERATION = 2.1; // tweak this value to tune responsiveness
+
     const onTouchMove = (e: TouchEvent) => {
       e.preventDefault();
       const currentY = e.touches[0].clientY;
-      const deltaY = startYRef.current - currentY;
+      const deltaY = (startYRef.current - currentY) * SCROLL_ACCELERATION; // 👈 accelerate
       startYRef.current = currentY;
 
       targetScrollRef.current += deltaY;
@@ -90,5 +114,8 @@ export function useMomentumScroll({
     };
   }, [isEnabled, onScrollUpdate]);
 
-  return attach;
+  return {
+    containerRef: attach,
+    resetScroll,
+  };
 }

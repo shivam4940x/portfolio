@@ -7,12 +7,11 @@ import { Outlet } from "react-router-dom";
 
 const DefaultLayout = () => {
   const { root, scope } = useAnimeScope();
-  const menu = useRef<HTMLDivElement>(null);
   const heroEl = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
 
   const handleScroll = (scrollY: number) => {
-    if (!heroEl.current || !menu.current || !menuWrapper.current) return;
+    if (!heroEl.current || !menuWrapper.current) return;
 
     const fadeDistance = 300; // px over which opacity fades
     const maxTranslateZ = -200; // maximum "depth" in px
@@ -27,7 +26,7 @@ const DefaultLayout = () => {
       ease: "outSine",
       duration: 0,
     });
-    animate(menu.current, {
+    animate(".menu", {
       opacity,
       translateY: -translateY / 2,
       ease: "outSine",
@@ -40,10 +39,17 @@ const DefaultLayout = () => {
         },
         duration: 500,
       });
+      const goTopTranslateY = 100 - clampedProgress * 100;
+      animate(".goTop", {
+        opacity: clampedProgress,
+        translateY: goTopTranslateY,
+        ease: "outSine",
+        duration: 0,
+      });
     }
   };
 
-  const containerRef = useMomentumScroll({
+  const { containerRef, resetScroll } = useMomentumScroll({
     onScrollUpdate: handleScroll,
   });
 
@@ -62,32 +68,51 @@ const DefaultLayout = () => {
     <div ref={root} className="h-dvh w-screen flex overflow-hidden">
       <main
         ref={containerRef}
-        style={{
-          transformStyle: "preserve-3d",
-        }}
-        className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative"
+        className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)]"
       >
         <Outlet />
       </main>
       <div
         ref={menuWrapper}
-        className="top-0 md:sticky pb-2 md:pb-0 absolute right-0 h-full md:w-52 w-15 max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
+        className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-[12rem] max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
       >
-        <div ref={menu} className="aspect-square w-full bg-deep-steel menu">
+        <div className="aspect-square md:w-full bg-deep-steel menu w-15">
           <MenuIcon fn={() => console.log("ola")} />
         </div>
-        <div className="kitty aspect-square md:w-full w-20 -ml-8 md:ml-0">
-          <div className="div fadeIn">
-            <img
-              src="/eppyKitty.webp"
-              alt="kitty"
-              className="div pointer-events-none"
-            />
-          </div>
+        <Kitty />
+      </div>
+      <button
+        onClick={resetScroll}
+        className="goTop fixed right-0 top-0 aspect-square w-20 z-50 border-l md:block hidden opacity-0 hover:bg-black duration-200"
+      >
+        <div className="div center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={28}
+            height={28}
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M11 20h2V8h2V6h-2V4h-2v2H9v2h2zM7 10V8h2v2zm0 0v2H5v-2zm10 0V8h-2v2zm0 0v2h2v-2z"
+            ></path>
+          </svg>
         </div>
+      </button>
+    </div>
+  );
+};
+const Kitty = () => {
+  return (
+    <div className="kitty aspect-square md:w-full w-20 -ml-8 md:ml-0">
+      <div className="div fadeIn">
+        <img
+          src="/eppyKitty.webp"
+          alt="kitty"
+          className="div pointer-events-none"
+        />
       </div>
     </div>
   );
 };
-
 export default DefaultLayout;

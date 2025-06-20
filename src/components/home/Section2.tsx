@@ -1,5 +1,4 @@
 import TextIn from "../anim/TextIn";
-import NoiseBg from "../ui/NoiseBg";
 
 const Section2 = () => {
   const data = [
@@ -27,16 +26,11 @@ const Section2 = () => {
 
   return (
     <div className="relative md:py-10 py-4 border-t border-mute-white/50 bg-dull-black ">
-      {/* Noise Background */}
-      <div className="absolute top-0 w-full h-full pointer-events-none z-50 opacity-20">
-        <div className="sticky top-0 h-dvh">
-          <NoiseBg className="div" opacity={10} />
-        </div>
-      </div>
+
 
       {/* Intro */}
-      <div className="px-4 md:px-10 max-w-screen-xl mx-auto">
-        <div className="space-y-6 md:space-y-10">
+      <div className="px-4 max-w-screen-xl md:px-10 mr-auto py-4 md:py-6">
+        <div className="space-y-6 md:space-y-0">
           <h1
             style={{ wordSpacing: "3px" }}
             className="tracking-tighter uppercase font-bold text-mute-white/90 text-[clamp(2rem,6vw,7.5rem)]"
@@ -57,25 +51,25 @@ const Section2 = () => {
 
       {/* Sticky Sections */}
       {data.map(({ heading, para, list }, index) => {
-        const top = 150 * index;
+        const top = window.innerHeight * 0.1 * index;
         return (
           <div
             key={`${heading}_${index}`}
-            className="sticky mb-80 last:mb-20"
+            className="sticky "
             style={{ top: `${top}px` }}
           >
-            <div className="mx-4 md:mx-6 border-t border-white/20 py-4 bg-dull-black grid grid-cols-1 md:grid-cols-5 gap-y-10 items-start">
+            <div className="mx-4 md:mx-6 border-t border-white/20 py-4 bg-dull-black grid grid-cols-1 md:grid-cols-5 gap-y-10 items-start md:pb-80 pb-40">
               <div className="font-pixel text-3xl  col-span-2 hidden md:flex h-40 justify-center items-center w-max">
                 ({index + 1})
               </div>
-              <div className="col-span-1 md:col-span-3 space-y-6">
-                <h2 className="text-[clamp(2rem,5vw,4.5rem)] h-40 font-bold tracking-tighter text-mute-white/95 flex items-center gap-3">
+              <div className="col-span-1 md:col-span-3 md:space-y-6">
+                <h2 className="text-[clamp(2rem,5vw,4.5rem)] h-20 font-bold tracking-tighter text-mute-white/95 flex items-center gap-3">
                   <div className="font-pixel text-2xl md:hidden">
                     ({index + 1})
                   </div>
                   <TextIn alternative>{heading}</TextIn>
                 </h2>
-                <div className="text-base md:text-xl text-mute-white/80">
+                <div className="text-base md:text-xl text-mute-white/80 mb-6">
                   <TextIn TextStagger={false} delay={400}>
                     {para}
                   </TextIn>
@@ -86,8 +80,8 @@ const Section2 = () => {
                       key={`${l}_${idx}`}
                       className="flex items-center gap-4 border-b border-white/10 pb-2"
                     >
-                      <div className="text-lg font-bold text-white">
-                        0{idx + 1}.
+                      <div className="text-lg font-bold text-mute-white/80">
+                        0{idx + 1}
                       </div>
                       <h3 className="text-xl md:text-2xl font-semibold text-mute-white/70">
                         {l}

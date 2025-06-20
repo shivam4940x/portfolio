@@ -18,6 +18,10 @@ export function useMomentumScroll({
   const currentScrollRef = useRef<number>(0);
 
   const attach = useCallback((node: HTMLElement | null) => {
+    if (node) {
+      node.style.overflow = "hidden"; // Prevent native scroll
+      node.style.touchAction = "none"; // Disable double-tap zoom/pinch
+    }
     containerRef.current = node;
   }, []);
 
@@ -49,7 +53,6 @@ export function useMomentumScroll({
 
     const forwardWheel = (e: WheelEvent) => {
       e.preventDefault();
-      
 
       targetScrollRef.current += e.deltaY;
       clampTarget();

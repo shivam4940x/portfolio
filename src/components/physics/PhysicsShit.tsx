@@ -206,16 +206,10 @@ const PhysicsShit = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  function isLowPerformanceDevice() {
-    const ua = navigator.userAgent || "";
-    const isMobile = /Mobi|Android/i.test(ua);
-    const hardwareConcurrency = navigator.hardwareConcurrency || 2;
 
-    return isMobile || hardwareConcurrency <= 4;
-  }
 
   useLayoutEffect(() => {
-    if (!containerRef.current || !canvasRef.current || isLowPerformanceDevice())
+    if (!containerRef.current || !canvasRef.current)
       return;
     const windowWidth = window.innerWidth;
     const container = containerRef.current;

@@ -65,7 +65,7 @@ const Section2 = () => {
             style={{ top: `${top}px` }}
           >
             <div className="mx-4 md:mx-6 border-t border-white/20 py-4 bg-dull-black grid grid-cols-1 md:grid-cols-5 gap-y-10 items-start">
-              <div className="font-pixel text-3xl  col-span-2 hidden md:block h-40 center w-max">
+              <div className="font-pixel text-3xl  col-span-2 hidden md:flex h-40 justify-center items-center w-max">
                 ({index + 1})
               </div>
               <div className="col-span-1 md:col-span-3 space-y-6">

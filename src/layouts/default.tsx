@@ -65,7 +65,7 @@ const DefaultLayout = () => {
         style={{
           transformStyle: "preserve-3d",
         }}
-        className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll scroll-smooth relative perspective-distant"
+        className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative"
       >
         <Outlet />
       </main>

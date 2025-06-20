@@ -1,6 +1,6 @@
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { animate, stagger } from "animejs";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 interface Props {
   children: string;
@@ -16,29 +16,44 @@ const TextIn = ({
   TextStagger = true,
 }: Props) => {
   const { root, scope } = useAnimeScope();
-
-  // Split text into letters wrapped in spans
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
 
   const letterSpans = useMemo(() => {
-    let className;
-    if (alternative) {
-      className = "letter inline-block -translate-y-full";
-    } else {
-      className = "letter inline-block translate-y-full";
-    }
+    const className = `letter inline-block ${
+      alternative ? "-translate-y-full" : "translate-y-full"
+    }`;
 
     if (!TextStagger) return <span className={className}>{children}</span>;
 
-    return children.split("").map((char, index) => {
-      return (
-        <span key={index} className={className}>
-          {char === " " ? "\u00A0" : char}
-        </span>
-      );
-    });
+    return children.split("").map((char, index) => (
+      <span key={index} className={className}>
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
   }, [children, alternative, TextStagger]);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.8 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+
     scope.current?.add(() => {
       animate(".letter", {
         translateY: alternative ? "100%" : "-100%",
@@ -47,11 +62,14 @@ const TextIn = ({
         ease: "outCirc",
       });
     });
-  }, [scope, delay, alternative]);
+  }, [scope, delay, alternative, inView]);
 
   return (
     <div
-      ref={root}
+      ref={(el) => {
+        root.current = el;
+        containerRef.current = el;
+      }}
       className="overflow-hidden inline-block pointer-events-none"
     >
       <div className="inline-block">{letterSpans}</div>

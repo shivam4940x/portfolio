@@ -26,6 +26,10 @@ interface BallProps {
   plusWidth: number;
   ballRadius: number;
 }
+const colors = {
+  ball: "#00809D",
+  plus: "#D64545 ",
+};
 const breakPoints = {
   base: 0,
   xs: 400,
@@ -136,7 +140,7 @@ const getShape = {
   Plus: ({ posX, posY, plusWidth, plusThickness = 15 }: PlusProps) => {
     const settings = {
       render: {
-        fillStyle: "#b93920",
+        fillStyle: colors.plus,
         strokeStyle: "transparent",
         lineWidth: 0,
       },
@@ -172,6 +176,9 @@ const getShape = {
       pointB: { x: 0, y: 0 },
       stiffness: 0.5,
       length: 0,
+      render: {
+        visible: false,
+      },
     });
 
     return { pin, plusShape };
@@ -183,7 +190,7 @@ const getShape = {
       ballRadius,
       {
         render: {
-          fillStyle: "#2973B2",
+          fillStyle: colors.ball,
           strokeStyle: "transparent",
           lineWidth: 0,
         },
@@ -199,8 +206,17 @@ const PhysicsShit = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  function isLowPerformanceDevice() {
+    const ua = navigator.userAgent || "";
+    const isMobile = /Mobi|Android/i.test(ua);
+    const hardwareConcurrency = navigator.hardwareConcurrency || 2;
+
+    return isMobile || hardwareConcurrency <= 4;
+  }
+
   useLayoutEffect(() => {
-    if (!containerRef.current || !canvasRef.current) return;
+    if (!containerRef.current || !canvasRef.current || isLowPerformanceDevice())
+      return;
     const windowWidth = window.innerWidth;
     const container = containerRef.current;
     const canvas = canvasRef.current;

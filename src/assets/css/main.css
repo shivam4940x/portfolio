@@ -18,7 +18,8 @@ body {
   width: var(--len); /* Width of the scrollbar */
   height: var(--len); /* Height of the scrollbar */
 }
-.overflow-y-scroll {
+.overflow-y-scroll,
+.overflow-scroll {
   scrollbar-width: none;
 }
 
@@ -27,8 +28,6 @@ body {
     opacity: 1;
   }
 }
-
-
 
 @keyframes kitty {
   from {

@@ -3,27 +3,28 @@
 
 @layer base {
   :root {
-    --color-primary: #0e2745;
+    --color-text: #a19d99;
+    --color-primary: #0b1a2a;
     --color-secondary: #b93920;
-    --color-complimentary: #f1be6d;
-    --color-text: #babcc7;
-    --color-dusty-blue: #7691ae;
+    --color-dull-black: #0c0c0b;
+    --color-mute-white: #e5e5e0;
     --color-deep-steel: #537189;
     --color-paper-black: #2a2a2a;
+    --color-complimentary: #ffc857;
     --color-border-light: #53718933;
-    --color-dull-black: #1e1e1e;
   }
 }
 
 @theme {
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
-  --color-complimentary: var(--color-complimentary);
-  --color-text: var(--color-text);
-  --color-dusty-blue: var(--color-dusty-blue);
-  --color-deep-steel: var(--color-deep-steel);
-  --color-paper-black: var(--color-paper-black);
-  --color-border-light: var(--color-border-light);
+  --color-text: #a19d99;
+  --color-primary: #0b1a2a;
+  --color-secondary: #b93920;
+  --color-dull-black: #0c0c0b;
+  --color-mute-white: #e5e5e0;
+  --color-deep-steel: #537189;
+  --color-paper-black: #2a2a2a;
+  --color-complimentary: #ffc857;
+  --color-border-light: #53718933;
 }
 
 @layer utilities {
@@ -66,4 +67,11 @@ a {
 }
 .tracking-tighter {
   word-spacing: 3px;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-satoshi;
 }

@@ -1,25 +1,25 @@
 import TextIn from "../anim/TextIn";
 import PhysicsShit from "../physics/PhysicsShit";
-import cover from "@/assets/img/cover.jpg";
 import Logo from "../util/Logo";
+import GridBg from "../ui/GridBg";
 
 const Hero = () => {
   return (
     <div className="flex div flex-col">
-      <div className="grow relative border-b  md:px-10 md:pt-7">
+      <div className="grow relative border-b  md:px-10 md:pt-7 ">
         <div className="flex justify-between flex-col div">
           <div className="h-15 border-b md:border-0 md:h-max flex items-center px-5 md:px-0 bg-primary z-20 md:w-max md:bg-transparent">
             <Logo />
           </div>
-          <div className="z-20 w-max">
+          <div className="z-20 w-max tracking-wide">
             <div className="font-light md:text-lg text-sm px-6 md:px-0">
               <TextIn delay={300}>Hello, I'm a</TextIn>
             </div>
-            <div className="font-satoshi uppercase font-extrabold tracking-wide text-complimentary">
-              <div className="md:text-6xl lg:text-7xl xl:text-8xl xl:leading-[75px] hidden md:block px-5 md:px-0">
+            <h1 className="text-complimentary uppercase font-extrabold xl:text-8xl lg:text-7xl  md:text-6xl  sm:text-5xl text-5xl  leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[75px]">
+              <div className=" hidden md:block px-5 md:px-0">
                 <TextIn>web developer</TextIn>
               </div>
-              <div className="relative text-5xl sm:text-5xl md:hidden flex flex-col px-5 md:px-0 leading-[40px]">
+              <div className="relative md:hidden flex flex-col px-5 md:px-0">
                 <div className="h-18">
                   <TextIn>full stack</TextIn>
                 </div>
@@ -28,7 +28,7 @@ const Hero = () => {
                 </div>
                 <div className="absolute bottom-0 left-0 w-full h-[calc(105%_-_3rem)] border-t border-r bg-primary"></div>
               </div>
-            </div>
+            </h1>
           </div>
         </div>
         <div className="absolute z-10 takeScreen">
@@ -52,18 +52,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div
-          className="absolute top-0 left-0 div -z-50 opacity-20"
-          style={{
-            backgroundImage: `url(${cover})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="div bg-black/30"></div>
-          {/* <GridBg /> */}
-        </div>
+        {/* <NoiseBg className="div" opacity={10}></NoiseBg> */}
+        <GridBg />
       </div>
     </div>
   );

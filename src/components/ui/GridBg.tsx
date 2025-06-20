@@ -1,5 +1,5 @@
 import { useAnimeScope } from "@/hooks/useAnimeScope";
-import { animate, stagger, utils } from "animejs";
+import { animate, utils } from "animejs";
 import { useEffect, useRef, useState } from "react";
 
 const SQUARE_SIZE = 80; // in px
@@ -42,26 +42,24 @@ const GridBg = () => {
     const $squares = utils.$(".square");
     if (!$squares.length) return;
 
-    const cols =
-      Math.floor((bgRef.current?.offsetWidth || 0) / SQUARE_SIZE) + 1;
-    const rows = Math.ceil(positions.length / cols);
-    const total = cols * rows;
+    // const cols =
+    //   Math.floor((bgRef.current?.offsetWidth || 0) / SQUARE_SIZE) + 1;
+    // const rows = Math.ceil(positions.length / cols);
 
-    const bottomRightIndex = total - 1;
-
-    scope.current?.add(() => {
-      animate(".square", {
-        backgroundColor: [
-          { to: "rgba(83, 113, 137, 0.2)" },
-          { to: "rgba(83, 113, 137, 0)" },
-        ],
-        duration: 4500,
-        loop: true,
-        delay: stagger(90, {
-          grid: [cols, rows],
-          from: bottomRightIndex,
-        }),
-        easing: "linear",
+    scope.current?.add((self) => {
+      self.add("animate", (index) => {
+        animate($squares[index], {
+          backgroundColor: [
+            { to: "rgba(83, 113, 137, 0.2)" },
+            { to: "rgba(83, 113, 137, 0)" },
+          ],
+          duration: 1500,
+          // delay: stagger(90, {
+          //   grid: [cols, rows],
+          //   from: index,
+          // }),
+          ease: "linear",
+        });
       });
     });
   }, [positions, scope]);
@@ -70,11 +68,14 @@ const GridBg = () => {
     <div ref={root}>
       <div
         ref={bgRef}
-        className="absolute takeScreen -z-50 w-full h-full opacity-90 bg-black/20"
+        className="absolute takeScreen z-10 w-full h-full opacity-90 bg-black/20"
       >
         {positions.map((pos, i) => (
           <div
             key={i}
+            onMouseOver={() => {
+              if (scope.current) scope.current.methods.animate(i);
+            }}
             className="absolute border border-border-light square"
             style={{
               width: `${SQUARE_SIZE}px`,

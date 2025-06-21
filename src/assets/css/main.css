@@ -7,6 +7,9 @@ body {
   -webkit-font-smoothing: antialiased; /* For WebKit (Chrome, Safari) */
   -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
   text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  overflow-wrap: break-word; 
+  white-space: normal;
 }
 * ::selection {
   background-color: var(--color-text);

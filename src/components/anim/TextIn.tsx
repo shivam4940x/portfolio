@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 interface Props {
   children: string;
   delay?: number;
+  duration?: number;
   alternative?: boolean;
   TextStagger?: boolean;
 }
@@ -14,21 +15,33 @@ const TextIn = ({
   delay = 0,
   alternative = false,
   TextStagger = true,
+  duration = 600,
 }: Props) => {
   const { root, scope } = useAnimeScope();
   const containerRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
   const letterSpans = useMemo(() => {
-    const className = `letter inline-block ${
-      alternative ? "-translate-y-full" : "translate-y-full"
-    }`;
+    const translateClass = alternative
+      ? "-translate-y-full"
+      : "translate-y-full";
 
-    if (!TextStagger) return <span className={className}>{children}</span>;
+    if (!TextStagger) {
+      return children.split(" ").map((word, index) => (
+        <span key={index} className="inline-block overflow-hidden">
+          <span className={`letter inline-block ${translateClass}`}>
+            {word}
+          </span>
+          {index < children.split(" ").length - 1 && "\u00A0"}
+        </span>
+      ));
+    }
 
     return children.split("").map((char, index) => (
-      <span key={index} className={className}>
-        {char === " " ? "\u00A0" : char}
+      <span key={index} className="inline-block overflow-hidden">
+        <span className={`letter inline-block ${translateClass}`}>
+          {char === " " ? "\u00A0" : char}
+        </span>
       </span>
     ));
   }, [children, alternative, TextStagger]);
@@ -57,12 +70,12 @@ const TextIn = ({
     scope.current?.add(() => {
       animate(".letter", {
         translateY: alternative ? "100%" : "-100%",
-        duration: 600,
+        duration,
         delay: stagger(30, { start: delay }),
         ease: "outCirc",
       });
     });
-  }, [scope, delay, alternative, inView]);
+  }, [scope, delay, alternative, inView, duration]);
 
   return (
     <div

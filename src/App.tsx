@@ -46,7 +46,7 @@ function App() {
       <div
         ref={root}
         className={`fixed inset-0 z-50 h-dvh w-screen left-0 top-0 justify-center items-center  overflow-hidden ${
-          isRouteLoading ? "hidden" : "hidden"
+          isRouteLoading ? "flex" : "hidden"
         }`}
       >
         <div className="relative h-full w-full z-10 cover">
@@ -67,14 +67,14 @@ function App() {
           </div>
         }
       >
-        {/* {!isRouteLoading && (
-          )} */}
+        {!isRouteLoading && (
           <Routes>
             <Route element={<DefaultLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/test" element={<Testing />} />
             </Route>
           </Routes>
+        )}
       </Suspense>
     </>
   );

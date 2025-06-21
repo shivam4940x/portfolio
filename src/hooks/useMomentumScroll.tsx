@@ -51,6 +51,11 @@ export function useMomentumScroll({
     const containerEl = containerRef.current;
     if (!containerEl || !isEnabled) return;
 
+    // Set scroll values to current scrollTop on initial mount
+    const initialScrollTop = containerEl.scrollTop;
+    currentScrollRef.current = initialScrollTop;
+    targetScrollRef.current = initialScrollTop;
+
     const updateScroll = () => {
       const delta = targetScrollRef.current - currentScrollRef.current;
       currentScrollRef.current += delta * damping;
@@ -75,7 +80,6 @@ export function useMomentumScroll({
 
     const forwardWheel = (e: WheelEvent) => {
       e.preventDefault();
-
       targetScrollRef.current += e.deltaY;
       clampTarget();
       cancelAnimationFrame(rafIdRef.current);
@@ -86,12 +90,12 @@ export function useMomentumScroll({
       startYRef.current = e.touches[0].clientY;
     };
 
-    const SCROLL_ACCELERATION = 2.1; // tweak this value to tune responsiveness
+    const SCROLL_ACCELERATION = 2.1;
 
     const onTouchMove = (e: TouchEvent) => {
       e.preventDefault();
       const currentY = e.touches[0].clientY;
-      const deltaY = (startYRef.current - currentY) * SCROLL_ACCELERATION; // 👈 accelerate
+      const deltaY = (startYRef.current - currentY) * SCROLL_ACCELERATION;
       startYRef.current = currentY;
 
       targetScrollRef.current += deltaY;
@@ -113,6 +117,7 @@ export function useMomentumScroll({
       cancelAnimationFrame(rafIdRef.current);
     };
   }, [isEnabled, onScrollUpdate]);
+  
 
   return {
     containerRef: attach,

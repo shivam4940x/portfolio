@@ -74,7 +74,7 @@ const GridBg = () => {
           <div
             key={i}
             onMouseOver={() => {
-              if (scope.current) scope.current.methods.animate(i);
+              if (scope.current) scope.current?.methods.animate(i);
             }}
             className="absolute border border-border-light square"
             style={{

@@ -1,7 +1,7 @@
 import MenuIcon from "@/components/ui/MenuIcon";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
-import { animate, createDraggable, createSpring } from "animejs";
+import { animate, createDraggable, createSpring, utils } from "animejs";
 import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 
@@ -56,10 +56,29 @@ const DefaultLayout = () => {
   useEffect(() => {
     heroEl.current = document.querySelector("section#hero");
     // kitty animation; DO NOT TOUCH IT
-    scope.current?.add(() => {
+    scope.current?.add((self) => {
       createDraggable(".kitty > div", {
         container: ".kitty",
         releaseEase: createSpring({ stiffness: 300 }),
+      });
+      const guide = utils.$(".guide")[0];
+
+      self.add("mouseIn", () => {
+        guide.style.display = "block";
+        animate(guide, {
+          opacity: 1,
+          duration: 500,
+        });
+      });
+
+      self.add("mouseOut", () => {
+        animate(guide, {
+          opacity: 0,
+          duration: 300,
+          onComplete: () => {
+            guide.style.display = "none";
+          },
+        });
       });
     });
   }, [scope]);
@@ -79,11 +98,18 @@ const DefaultLayout = () => {
         <div className="aspect-square md:w-full bg-deep-steel menu w-15">
           <MenuIcon fn={() => console.log("ola")} />
         </div>
-        <Kitty />
+        <Kitty
+          mouseIn={() => {
+            scope.current?.methods.mouseIn();
+          }}
+          mouseOut={() => {
+            scope.current?.methods.mouseOut();
+          }}
+        />
       </div>
       <button
         onClick={resetScroll}
-        className="goTop fixed right-0 top-0 aspect-square w-20 z-50 border-l md:block hidden opacity-0 hover:bg-black duration-200"
+        className="goTop fixed right-0 top-0 aspect-square w-20 z-50 border-l md:block hidden opacity-0 hover:bg-black duration-200 border-b"
       >
         <div className="div center">
           <svg
@@ -102,17 +128,78 @@ const DefaultLayout = () => {
     </div>
   );
 };
-const Kitty = () => {
+
+const Kitty = ({
+  mouseIn,
+  mouseOut,
+}: {
+  mouseIn: () => void | undefined;
+  mouseOut: () => void | undefined;
+}) => {
+  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    hoverTimeout.current = setTimeout(() => {
+      if (mouseIn) mouseIn();
+    }, 500);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+      hoverTimeout.current = null;
+    }
+    if (mouseOut) mouseOut();
+  };
+
   return (
-    <div className="kitty aspect-square md:w-full w-20 -ml-8 md:ml-0">
-      <div className="div fadeIn">
-        <img
-          src="/eppyKitty.webp"
-          alt="kitty"
-          className="div pointer-events-none"
-        />
+    <>
+      <div
+        style={{ display: "none" }}
+        className="fixed top-0 left-0 w-screen h-screen bg-black/40 opacity-0 pointer-events-none guide"
+      >
+        <div className="fixed right-8 bottom-20 w-96 max-w-[80vw] min-h-20 ">
+          <div className="relative div min-h-20">
+            <div className="absolute top-0 right-0 div pixel-corners bg-mute-white -z-10 min-h-20"></div>
+            <div className="absolute top-[93%] right-3 w-7 rotate-[-20deg]">
+              <svg
+                className="div"
+                viewBox="0 0 88 75"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M44 75L0.698737 -8.15666e-06L87.3013 -5.85622e-07L44 75Z"
+                  fill="#e5e5e0"
+                />
+              </svg>
+            </div>
+            <div className="py-6 px-4 text-dull-black">
+              Welcome, visitors! You've entered a world where code meets
+              creativity and passion powers every pixel. This portfolio is my
+              space to showcase projects and serve as a badge of my skills,
+              dedication, and the journey I’ve forged as a developer.
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+      <div
+        className="kitty aspect-square md:w-full w-20 -ml-8 md:ml-0 z-50 relative"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="div fadeIn">
+          <div className="kitty_div">
+            <img
+              src="/eppyKitty.webp"
+              alt="kitty"
+              className="div pointer-events-none"
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
+
 export default DefaultLayout;

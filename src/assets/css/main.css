@@ -8,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
   text-rendering: optimizeLegibility;
   word-wrap: break-word;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
   white-space: normal;
 }
 * ::selection {
@@ -41,10 +41,53 @@ body {
   }
 }
 
-.kitty {
+.kitty .kitty_div {
   animation: kitty 1.5s steps(3) alternate infinite;
+}
+.kitty .kitty_div:hover {
+  animation: none;
 }
 .fadeIn {
   opacity: 0;
   animation: fadeIn 1s forwards;
+}
+.pixel-corners {
+  clip-path: polygon(
+    0px calc(100% - 20px),
+    4px calc(100% - 20px),
+    4px calc(100% - 12px),
+    8px calc(100% - 12px),
+    8px calc(100% - 8px),
+    12px calc(100% - 8px),
+    12px calc(100% - 4px),
+    20px calc(100% - 4px),
+    20px 100%,
+    calc(100% - 20px) 100%,
+    calc(100% - 20px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 20px),
+    100% calc(100% - 20px),
+    100% 20px,
+    calc(100% - 4px) 20px,
+    calc(100% - 4px) 12px,
+    calc(100% - 8px) 12px,
+    calc(100% - 8px) 8px,
+    calc(100% - 12px) 8px,
+    calc(100% - 12px) 4px,
+    calc(100% - 20px) 4px,
+    calc(100% - 20px) 0px,
+    20px 0px,
+    20px 4px,
+    12px 4px,
+    12px 8px,
+    8px 8px,
+    8px 12px,
+    4px 12px,
+    4px 20px,
+    0px 20px
+  );
 }

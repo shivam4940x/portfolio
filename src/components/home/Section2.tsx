@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TextIn from "../anim/TextIn";
+
 const data = [
   {
     heading: "Web Developer",
@@ -45,7 +46,9 @@ const Section2 = () => {
           <div className="grid grid-cols-1 lg:grid-cols-10">
             <div className="col-span-4"></div>
             <div className="col-span-5 flex gap-5 flex-col lg:flex-row">
-              <div className="text-lg mr-8">(services)</div>
+              <div className="text-lg mr-8">
+                <TextIn TextStagger={false}>(services)</TextIn>
+              </div>
               <div className="text-base md:text-2xl font-medium ">
                 <TextIn TextStagger={false} delay={400}>
                   Frustrated with websites that don't reflect your brand or

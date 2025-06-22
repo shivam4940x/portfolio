@@ -8,6 +8,7 @@ interface Props {
   duration?: number;
   alternative?: boolean;
   TextStagger?: boolean;
+  threshold?: number;
 }
 
 const TextIn = ({
@@ -16,6 +17,7 @@ const TextIn = ({
   alternative = false,
   TextStagger = true,
   duration = 600,
+  threshold = 0.8,
 }: Props) => {
   const { root, scope } = useAnimeScope();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ const TextIn = ({
           observer.disconnect();
         }
       },
-      { threshold: 0.8 }
+      { threshold }
     );
 
     if (containerRef.current) {
@@ -62,7 +64,7 @@ const TextIn = ({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
 
   useEffect(() => {
     if (!inView) return;

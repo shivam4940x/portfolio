@@ -17,29 +17,47 @@ const data = [
     para: "I develop robust backend systems with clear architecture, secure data flows, and scalable APIs — ensuring everything runs fast, clean, and reliably under the hood.",
     list: ["Node.js", "TypeScript", "Nest.js"],
   },
+  {
+    heading: "UI/UX Design",
+    para: "I design intuitive interfaces that fuse aesthetics with usability, ensuring every interaction feels natural and purposeful. My focus is on user-first experiences—strategically crafted to elevate engagement, build trust, and drive meaningful actions.",
+    list: [
+      "Figma",
+      "Mockups to functioning websites",
+      "Interactive Animations",
+    ],
+  },
 ];
 
-const Section2 = () => {
+const Service = () => {
   const [h2Height, setH2Height] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(0);
   useEffect(() => {
     const getHeight = () => {
-      const h2 = document.querySelector(".service h2") as HTMLElement;
+      const service = document.querySelector(".service") as HTMLElement;
+      const h2 = service.querySelector(" h2") as HTMLElement;
       if (!h2) return;
 
       const { height } = h2.getBoundingClientRect();
+      const { height: serviceHight } = service.getBoundingClientRect();
       setH2Height(height);
+      setContainerHeight(serviceHight);
     };
     window.onresize = getHeight;
     getHeight();
   }, []);
   return (
-    <div className="relative md:py-10 py-4 border-t border-mute-white/50 bg-dull-black px-3 md:px-10">
+    <div
+      style={{
+        minHeight: `calc((${containerHeight}px * 5) - 1rem)`,
+      }}
+      className="relative md:pt-10 pt-4 border-t border-b bg-dull-black"
+    >
       {/* Intro */}
-      <div className="w-full mb-4 md:mb-0">
+      <div className="w-full mb-4 md:mb-0 px-4 md:px-10">
         <div className="py-2 md:py-6 ">
           <h1
             style={{ wordSpacing: "3px" }}
-            className="tracking-tight uppercase font-bold text-mute-white/90 text-[clamp(2rem,7vw,7.5rem)]"
+            className="heading uppercase text-mute-white/90 "
           >
             <TextIn>How I can help you</TextIn>
           </h1>
@@ -66,16 +84,16 @@ const Section2 = () => {
         return (
           <div
             key={`${heading}_${index}`}
-            className="sticky service"
+            className="sticky service md:pb-70 pb-40 last:pb-12 last:md:pb-32"
             style={{ top: `${(h2Height + 10) * index}px` }}
           >
-            <div className="border-t border-white/20 py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start md:pb-80 pb-40">
-              <div className="font-pixel text-5xl col-span-4 hidden lg:flex justify-center items-center w-max leading-19">
+            <div className="border-t py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start px-4 md:px-10">
+              <div className="font-pixel text-5xl col-span-4 hidden lg:flex justify-center items-center w-max leading-20">
                 ({index + 1})
               </div>
               <div className="col-span-1 md:col-span-6 ">
                 <div className="text-mute-white/95 font-bold tracking-tight">
-                  <h2 className="text-[clamp(2rem,5vw,4.5rem)] flex items-center gap-2 md:leading-19">
+                  <h2 className="heading_2 flex items-center gap-2 md:leading-20">
                     <div className="font-pixel text-lg md:hidden text-mute-white/70">
                       {index + 1}.
                     </div>
@@ -131,4 +149,4 @@ const Section2 = () => {
   );
 };
 
-export default Section2;
+export default Service;

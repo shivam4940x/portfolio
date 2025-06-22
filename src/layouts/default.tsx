@@ -1,3 +1,4 @@
+import { Kitty } from "@/components/layout";
 import MenuIcon from "@/components/ui/MenuIcon";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
@@ -10,9 +11,36 @@ const DefaultLayout = () => {
   const heroEl = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
 
+  const handleFooterScroll = () => {
+    const footer = document.querySelector("footer");
+    const wrapper = footer?.querySelector(".wrapper") as HTMLDivElement;
+    if (!footer || !wrapper) return;
+
+    const rect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    const footerVisiblePx = Math.max(0, windowHeight - rect.top);
+    const totalRevealPx = rect.height;
+    const progress = Math.min(footerVisiblePx / totalRevealPx, 1);
+
+    // Calculate desired translateY (0 → 100%)
+    const targetY = progress * 100;
+
+    // Convert to px based on wrapper height
+    const wrapperHeight = wrapper.offsetHeight;
+    const targetPx = (targetY / 100) * wrapperHeight;
+
+    // Smooth interpolation from current to target
+    animate(wrapper, {
+      translateY: targetPx,
+      duration: 0,
+      easing: "linear",
+    });
+  };
+  
+
   const handleScroll = (scrollY: number) => {
     if (!heroEl.current || !menuWrapper.current) return;
-
     const fadeDistance = 300; // px over which opacity fades
     const maxTranslateZ = -200; // maximum "depth" in px
 
@@ -50,7 +78,10 @@ const DefaultLayout = () => {
   };
 
   const { containerRef, resetScroll } = useMomentumScroll({
-    onScrollUpdate: handleScroll,
+    onScrollUpdate: (scrollY) => {
+      handleScroll(scrollY);
+      handleFooterScroll();
+    },
   });
 
   useEffect(() => {
@@ -93,7 +124,7 @@ const DefaultLayout = () => {
       </main>
       <div
         ref={menuWrapper}
-        className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-[12rem] max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
+        className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-20 max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
       >
         <div className="aspect-square md:w-full bg-deep-steel menu w-15">
           <MenuIcon fn={() => console.log("ola")} />
@@ -126,79 +157,6 @@ const DefaultLayout = () => {
         </div>
       </button>
     </div>
-  );
-};
-
-const Kitty = ({
-  mouseIn,
-  mouseOut,
-}: {
-  mouseIn: () => void | undefined;
-  mouseOut: () => void | undefined;
-}) => {
-  const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
-
-  const handleMouseEnter = () => {
-    hoverTimeout.current = setTimeout(() => {
-      if (mouseIn) mouseIn();
-    }, 500);
-  };
-
-  const handleMouseLeave = () => {
-    if (hoverTimeout.current) {
-      clearTimeout(hoverTimeout.current);
-      hoverTimeout.current = null;
-    }
-    if (mouseOut) mouseOut();
-  };
-
-  return (
-    <>
-      <div
-        style={{ display: "none" }}
-        className="fixed top-0 left-0 w-screen h-screen bg-black/40 opacity-0 pointer-events-none guide"
-      >
-        <div className="fixed right-8 bottom-20 w-96 max-w-[80vw] min-h-20 ">
-          <div className="relative div min-h-20">
-            <div className="absolute top-0 right-0 div pixel-corners bg-mute-white -z-10 min-h-20"></div>
-            <div className="absolute top-[93%] right-3 w-7 rotate-[-20deg]">
-              <svg
-                className="div"
-                viewBox="0 0 88 75"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M44 75L0.698737 -8.15666e-06L87.3013 -5.85622e-07L44 75Z"
-                  fill="#e5e5e0"
-                />
-              </svg>
-            </div>
-            <div className="py-6 px-4 text-dull-black">
-              Welcome, visitors! You've entered a world where code meets
-              creativity and passion powers every pixel. This portfolio is my
-              space to showcase projects and serve as a badge of my skills,
-              dedication, and the journey I’ve forged as a developer.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="kitty aspect-square md:w-full w-20 -ml-8 md:ml-0 z-50 relative"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <div className="div fadeIn">
-          <div className="kitty_div">
-            <img
-              src="/eppyKitty.webp"
-              alt="kitty"
-              className="div pointer-events-none"
-            />
-          </div>
-        </div>
-      </div>
-    </>
   );
 };
 

@@ -73,5 +73,11 @@ h2,
 h3,
 h4,
 h5 {
-  @apply font-satoshi;
+  @apply font-satoshi ;
+}
+.heading_2 {
+  @apply text-[clamp(2rem,4vw,4rem)];
+}
+.heading {
+  @apply text-[clamp(2rem,7vw,7.5rem)] tracking-tight font-bold;
 }

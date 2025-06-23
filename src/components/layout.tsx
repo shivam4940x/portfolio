@@ -70,10 +70,69 @@ export const Kitty = ({
   );
 };
 
+const footerData = [
+  {
+    title: "Menu",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Work", href: "/work" },
+      { text: "Services", href: "/services" },
+      { text: "About Me", href: "/about" },
+      { text: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Social Links",
+    items: [
+      { text: "Insta", href: "https://instagram.com" },
+      { text: "LinkedIn", href: "https://linkedin.com" },
+      { text: "GitHub", href: "https://github.com" },
+      { text: "Mail", href: "mailto:you@example.com" },
+    ],
+  },
+  {
+    title: "Resource",
+    items: [
+      { text: "Anime Js, Matter Js", href: "https://animejs.com/" },
+      { text: "Source Code", href: "https://github.com/yourrepo" },
+    ],
+  },
+];
+
 export const Footer = () => {
   return (
-    <footer className="md:my-30 my-16 px-4 md:px-10">
-      <div></div>
+    <footer className="bg-dull-black py-12 border-t px-6 sm:px-10 space-y-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-y-10 gap-x-6 lg:gap-x-12">
+        {footerData.map(({ title, items }, idx) => {
+          // Responsive col span
+          const colSpan = idx === 2 ? "lg:col-span-2" : "lg:col-span-3";
+
+          return (
+            <div key={title} className={colSpan}>
+              <h5 className="border-b border-border-light font-bold text-xl px-1 pb-1">
+                {title}
+              </h5>
+              <ul className="px-3 mt-5 text-lg capitalize space-y-3">
+                {items.map(({ text, href }) => (
+                  <li key={text}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="md:hover:font-stretch-expanded duration-150 font-normal"
+                    >
+                      {text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+      <div className="w-full flex justify-center lg:justify-end">
+        <div className="text-complimentary text-sm">© 2025 Shivam Singh</div>
+      </div>
     </footer>
   );
 };

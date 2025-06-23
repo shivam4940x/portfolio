@@ -57,7 +57,7 @@ const Service = () => {
         <div className="py-2 md:py-6 md:space-y-4">
           <h1
             style={{ wordSpacing: "3px" }}
-            className="heading uppercase text-mute-white/90 "
+            className="heading uppercase "
           >
             <TextIn>How I can help you</TextIn>
           </h1>

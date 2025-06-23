@@ -1,4 +1,4 @@
-import { Kitty } from "@/components/layout";
+import { Footer, Kitty } from "@/components/layout";
 import MenuIcon from "@/components/ui/MenuIcon";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
@@ -14,7 +14,7 @@ const DefaultLayout = () => {
   const handleFooterScroll = () => {
     const Last = document.querySelector("#Last");
     const wrapper = Last?.querySelector(".wrapper") as HTMLDivElement;
-    if (!Last || !wrapper) return;
+    if (!Last || !wrapper || !menuWrapper.current) return;
 
     const rect = Last.getBoundingClientRect();
     const windowHeight = window.innerHeight;
@@ -37,7 +37,7 @@ const DefaultLayout = () => {
       easing: "linear",
     });
   };
-  
+
   const handleScroll = (scrollY: number) => {
     if (!heroEl.current || !menuWrapper.current) return;
     const fadeDistance = 300; // px over which opacity fades
@@ -59,24 +59,22 @@ const DefaultLayout = () => {
       ease: "outSine",
       duration: 0,
     });
+    const goTopTranslateY = 100 - clampedProgress * 100;
+    if (clampedProgress > 0) {
+      utils.set(".goTop", { display: "block" });
+    }
+    animate(".goTop", {
+      opacity: clampedProgress,
+      translateY: goTopTranslateY,
+      ease: "outSine",
+      duration: 0,
+    });
     if (window.innerWidth >= 768) {
-      if (clampedProgress > 0) {
-        utils.set(".goTop", { display: "block" });
-      }
-
       animate(menuWrapper.current, {
         backgroundColor: {
           to: clampedProgress >= 1 ? "rgb(12, 12, 11)" : "rgb(11, 26, 42)",
         },
         duration: 500,
-      });
-      const goTopTranslateY = 100 - clampedProgress * 100;
-
-      animate(".goTop", {
-        opacity: clampedProgress,
-        translateY: goTopTranslateY,
-        ease: "outSine",
-        duration: 0,
       });
     }
   };
@@ -125,6 +123,7 @@ const DefaultLayout = () => {
         className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)]"
       >
         <Outlet />
+        <Footer />
       </main>
       <div
         ref={menuWrapper}
@@ -144,7 +143,7 @@ const DefaultLayout = () => {
       </div>
       <button
         onClick={resetScroll}
-        className="goTop fixed right-0 top-0 aspect-square w-20 mt-2.5 z-50 border-l hidden opacity-0 hover:bg-black duration-200 border-b"
+        className="goTop fixed right-0 top-0 aspect-square w-15 md:w-20 z-50 border-l hidden opacity-0 hover:bg-black duration-200 border-b"
       >
         <div className="div center">
           <svg

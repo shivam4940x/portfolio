@@ -11,7 +11,7 @@
     --color-deep-steel: #537189;
     --color-paper-black: #2a2a2a;
     --color-complimentary: #ffc857;
-    --color-border-light: #53718933;
+    --color-border-light: #a0d5ff33;
   }
 }
 
@@ -24,7 +24,7 @@
   --color-deep-steel: #537189;
   --color-paper-black: #2a2a2a;
   --color-complimentary: #ffc857;
-  --color-border-light: #53718933;
+  --color-border-light: #a0d5ff33;
 }
 
 @layer utilities {
@@ -73,11 +73,14 @@ h2,
 h3,
 h4,
 h5 {
-  @apply font-satoshi ;
+  @apply font-satoshi;
 }
 .heading_2 {
   @apply text-[clamp(1.8rem,4vw,4rem)] leading-[clamp(2.2rem,4.5vw,4.8rem)];
 }
 .heading {
-  @apply text-[clamp(2rem,7vw,7.5rem)] tracking-tight font-bold leading-[clamp(2.5rem,6vw,6.5rem)];
+  @apply text-[clamp(2rem,7vw,7.5rem)] tracking-tight font-bold leading-[clamp(2.5rem,6vw,6.5rem)] text-mute-white/90;
+}
+h5 {
+  @apply text-[clamp(1.4rem,3vw,2.5rem)] tracking-tight font-bold leading-[clamp(1.5rem,8vw,3.5rem)] text-mute-white/80;
 }

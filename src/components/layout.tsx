@@ -84,10 +84,13 @@ const footerData = [
   {
     title: "Social Links",
     items: [
-      { text: "Insta", href: "https://instagram.com" },
-      { text: "LinkedIn", href: "https://linkedin.com" },
-      { text: "GitHub", href: "https://github.com" },
-      { text: "Mail", href: "mailto:you@example.com" },
+      { text: "Insta", href: "https://www.instagram.com/shivam4940.exe" },
+      {
+        text: "LinkedIn",
+        href: "https://www.linkedin.com/in/shivam-singh-37b56b28b/",
+      },
+      { text: "GitHub", href: "https://github.com/shivam4940x" },
+      { text: "Mail", href: "mailto:shivam@gmail.com" },
     ],
   },
   {

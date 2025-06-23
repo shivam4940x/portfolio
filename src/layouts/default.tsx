@@ -74,7 +74,7 @@ const DefaultLayout = () => {
         backgroundColor: {
           to: clampedProgress >= 1 ? "rgb(12, 12, 11)" : "rgb(11, 26, 42)",
         },
-        duration: 500,
+        duration: 200,
       });
     }
   };
@@ -143,7 +143,7 @@ const DefaultLayout = () => {
       </div>
       <button
         onClick={resetScroll}
-        className="goTop fixed right-0 top-0 aspect-square w-15 md:w-20 z-50 border-l hidden opacity-0 hover:bg-black duration-200 border-b"
+        className="goTop fixed right-0 top-0 aspect-square w-15 md:w-20 z-50 border-l hidden opacity-0 hover:bg-black duration-200 border-b bg-dull-black md:bg-transparent"
       >
         <div className="div center">
           <svg

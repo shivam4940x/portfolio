@@ -1,9 +1,15 @@
 import { useAnimeScope } from "@/hooks/useAnimeScope";
-import { animate, utils } from "animejs";
+import { animate, stagger } from "animejs";
 import { useEffect, useRef, useState } from "react";
 
 const SQUARE_SIZE = 80; // in px
-const GridBg = () => {
+const GridBg = ({
+  random = false,
+  opacity = 100,
+}: {
+  random?: boolean;
+  opacity?: number;
+}) => {
   const [positions, setPositions] = useState<{ top: number; left: number }[]>(
     []
   );
@@ -39,33 +45,57 @@ const GridBg = () => {
   }, []);
 
   useEffect(() => {
-    const $squares = utils.$(".square");
+    const $squares = bgRef.current?.querySelectorAll(".square") || [];
     if (!$squares.length) return;
 
-    // const cols =
-    //   Math.floor((bgRef.current?.offsetWidth || 0) / SQUARE_SIZE) + 1;
-    // const rows = Math.ceil(positions.length / cols);
+    const cols =
+      Math.floor((bgRef.current?.offsetWidth || 0) / SQUARE_SIZE) + 1;
+    const rows = Math.ceil(positions.length / cols);
 
     scope.current?.add((self) => {
-      self.add("animate", (index) => {
-        animate($squares[index], {
-          backgroundColor: [
-            { to: "rgba(83, 113, 137, 0.2)" },
-            { to: "rgba(83, 113, 137, 0)" },
-          ],
-          duration: 1500,
-          // delay: stagger(90, {
-          //   grid: [cols, rows],
-          //   from: index,
-          // }),
+      const backgroundColor = [
+        { to: "rgba(83, 113, 137, 0.2)" },
+        { to: "rgba(83, 113, 137, 0)" },
+      ];
+      const ran = () => {
+        const fromX = Math.floor(Math.random() * cols);
+        const fromY = Math.floor(Math.random() * rows);
+
+        animate($squares, {
+          backgroundColor,
+          duration: 1200,
+          delay: stagger(50, {
+            grid: [cols, rows],
+            from: fromY * cols + fromX,
+          }),
+          onComplete: () => {
+            requestAnimationFrame(ran);
+          },
           ease: "linear",
         });
-      });
+      };
+
+      if (random) {
+        requestAnimationFrame(ran);
+      } else {
+        self.add("animate", (index) => {
+          animate($squares[index], {
+            backgroundColor,
+            duration: 1500,
+            ease: "linear",
+          });
+        });
+      }
     });
-  }, [positions, scope]);
+  }, [positions, scope, random]);
 
   return (
-    <div ref={root}>
+    <div
+      style={{
+        opacity: opacity / 100,
+      }}
+      ref={root}
+    >
       <div
         ref={bgRef}
         className="absolute takeScreen z-10 w-full h-full opacity-90 bg-black/20"

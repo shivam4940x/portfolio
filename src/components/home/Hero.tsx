@@ -58,7 +58,7 @@ const Hero = () => {
         </div>
 
         {/* <NoiseBg className="div" opacity={10}></NoiseBg> */}
-        <GridBg />
+        <GridBg opacity={70} />
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ interface Props {
   alternative?: boolean;
   TextStagger?: boolean;
   threshold?: number;
+  space?: number;
 }
 
 const TextIn = ({
@@ -18,6 +19,7 @@ const TextIn = ({
   TextStagger = true,
   duration = 600,
   threshold = 0.8,
+  space = 0,
 }: Props) => {
   const { root, scope } = useAnimeScope();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +32,14 @@ const TextIn = ({
 
     if (!TextStagger) {
       return children.split(" ").map((word, index) => (
-        <span key={index} className="inline-block overflow-hidden">
+        <span
+          key={index}
+          className="inline-block overflow-hidden"
+          style={{
+            marginLeft: `${space}px`,
+            marginRight: `${space}px`,
+          }}
+        >
           <span className={`letter inline-block ${translateClass}`}>
             {word}
           </span>
@@ -40,13 +49,20 @@ const TextIn = ({
     }
 
     return children.split("").map((char, index) => (
-      <span key={index} className="inline-block overflow-hidden">
+      <span
+        key={index}
+        className="inline-block overflow-hidden"
+        style={{
+          marginLeft: `${space}px`,
+          marginRight: `${space}px`,
+        }}
+      >
         <span className={`letter inline-block ${translateClass}`}>
           {char === " " ? "\u00A0" : char}
         </span>
       </span>
     ));
-  }, [children, alternative, TextStagger]);
+  }, [children, alternative, TextStagger, space]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

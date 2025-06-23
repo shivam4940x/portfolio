@@ -12,11 +12,11 @@ const DefaultLayout = () => {
   const menuWrapper = useRef<HTMLDivElement>(null);
 
   const handleFooterScroll = () => {
-    const footer = document.querySelector("footer");
-    const wrapper = footer?.querySelector(".wrapper") as HTMLDivElement;
-    if (!footer || !wrapper) return;
+    const Last = document.querySelector("#Last");
+    const wrapper = Last?.querySelector(".wrapper") as HTMLDivElement;
+    if (!Last || !wrapper) return;
 
-    const rect = footer.getBoundingClientRect();
+    const rect = Last.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
     const footerVisiblePx = Math.max(0, windowHeight - rect.top);
@@ -38,7 +38,6 @@ const DefaultLayout = () => {
     });
   };
   
-
   const handleScroll = (scrollY: number) => {
     if (!heroEl.current || !menuWrapper.current) return;
     const fadeDistance = 300; // px over which opacity fades
@@ -60,7 +59,11 @@ const DefaultLayout = () => {
       ease: "outSine",
       duration: 0,
     });
-    if (window.innerWidth > 768) {
+    if (window.innerWidth >= 768) {
+      if (clampedProgress > 0) {
+        utils.set(".goTop", { display: "block" });
+      }
+
       animate(menuWrapper.current, {
         backgroundColor: {
           to: clampedProgress >= 1 ? "rgb(12, 12, 11)" : "rgb(11, 26, 42)",
@@ -68,6 +71,7 @@ const DefaultLayout = () => {
         duration: 500,
       });
       const goTopTranslateY = 100 - clampedProgress * 100;
+
       animate(".goTop", {
         opacity: clampedProgress,
         translateY: goTopTranslateY,
@@ -85,7 +89,7 @@ const DefaultLayout = () => {
   });
 
   useEffect(() => {
-    heroEl.current = document.querySelector("section#hero");
+    heroEl.current = document.querySelector("section#Hero");
     // kitty animation; DO NOT TOUCH IT
     scope.current?.add((self) => {
       createDraggable(".kitty > div", {
@@ -140,7 +144,7 @@ const DefaultLayout = () => {
       </div>
       <button
         onClick={resetScroll}
-        className="goTop fixed right-0 top-0 aspect-square w-20 z-50 border-l md:block hidden opacity-0 hover:bg-black duration-200 border-b"
+        className="goTop fixed right-0 top-0 aspect-square w-20 mt-2.5 z-50 border-l hidden opacity-0 hover:bg-black duration-200 border-b"
       >
         <div className="div center">
           <svg

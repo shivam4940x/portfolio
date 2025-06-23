@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import TextIn from "./anim/TextIn";
 
 export const Kitty = ({
   mouseIn,
@@ -47,7 +46,7 @@ export const Kitty = ({
               </svg>
             </div>
             <div className="py-6 px-4 text-dull-black">
-              Welcome, visitors! I'm shivm and this is my personal portfolio
+              Welcome, visitor! I'm shivm and this is my personal portfolio
             </div>
           </div>
         </div>
@@ -73,17 +72,8 @@ export const Kitty = ({
 
 export const Footer = () => {
   return (
-    <footer className="m-12 text-mute-white">
-      <div className="min-h-96 w-full wrapper will-change-transform -translate-y-full">
-        <div className="mx-auto w-max">
-          <h1 className="heading uppercase">
-            <TextIn delay={200} threshold={0.9}>
-              lets work together
-            </TextIn>
-          </h1>
-        </div>
-        <div></div>
-      </div>
+    <footer className="md:my-30 my-16 px-4 md:px-10">
+      <div></div>
     </footer>
   );
 };

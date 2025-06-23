@@ -12,11 +12,11 @@ const Hero = () => {
             <Logo />
           </div>
           <div className="z-20 w-max tracking-wide">
-            <div className="font-light md:text-lg text-sm px-6 md:px-0">
+            <div className="font-light md:text-lg text-sm px-6 md:px-0 text-mute-white/90">
               <TextIn delay={300}>Hello, I'm a</TextIn>
             </div>
             <h1 className="text-complimentary uppercase font-extrabold xl:text-8xl lg:text-7xl  md:text-6xl  sm:text-5xl text-5xl  leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[75px]">
-              <div className=" hidden md:block px-5 md:px-0">
+              <div className="hidden md:block px-5 md:px-0">
                 <TextIn>web developer</TextIn>
               </div>
               <div className="relative md:hidden flex flex-col px-5 md:px-0">
@@ -35,7 +35,12 @@ const Hero = () => {
           <PhysicsShit />
         </div>
       </div>
-      <div className="relative h-max p-4 md:px-8 md:py-0 font-[200] width-[75] tracking-wide w-full flex items-center md:block">
+      <div
+        style={{
+          fontVariationSettings: '"wdth" 75, "YTLC" 520, "opsz" 12',
+        }}
+        className="relative h-max p-4 md:px-8 md:py-0 font-[200] tracking-wide w-full flex items-center md:block"
+      >
         <div className="md:max-w-max ml-auto px-4 md:px-0 z-10 relative text-mute-white">
           <div className="md:text-4xl text-2xl max-w-72 md:max-w-[26rem] md:h-64 h-40 py-6 flex justify-between flex-col">
             {[

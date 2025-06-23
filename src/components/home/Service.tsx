@@ -54,7 +54,7 @@ const Service = () => {
     >
       {/* Intro */}
       <div className="w-full mb-4 md:mb-0 px-4 md:px-10">
-        <div className="py-2 md:py-6 ">
+        <div className="py-2 md:py-6 md:space-y-4">
           <h1
             style={{ wordSpacing: "3px" }}
             className="heading uppercase text-mute-white/90 "
@@ -63,7 +63,7 @@ const Service = () => {
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-10">
             <div className="col-span-4"></div>
-            <div className="col-span-5 flex gap-5 flex-col lg:flex-row">
+            <div className="col-span-6 xl:col-span-5 flex gap-5 flex-col lg:flex-row">
               <div className="text-lg mr-8">
                 <TextIn TextStagger={false}>(services)</TextIn>
               </div>
@@ -85,7 +85,7 @@ const Service = () => {
           <div
             key={`${heading}_${index}`}
             className="sticky service md:pb-70 pb-40 last:pb-12 last:md:pb-32"
-            style={{ top: `${(h2Height + 10) * index}px` }}
+            style={{ top: `${(h2Height + 8) * index}px` }}
           >
             <div className="border-t py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start px-4 md:px-10">
               <div className="font-pixel text-5xl col-span-4 hidden lg:flex justify-center items-center w-max leading-20">
@@ -93,11 +93,10 @@ const Service = () => {
               </div>
               <div className="col-span-1 md:col-span-6 ">
                 <div className="text-mute-white/95 font-bold tracking-tight">
-                  <h2 className="heading_2 flex items-center gap-2 md:leading-20">
+                  <h2 className="heading_2 flex items-start gap-2 md:leading-20">
                     <div className="font-pixel text-lg md:hidden text-mute-white/70">
                       {index + 1}.
                     </div>
-
                     <TextIn alternative>{heading}</TextIn>
                   </h2>
                 </div>

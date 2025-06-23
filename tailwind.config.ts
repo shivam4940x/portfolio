@@ -18,7 +18,8 @@ const config: Config = {
       fontStretch: {
         normal: "100%",
         condensed: "75%",
-        expanded: "125%",
+        expanded: "115%",
+        expandedFull: "125%",
       },
     },
   },

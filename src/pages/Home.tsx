@@ -1,18 +1,20 @@
 import Hero from "@/components/home/Hero";
+import Last from "@/components/home/Last";
 import Service from "@/components/home/Service";
-import { Footer } from "@/components/layout";
 
 const Home = () => {
   return (
     <>
-      <section id="hero" className="h-full -z-20">
+      <section id="Hero" className="h-full -z-20">
         <Hero />
       </section>
 
-      <section id="section2" className="z-10 relative bg-dull-black">
+      <section id="Service" className="z-10 relative bg-dull-black">
         <Service />
       </section>
-      <Footer />
+      <section id="Last" className="z-0 relative">
+        <Last />
+      </section>
     </>
   );
 };

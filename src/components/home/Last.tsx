@@ -1,6 +1,8 @@
 import TextIn from "../anim/TextIn";
 import Btn from "../ui/Btn";
 import GridBg from "../ui/GridBg";
+import { Last as lastData } from "@/json/Home.json";
+import TransitionLink from "../util/TransitionLink";
 
 const Last = () => {
   return (
@@ -24,25 +26,27 @@ const Last = () => {
             </h1>
           </div>
           <div className="center md:my-12 my-6 fadeIn">
-            <Btn>
-              <div className="flex capitalize text-2xl">
-                <div>get in touch </div>
-                <div className="rotate-45 w-7 aspect-square">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="div"
-                    viewBox="0 0 36 36"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M27.66 15.61L18 6l-9.66 9.61A1 1 0 1 0 9.75 17L17 9.81v19.13a1 1 0 1 0 2 0V9.81L26.25 17a1 1 0 0 0 1.41-1.42Z"
-                      className="clr-i-outline clr-i-outline-path-1"
-                    ></path>
-                    <path fill="none" d="M0 0h36v36H0z"></path>
-                  </svg>
+            <TransitionLink to="/contact">
+              <Btn>
+                <div className="flex capitalize text-2xl">
+                  <div>get in touch </div>
+                  <div className="rotate-45 w-7 aspect-square">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="div"
+                      viewBox="0 0 36 36"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M27.66 15.61L18 6l-9.66 9.61A1 1 0 1 0 9.75 17L17 9.81v19.13a1 1 0 1 0 2 0V9.81L26.25 17a1 1 0 0 0 1.41-1.42Z"
+                        className="clr-i-outline clr-i-outline-path-1"
+                      ></path>
+                      <path fill="none" d="M0 0h36v36H0z"></path>
+                    </svg>
+                  </div>
                 </div>
-              </div>
-            </Btn>
+              </Btn>
+            </TransitionLink>
           </div>
         </div>
         <div className="flex justify-between items-end">
@@ -66,13 +70,11 @@ const Last = () => {
               For further inquiries
             </h4>
             <a
-              href=""
+              href={`mailto:${lastData.mail}`}
               className="space-x-3 md:hover:font-stretch-expanded duration-100 font-normal"
             >
               <span>⮡ </span>
-              <span className="text-complimentary/80">
-                shivam4940x@gmail.com
-              </span>
+              <span className="text-complimentary/80">{lastData.mail}</span>
             </a>
           </div>
         </div>

@@ -2,7 +2,7 @@ import TextIn from "../anim/TextIn";
 import PhysicsShit from "../physics/PhysicsShit";
 import Logo from "../util/Logo";
 import GridBg from "../ui/GridBg";
-
+import { Hero as HeroData } from "@/json/Home.json";
 const Hero = () => {
   return (
     <div className="flex div flex-col">
@@ -13,18 +13,18 @@ const Hero = () => {
           </div>
           <div className="z-20 w-max tracking-wide">
             <div className="font-light md:text-lg text-sm px-6 md:px-0 text-mute-white/90">
-              <TextIn delay={300}>Hello, I'm a</TextIn>
+              <TextIn delay={300}>{HeroData.subHeading}</TextIn>
             </div>
             <h1 className="text-complimentary uppercase font-extrabold xl:text-8xl lg:text-7xl  md:text-6xl  sm:text-5xl text-5xl  leading-[40px] md:leading-[50px] lg:leading-[60px] xl:leading-[75px]">
               <div className="hidden md:block px-5 md:px-0">
-                <TextIn>web developer</TextIn>
+                <TextIn>{HeroData.mainTxt.desktop}</TextIn>
               </div>
               <div className="relative md:hidden flex flex-col px-5 md:px-0">
                 <div className="h-18">
-                  <TextIn>full stack</TextIn>
+                  <TextIn>{HeroData.mainTxt.mobile[0]}</TextIn>
                 </div>
                 <div className="z-10">
-                  <TextIn>developer</TextIn>
+                  <TextIn>{HeroData.mainTxt.mobile[1]}</TextIn>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full h-[calc(105%_-_3rem)] border-t border-r bg-primary"></div>
               </div>
@@ -43,11 +43,7 @@ const Hero = () => {
       >
         <div className="md:max-w-max ml-auto px-4 md:px-0 z-10 relative text-mute-white">
           <div className="md:text-4xl text-2xl max-w-72 md:max-w-[26rem] md:h-64 h-40 py-6 flex justify-between flex-col">
-            {[
-              "Design. Code. Develop.",
-              "A Full-Cycle Web Journey",
-              "by One Developer",
-            ].map((txt) => (
+            {HeroData.subText.map((txt) => (
               <div key={txt} className="flex items-end md:min-h-16">
                 <TextIn alternative={true} delay={600}>
                   {txt}

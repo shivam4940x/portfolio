@@ -1,39 +1,14 @@
 import { useEffect, useState } from "react";
-import TextIn from "../anim/TextIn";
-
-const data = [
-  {
-    heading: "Web Developer",
-    para: "I craft visually compelling websites engineered to convert and resonate with your audience. Every line of code is tailored to reflect your brand’s identity, with seamless UI and motion-driven interactivity that keeps users engaged and returning.",
-    list: ["Custom Websites", "Full Stack Web Apps", "Interactive Animations"],
-  },
-  {
-    heading: "Frontend Expert",
-    para: "Focused on building high-performance, scalable UIs using cutting-edge tools and best practices. I work with modern frameworks and libraries to bring interfaces to life with precision and style.",
-    list: ["Next.js", "TailwindCSS", "GSAP / Anime.js"],
-  },
-  {
-    heading: "Backend Developer",
-    para: "I develop robust backend systems with clear architecture, secure data flows, and scalable APIs — ensuring everything runs fast, clean, and reliably under the hood.",
-    list: ["Node.js", "TypeScript", "Nest.js"],
-  },
-  {
-    heading: "UI/UX Design",
-    para: "I design intuitive interfaces that fuse aesthetics with usability, ensuring every interaction feels natural and purposeful. My focus is on user-first experiences—strategically crafted to elevate engagement, build trust, and drive meaningful actions.",
-    list: [
-      "Figma",
-      "Mockups to functioning websites",
-      "Interactive Animations",
-    ],
-  },
-];
+import TextIn from "@/components/anim/TextIn";
+import { Service as ServiceData } from "@/json/Home.json";
 
 const Service = () => {
   const [h2Height, setH2Height] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
   useEffect(() => {
     const getHeight = () => {
-      const service = document.querySelector(".service") as HTMLElement;
+      const service = document.querySelector("#Service .service") as HTMLElement;
+      if (!service) return;
       const h2 = service.querySelector(" h2") as HTMLElement;
       if (!h2) return;
 
@@ -55,11 +30,8 @@ const Service = () => {
       {/* Intro */}
       <div className="w-full mb-4 md:mb-0 px-4 md:px-10">
         <div className="py-2 md:py-6 md:space-y-4">
-          <h1
-            style={{ wordSpacing: "3px" }}
-            className="heading uppercase "
-          >
-            <TextIn>How I can help you</TextIn>
+          <h1 style={{ wordSpacing: "3px" }} className="heading uppercase ">
+            <TextIn>{ServiceData.Heading.main}</TextIn>
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-10">
             <div className="col-span-4"></div>
@@ -69,9 +41,7 @@ const Service = () => {
               </div>
               <div className="text-base md:text-2xl font-medium ">
                 <TextIn TextStagger={false} delay={400}>
-                  Frustrated with websites that don't reflect your brand or
-                  drive growth? I craft premium web experiences that captivate
-                  and help you focus on growing your business.
+                  {ServiceData.Heading.subHeading}
                 </TextIn>
               </div>
             </div>
@@ -80,7 +50,7 @@ const Service = () => {
       </div>
 
       {/* Sticky Sections */}
-      {data.map(({ heading, para, list }, index) => {
+      {ServiceData.services.map(({ heading, para, list }, index) => {
         return (
           <div
             key={`${heading}_${index}`}

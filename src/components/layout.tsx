@@ -1,5 +1,6 @@
 import { useRef } from "react";
-
+import { footer as FooterData } from "@/json/Layout.json";
+import TransitionLink from "./util/TransitionLink";
 export const Kitty = ({
   mouseIn,
   mouseOut,
@@ -70,43 +71,11 @@ export const Kitty = ({
   );
 };
 
-const footerData = [
-  {
-    title: "Menu",
-    items: [
-      { text: "Home", href: "/" },
-      { text: "Work", href: "/work" },
-      { text: "Services", href: "/services" },
-      { text: "About Me", href: "/about" },
-      { text: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    title: "Social Links",
-    items: [
-      { text: "Insta", href: "https://www.instagram.com/shivam4940.exe" },
-      {
-        text: "LinkedIn",
-        href: "https://www.linkedin.com/in/shivam-singh-37b56b28b/",
-      },
-      { text: "GitHub", href: "https://github.com/shivam4940x" },
-      { text: "Mail", href: "mailto:shivam@gmail.com" },
-    ],
-  },
-  {
-    title: "Resource",
-    items: [
-      { text: "Anime Js, Matter Js", href: "https://animejs.com/" },
-      { text: "Source Code", href: "https://github.com/yourrepo" },
-    ],
-  },
-];
-
 export const Footer = () => {
   return (
     <footer className="bg-dull-black py-12 border-t px-6 sm:px-10 space-y-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-y-10 gap-x-6 lg:gap-x-12">
-        {footerData.map(({ title, items }, idx) => {
+        {FooterData.map(({ title, items }, idx) => {
           // Responsive col span
           const colSpan = idx === 2 ? "lg:col-span-2" : "lg:col-span-3";
 
@@ -116,18 +85,32 @@ export const Footer = () => {
                 {title}
               </h5>
               <ul className="px-3 mt-5 text-lg capitalize space-y-3">
-                {items.map(({ text, href }) => (
-                  <li key={text}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="md:hover:font-stretch-expanded duration-150 font-normal"
-                    >
-                      {text}
-                    </a>
-                  </li>
-                ))}
+                {items.map(({ text, href }) => {
+                  if (title == "Menu") {
+                    return (
+                      <li key={text}>
+                        <TransitionLink
+                          to={href}
+                          className="md:hover:font-stretch-expanded duration-150 font-normal cursor-pointer"
+                        >
+                          {text}
+                        </TransitionLink>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li key={text}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="md:hover:font-stretch-expanded duration-150 font-normal"
+                      >
+                        {text}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           );

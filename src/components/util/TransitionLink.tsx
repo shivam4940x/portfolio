@@ -6,15 +6,20 @@ const TransitionLink = ({
   to,
   children,
   className,
+  fn,
 }: {
   to: string;
   children: ReactNode;
   className?: string;
+  fn?: () => void;
 }) => {
   const navigate = useNavigate();
   const { beforeLoading } = useRouteTransition();
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (fn) {
+      fn();
+    }
     beforeLoading(() => {
       navigate(to);
     });

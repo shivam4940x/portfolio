@@ -1,5 +1,6 @@
 import { Footer, Kitty } from "@/components/layout";
 import MenuIcon from "@/components/ui/MenuIcon";
+import Menu from "@/components/util/Menu";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
 import { animate, createDraggable, createSpring, utils } from "animejs";
@@ -10,7 +11,7 @@ const DefaultLayout = () => {
   const { root, scope } = useAnimeScope();
   const heroEl = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
-
+  const MenuRef = useRef<HTMLDivElement>(null);
   const handleFooterScroll = () => {
     const Last = document.querySelector("#Last");
     const wrapper = Last?.querySelector(".wrapper") as HTMLDivElement;
@@ -88,6 +89,7 @@ const DefaultLayout = () => {
 
   useEffect(() => {
     heroEl.current = document.querySelector("section#Hero");
+    MenuRef.current = document.getElementById("Menu") as HTMLDivElement;
     // kitty animation; DO NOT TOUCH IT
     scope.current?.add((self) => {
       createDraggable(".kitty > div", {
@@ -116,6 +118,51 @@ const DefaultLayout = () => {
     });
   }, [scope]);
 
+  const menu: {
+    div: Element | null;
+    refill: () => void;
+    open: () => void;
+    close: () => void;
+  } = {
+    div: null,
+    refill() {
+      if (!this.div && MenuRef.current) {
+        this.div = MenuRef.current.querySelector("div.wrapper");
+      }
+    },
+    open() {
+      this.refill();
+      if (!MenuRef.current || !this.div) return;
+      utils.set(MenuRef.current, {
+        display: "block",
+        opacity: 1,
+      });
+      animate(this.div, {
+        x: 0,
+        duration: 800,
+        ease: "outQuart",
+      });
+      console.log(MenuRef.current);
+    },
+    close() {
+      this.refill();
+      if (!MenuRef.current || !this.div) return;
+
+      animate(MenuRef.current, {
+        opacity: 0,
+        ease: "linear",
+        duration: 400,
+        onComplete: () => {
+          if (!MenuRef.current || !this.div) return;
+          utils.set(MenuRef.current, {
+            display: "none",
+          });
+
+          utils.set(this.div, { x: "100%" });
+        },
+      });
+    },
+  };
   return (
     <div ref={root} className="h-dvh w-screen flex overflow-hidden">
       <main
@@ -125,12 +172,13 @@ const DefaultLayout = () => {
         <Outlet />
         <Footer />
       </main>
+      <Menu closeFn={menu.close} />
       <div
         ref={menuWrapper}
         className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-20 max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
       >
         <div className="aspect-square md:w-full bg-deep-steel menu w-15">
-          <MenuIcon fn={() => console.log("ola")} />
+          <MenuIcon fn={menu} />
         </div>
         <Kitty
           mouseIn={() => {

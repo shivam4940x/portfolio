@@ -9,7 +9,7 @@ const movers = {
   8: { translateX: 20, translateY: 20 }, // bottom
 };
 
-const MenuIcon = ({ fn }: { fn: () => void }) => {
+const MenuIcon = ({ fn }: { fn: { open: () => void; close: () => void } }) => {
   const { root, scope } = useAnimeScope();
   const [track, setTrack] = useState({
     hover: false,
@@ -45,17 +45,18 @@ const MenuIcon = ({ fn }: { fn: () => void }) => {
 
       self.add("click", () => {
         setTrack((pre) => ({ ...pre, active: !pre.active }));
-
+        if (fn) {
+          if (track.active) {
+            fn.close();
+          } else {
+            fn.open();
+          }
+        }
         animate(".burgerWrapper", {
           rotate: track.active ? "0deg" : "45deg",
           duration: 300,
           ease: "inOutExpo",
           delay: 1,
-          onComplete: () => {
-            if (fn) {
-              fn();
-            }
-          },
         });
         if (!track.active) {
           Object.entries(movers).forEach(([index, transform]) => {

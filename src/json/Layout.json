@@ -33,5 +33,14 @@
         }
       ]
     }
-  ]
+  ],
+  "menu": {
+    "links": [
+      { "text": "Home", "href": "/" },
+      { "text": "Work", "href": "/work" },
+      { "text": "Services", "href": "/services" },
+      { "text": "About Me", "href": "/about" },
+      { "text": "Contact", "href": "/contact" }
+    ]
+  }
 }

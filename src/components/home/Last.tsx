@@ -71,9 +71,20 @@ const Last = () => {
             </h4>
             <a
               href={`mailto:${lastData.mail}`}
-              className="space-x-3 md:hover:font-stretch-expanded duration-100 font-normal"
+              className=":hover:font-stretch-expanded duration-100 font-normal flex gap-3"
             >
-              <span>⮡ </span>
+              <span className="">
+                <svg
+                  className="w-4 -scale-x-100"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M21.25 4a.75.75 0 0 1 .75.75v6.5A3.75 3.75 0 0 1 18.25 15H4.587l3.72 3.72a.75.75 0 0 1 .072.976l-.072.084a.75.75 0 0 1-.977.073l-.084-.073l-5-5a.75.75 0 0 1-.073-.976l.073-.084l5-5a.75.75 0 0 1 1.133.976l-.072.084l-3.72 3.72h13.665a2.25 2.25 0 0 0 2.244-2.096l.006-.154v-6.5a.75.75 0 0 1 .75-.75"
+                  ></path>
+                </svg>
+              </span>
               <span className="text-complimentary/80">{lastData.mail}</span>
             </a>
           </div>

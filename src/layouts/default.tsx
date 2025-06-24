@@ -151,7 +151,6 @@ const DefaultLayout = () => {
     close() {
       this.refill();
       if (!MenuRef.current || !this.div) return;
-
       animate(MenuRef.current, {
         opacity: 0,
         ease: "linear",
@@ -162,9 +161,10 @@ const DefaultLayout = () => {
             display: "none",
           });
           utils.set(this.div, { x: "100%" });
+          setTrack((pre) => ({ ...pre, active: false }));
         },
       });
-      setTrack((pre) => ({ ...pre, active: !pre.active }));
+      console.log(track);
     },
   };
   return (

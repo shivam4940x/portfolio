@@ -7,16 +7,20 @@ import Home from "./pages/Home";
 import DefaultLayout from "./layouts/default";
 import Testing from "@/pages/Testing";
 import { useRouteTransition } from "@/hooks/useRouteTransition";
+import Contact from "./pages/Contact";
+import Work from "./pages/Work";
+import About from "./pages/About";
+import Service from "./components/home/Service";
 
 function App() {
   const { isRouteLoading, onDoneLoading } = useRouteTransition();
   const Pages = [
     { path: "/", element: <Home /> },
     { path: "/test", element: <Testing /> },
-    { path: "/work", element: <div>ola</div> },
-    { path: "/about", element: <div>ola</div> },
-    { path: "/contact", element: <div>ola</div> },
-    { path: "/services", element: <div>ola</div> },
+    { path: "/work", element: <Work /> },
+    { path: "/about", element: <About /> },
+    { path: "/contact", element: <Contact /> },
+    { path: "/services", element: <Service /> },
   ];
   return (
     <>

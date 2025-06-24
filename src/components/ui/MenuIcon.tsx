@@ -1,6 +1,6 @@
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { animate } from "animejs";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const movers = {
   0: { translateX: -20, translateY: -20 }, // top
@@ -8,13 +8,19 @@ const movers = {
   6: { translateX: -20, translateY: 20 }, // right
   8: { translateX: 20, translateY: 20 }, // bottom
 };
+type TrackState = {
+  hover: boolean;
+  active: boolean;
+};
 
-const MenuIcon = ({ fn }: { fn: { open: () => void; close: () => void } }) => {
+interface Props {
+  fn: { open: () => void; close: () => void };
+  track: TrackState;
+  setTrack: React.Dispatch<React.SetStateAction<TrackState>>;
+}
+
+const MenuIcon = ({ fn, track, setTrack }: Props) => {
   const { root, scope } = useAnimeScope();
-  const [track, setTrack] = useState({
-    hover: false,
-    active: false,
-  });
 
   useEffect(() => {
     scope.current?.add((self) => {
@@ -78,7 +84,7 @@ const MenuIcon = ({ fn }: { fn: { open: () => void; close: () => void } }) => {
         }
       });
     });
-  }, [scope, track, fn]);
+  }, [scope, track, fn, setTrack]);
 
   return (
     <div ref={root} className="center relative div fadeIn">

@@ -17,6 +17,7 @@ const TransitionLink = ({
   const { beforeLoading } = useRouteTransition();
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    console.log(fn);
     if (fn) {
       fn();
     }

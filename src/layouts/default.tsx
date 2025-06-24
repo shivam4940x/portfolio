@@ -4,7 +4,7 @@ import Menu from "@/components/util/Menu";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
 import { animate, createDraggable, createSpring, utils } from "animejs";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 const DefaultLayout = () => {
@@ -12,6 +12,11 @@ const DefaultLayout = () => {
   const heroEl = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
   const MenuRef = useRef<HTMLDivElement>(null);
+  const [track, setTrack] = useState({
+    hover: false,
+    active: false,
+  });
+
   const handleFooterScroll = () => {
     const Last = document.querySelector("#Last");
     const wrapper = Last?.querySelector(".wrapper") as HTMLDivElement;
@@ -159,6 +164,7 @@ const DefaultLayout = () => {
           utils.set(this.div, { x: "100%" });
         },
       });
+      setTrack((pre) => ({ ...pre, active: !pre.active }));
     },
   };
   return (
@@ -170,13 +176,13 @@ const DefaultLayout = () => {
         <Outlet />
         <Footer />
       </main>
-      <Menu closeFn={menu.close} />
+      <Menu closeFn={() => menu.close()} />
       <div
         ref={menuWrapper}
         className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-20 max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
       >
         <div className="aspect-square md:w-full bg-deep-steel menu w-15">
-          <MenuIcon fn={menu} />
+          <MenuIcon fn={menu} setTrack={setTrack} track={track} />
         </div>
         <Kitty
           mouseIn={() => {

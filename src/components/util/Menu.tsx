@@ -7,7 +7,7 @@ const Menu = ({ closeFn }: Props) => {
   return (
     <div
       id="Menu"
-      className="absolute w-full h-dvh bg-black/50 takeScreen hidden"
+      className="absolute w-full h-dvh bg-black/50 takeScreen hidden overflow-hidden"
     >
       <div
         style={{

@@ -142,7 +142,6 @@ const DefaultLayout = () => {
         duration: 800,
         ease: "outQuart",
       });
-      console.log(MenuRef.current);
     },
     close() {
       this.refill();
@@ -157,7 +156,6 @@ const DefaultLayout = () => {
           utils.set(MenuRef.current, {
             display: "none",
           });
-
           utils.set(this.div, { x: "100%" });
         },
       });

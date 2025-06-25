@@ -28,7 +28,7 @@ function App() {
       {/* Route transition screen */}
       <div
         id="transition"
-        className="fixed inset-0 z-[99999] h-dvh w-screen left-0 top-0 justify-center items-center overflow-hidden hidden"
+        className="fixed inset-0 z-[99999] h-dvh w-screen left-0 top-0 justify-center items-center overflow-hidden"
       >
         <div className="relative h-full w-full z-10 cover">
           <div className="center relative z-40 div bg-[#101113] bgs">
@@ -51,17 +51,17 @@ function App() {
           </div>
         }
       >
-        {/* {!isRouteLoading && (
-          )} */}
-        <Routes>
-          <Route element={<DefaultLayout />}>
-            {Pages.map((page) => (
-              <Route path={page.path} element={page.element} />
-            ))}
+        {!isRouteLoading && (
+          <Routes>
+            <Route element={<DefaultLayout />}>
+              {Pages.map((page) => (
+                <Route path={page.path} element={page.element} />
+              ))}
 
-            <Route path="work/:id" element={<WorkIndex />} />
-          </Route>
-        </Routes>
+              <Route path="work/:id" element={<WorkIndex />} />
+            </Route>
+          </Routes>
+        )}
       </Suspense>
     </>
   );

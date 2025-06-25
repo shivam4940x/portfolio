@@ -1,6 +1,6 @@
 import TextIn from "../anim/TextIn";
 import PhysicsShit from "../physics/PhysicsShit";
-import Logo from "../util/Logo";
+import Logo from "../ui/Logo";
 import GridBg from "../ui/GridBg";
 import { Hero as HeroData } from "@/json/Home.json";
 const Hero = () => {

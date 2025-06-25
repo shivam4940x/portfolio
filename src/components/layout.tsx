@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { footer as FooterData } from "@/json/Layout.json";
-import TransitionLink from "./util/TransitionLink";
+import TransitionLink from "./ui/TransitionLink";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { animate, createDraggable, createSpring, utils } from "animejs";
 export const Kitty = () => {

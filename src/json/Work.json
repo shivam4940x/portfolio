@@ -1,0 +1,35 @@
+{
+  "work": {
+    "personal": [
+      {
+        "heading": "Portfolio",
+        "sub": "A personal portfolio showcasing web projects, animations, and design capabilities.",
+        "img": "/projects/pp.webp",
+        "techStack": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Anime.js",
+          "Matter.js",
+          "Typescript"
+        ]
+      },
+      {
+        "heading": "End To End Encrypted messaging web app",
+        "sub": "A secure chat application built with modern web technologies using end-to-end encryption.",
+        "img": "/projects/pp.webp",
+        "techStack": [
+          "Nestjs",
+          "React",
+          "Material Ui",
+          "Tailwind CSS",
+          "socket.io",
+          "Prisma",
+          "OAuth 2.0",
+          "Typescript"
+        ]
+      }
+    ],
+    "Client Work": []
+  }
+}

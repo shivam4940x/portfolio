@@ -2,7 +2,7 @@ import TextIn from "../anim/TextIn";
 import Btn from "../ui/Btn";
 import GridBg from "../ui/GridBg";
 import { Last as lastData } from "@/json/Home.json";
-import TransitionLink from "../util/TransitionLink";
+import TransitionLink from "../ui/TransitionLink";
 
 const Last = () => {
   return (

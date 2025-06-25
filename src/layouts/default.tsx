@@ -1,6 +1,6 @@
 import { Footer, Kitty } from "@/components/layout";
 import MenuIcon from "@/components/ui/MenuIcon";
-import Menu from "@/components/util/Menu";
+import Menu from "@/components/ui/Menu";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
 import { animate, utils } from "animejs";
 import { useEffect, useRef } from "react";

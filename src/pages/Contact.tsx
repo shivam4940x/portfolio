@@ -1,21 +1,4 @@
-const Contacts = [
-  {
-    icon: "/src/assets/svg/insta.svg",
-    link: "https://www.instagram.com/shivam4940.exe",
-  },
-  {
-    icon: "/src/assets/svg/linkedin.svg",
-    link: "https://www.linkedin.com/in/shivam-singh-37b56b28b/",
-  },
-  {
-    icon: "/src/assets/svg/git.svg",
-    link: "https://github.com/shivam4940x",
-  },
-  {
-    icon: "/src/assets/svg/mail.svg",
-    link: "mailto:shivam@gmail.com",
-  },
-];
+import { Contacts } from "@/json/Contact.json";
 
 const Contact = () => {
   return (

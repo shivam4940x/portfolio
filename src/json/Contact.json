@@ -1,0 +1,20 @@
+{
+  "Contacts": [
+    {
+      "icon": "/svg/insta.svg",
+      "link": "https://www.instagram.com/shivam4940.exe"
+    },
+    {
+      "icon": "/svg/linkedIn.svg",
+      "link": "https://www.linkedin.com/in/shivam-singh-37b56b28b/"
+    },
+    {
+      "icon": "/svg/git.svg",
+      "link": "https://github.com/shivam4940x"
+    },
+    {
+      "icon": "/svg/mail.svg",
+      "link": "mailto:shivam@gmail.com"
+    }
+  ]
+}

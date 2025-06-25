@@ -1,14 +1,12 @@
 import { Footer, Kitty } from "@/components/layout";
 import MenuIcon from "@/components/ui/MenuIcon";
 import Menu from "@/components/util/Menu";
-import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
-import { animate, createDraggable, createSpring, utils } from "animejs";
+import { animate, utils } from "animejs";
 import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 const DefaultLayout = () => {
-  const { root, scope } = useAnimeScope();
   const heroEl = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
   const MenuRef = useRef<HTMLDivElement>(null);
@@ -92,33 +90,7 @@ const DefaultLayout = () => {
   useEffect(() => {
     heroEl.current = document.querySelector("section#Hero");
     MenuRef.current = document.getElementById("Menu") as HTMLDivElement;
-    // kitty animation; DO NOT TOUCH IT
-    scope.current?.add((self) => {
-      createDraggable(".kitty > div", {
-        container: ".kitty",
-        releaseEase: createSpring({ stiffness: 300 }),
-      });
-      const guide = utils.$(".guide")[0];
-
-      self.add("mouseIn", () => {
-        guide.style.display = "block";
-        animate(guide, {
-          opacity: 1,
-          duration: 500,
-        });
-      });
-
-      self.add("mouseOut", () => {
-        animate(guide, {
-          opacity: 0,
-          duration: 300,
-          onComplete: () => {
-            guide.style.display = "none";
-          },
-        });
-      });
-    });
-  }, [scope]);
+  }, []);
 
   const menu: {
     div: Element | null;
@@ -164,7 +136,7 @@ const DefaultLayout = () => {
   };
 
   return (
-    <div ref={root} className="h-dvh w-screen flex overflow-hidden">
+    <div className="h-dvh w-screen flex overflow-hidden">
       <main
         ref={containerRef}
         className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)]"
@@ -180,14 +152,7 @@ const DefaultLayout = () => {
         <div className="aspect-square md:w-full bg-deep-steel menu w-15">
           <MenuIcon fn={menu} />
         </div>
-        <Kitty
-          mouseIn={() => {
-            scope.current?.methods.mouseIn();
-          }}
-          mouseOut={() => {
-            scope.current?.methods.mouseOut();
-          }}
-        />
+        <Kitty />
       </div>
       <button
         onClick={resetScroll}

@@ -1,18 +1,43 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { footer as FooterData } from "@/json/Layout.json";
 import TransitionLink from "./util/TransitionLink";
-export const Kitty = ({
-  mouseIn,
-  mouseOut,
-}: {
-  mouseIn: () => void | undefined;
-  mouseOut: () => void | undefined;
-}) => {
+import { useAnimeScope } from "@/hooks/useAnimeScope";
+import { animate, createDraggable, createSpring, utils } from "animejs";
+export const Kitty = () => {
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+  const { root, scope } = useAnimeScope();
+  useEffect(() => {
+    if (!scope.current) return;
 
+    scope.current?.add((self) => {
+      createDraggable(".kitty > div", {
+        container: ".kitty",
+        releaseEase: createSpring({ stiffness: 300 }),
+      });
+      const guide = utils.$(".guide")[0];
+
+      self.add("mouseIn", () => {
+        guide.style.display = "block";
+        animate(guide, {
+          opacity: 1,
+          duration: 500,
+        });
+      });
+
+      self.add("mouseOut", () => {
+        animate(guide, {
+          opacity: 0,
+          duration: 300,
+          onComplete: () => {
+            guide.style.display = "none";
+          },
+        });
+      });
+    });
+  }, [scope]);
   const handleMouseEnter = () => {
     hoverTimeout.current = setTimeout(() => {
-      if (mouseIn) mouseIn();
+      if (scope.current?.methods.mouseIn) scope.current?.methods.mouseIn();
     }, 500);
   };
 
@@ -21,11 +46,11 @@ export const Kitty = ({
       clearTimeout(hoverTimeout.current);
       hoverTimeout.current = null;
     }
-    if (mouseOut) mouseOut();
+    if (scope.current?.methods.mouseIn) scope.current?.methods.mouseOut();
   };
 
   return (
-    <>
+    <div ref={root}>
       <div
         style={{ display: "none" }}
         className="fixed top-0 left-0 w-screen h-screen bg-black/40 opacity-0 pointer-events-none guide"
@@ -67,7 +92,7 @@ export const Kitty = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

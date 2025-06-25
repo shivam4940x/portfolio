@@ -2,6 +2,7 @@
   "work": {
     "personal": [
       {
+        "name": "portfolio",
         "heading": "Portfolio",
         "sub": "A personal portfolio showcasing web projects, animations, and design capabilities.",
         "img": "/projects/pp.webp",
@@ -15,6 +16,7 @@
         ]
       },
       {
+        "name": "e2e-chat-app",
         "heading": "End To End Encrypted messaging web app",
         "sub": "A secure chat application built with modern web technologies using end-to-end encryption.",
         "img": "/projects/pp.webp",

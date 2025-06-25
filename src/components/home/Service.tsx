@@ -2,6 +2,71 @@ import { useEffect, useState } from "react";
 import TextIn from "@/components/anim/TextIn";
 import { Service as ServiceData } from "@/json/Home.json";
 
+const Shape1 = () => {
+  return (
+    <svg
+      className="h-[clamp(1.8rem,3vw,4rem)] w-auto opacity-50"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_966_83)">
+        <path
+          d="M50 0L63.5045 36.4955L100 50L63.5045 63.5045L50 100L36.4955 63.5045L0 50L36.4955 36.4955L50 0Z"
+          fill="white"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_966_83">
+          <rect width="100" height="100" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+const Shape2 = () => {
+  return (
+    <svg
+      className="h-[clamp(1.8rem,3vw,4rem)] w-auto opacity-50"
+      viewBox="0 0 96 91"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M48 0L95.5528 34.5491L77.3893 90.4509H18.6107L0.447174 34.5491L48 0Z"
+        fill="#D9D9D9"
+      />
+    </svg>
+  );
+};
+const Shape3 = () => {
+  return (
+    <svg
+      className="h-[clamp(1.8rem,3vw,4rem)] w-auto opacity-50"
+      viewBox="0 0 88 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M44 0L87.3013 25V75L44 100L0.69873 75V25L44 0Z" fill="#D9D9D9" />
+    </svg>
+  );
+};
+const Shape4 = () => {
+  return (
+    <svg
+      className="h-[clamp(1.8rem,2.3vw,4rem)] w-auto opacity-50"
+      viewBox="0 0 88 75"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M44 0L87.3013 75H0.69873L44 0Z" fill="#D9D9D9" />
+    </svg>
+  );
+};
+const getShape = (i: number) => {
+  const shapes = [<Shape1 />, <Shape2 />, <Shape3 />, <Shape4 />];
+  return shapes[i];
+};
 const Service = () => {
   const [h2Height, setH2Height] = useState(0);
   const [containerHeight, setContainerHeight] = useState(0);
@@ -57,20 +122,21 @@ const Service = () => {
           <div
             key={`${heading}_${index}`}
             className="sticky service md:pb-70 pb-40 last:pb-12 last:md:pb-32"
-            style={{ top: `${Math.max(h2Height + 8, 60) * index}px` }}
+            style={{ top: `${Math.max(h2Height + 14, 60) * index}px` }}
           >
             <div className="border-t py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start px-4 md:px-10">
               <div className="font-pixel text-5xl col-span-4 hidden lg:flex justify-center items-center w-max leading-20">
                 ({index + 1})
               </div>
               <div className="col-span-1 md:col-span-6 ">
-                <div className="text-mute-white/95 font-bold tracking-tight">
-                  <h2 className="heading_2 flex items-start gap-2 md:leading-20">
+                <div className="text-mute-white/95 font-bold tracking-tight flex justify-between items-center">
+                  <h2 className="heading_2 flex items-start gap-2 md:leading-20 w-max">
                     <div className="font-pixel text-lg md:hidden text-mute-white/70">
                       {index + 1}.
                     </div>
                     <TextIn alternative>{heading}</TextIn>
                   </h2>
+                  {getShape(index)}
                 </div>
                 <div className="mb-6 lg:w-3/4 lg:mt-8 mt-4">
                   <div className="text-base md:text-xl text-mute-white/80 width-[80] font-medium tracking-wider leading-5">

@@ -4,18 +4,15 @@ import Menu from "@/components/util/Menu";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { useMomentumScroll } from "@/hooks/useMomentumScroll";
 import { animate, createDraggable, createSpring, utils } from "animejs";
-import { useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 
 const DefaultLayout = () => {
   const { root, scope } = useAnimeScope();
   const heroEl = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
   const MenuRef = useRef<HTMLDivElement>(null);
-  const [track, setTrack] = useState({
-    hover: false,
-    active: false,
-  });
+  const location = useLocation();
 
   const handleFooterScroll = () => {
     const Last = document.querySelector("#Last");
@@ -161,19 +158,18 @@ const DefaultLayout = () => {
             display: "none",
           });
           utils.set(this.div, { x: "100%" });
-          setTrack((pre) => ({ ...pre, active: false }));
         },
       });
-      console.log(track);
     },
   };
+
   return (
     <div ref={root} className="h-dvh w-screen flex overflow-hidden">
       <main
         ref={containerRef}
         className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)]"
       >
-        <Outlet />
+        <Outlet key={location.pathname} />
         <Footer />
       </main>
       <Menu closeFn={() => menu.close()} />
@@ -182,7 +178,7 @@ const DefaultLayout = () => {
         className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-20 max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
       >
         <div className="aspect-square md:w-full bg-deep-steel menu w-15">
-          <MenuIcon fn={menu} setTrack={setTrack} track={track} />
+          <MenuIcon fn={menu} />
         </div>
         <Kitty
           mouseIn={() => {

@@ -139,7 +139,7 @@ const DefaultLayout = () => {
     <div className="h-dvh w-screen flex overflow-hidden">
       <main
         ref={containerRef}
-        className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)]"
+        className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)] fateIn"
       >
         <Outlet key={location.pathname} />
         <Footer />

@@ -6,7 +6,6 @@
       "items": [
         { "text": "Home", "href": "/" },
         { "text": "Work", "href": "/work" },
-        { "text": "Services", "href": "/services" },
         { "text": "About Me", "href": "/about" },
         { "text": "Contact", "href": "/contact" }
       ]
@@ -27,6 +26,8 @@
       "title": "Resource",
       "items": [
         { "text": "Anime Js, Matter Js", "href": "https://animejs.com/" },
+        { "text": " Matter Js", "href": "https://brm.io/matter-js/" },
+        { "text": "Tailwind css", "href": "https://tailwindcss.com/" },
         {
           "text": "Source Code",
           "href": "https://github.com/shivam4940x/portfolio"
@@ -38,7 +39,6 @@
     "links": [
       { "text": "Home", "href": "/" },
       { "text": "Work", "href": "/work" },
-      { "text": "Services", "href": "/services" },
       { "text": "About Me", "href": "/about" },
       { "text": "Contact", "href": "/contact" }
     ]

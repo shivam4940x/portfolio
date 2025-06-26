@@ -106,9 +106,9 @@ export const Footer = () => {
 
           return (
             <div key={title} className={colSpan}>
-              <h5 className="border-b border-border-light font-bold text-xl px-1 pb-1">
+              <h4 className="border-b border-border-light font-bold text-xl px-1 pb-1">
                 {title}
-              </h5>
+              </h4>
               <ul className="px-3 mt-5 text-lg capitalize space-y-3">
                 {items.map(({ text, href }) => {
                   if (title == "Menu") {

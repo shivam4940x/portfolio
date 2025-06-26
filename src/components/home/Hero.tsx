@@ -31,7 +31,7 @@ const Hero = () => {
             </h1>
           </div>
         </div>
-        <div className="absolute z-10 takeScreen">
+        <div className="absolute z-10 takeScreen opacity-90">
           <PhysicsShit />
         </div>
       </div>

@@ -7,7 +7,7 @@ import TransitionLink from "../ui/TransitionLink";
 const Last = () => {
   return (
     <div className="md:my-30 my-16 px-4 md:px-20">
-      <div className="min-h-96 w-full wrapper will-change-transform -translate-y-full border p-8 bg-dull-black relative overflow-hidden">
+      <div className="min-h-96 w-full wrapper will-change-transform -translate-y-full border border-border-light p-8 bg-dull-black relative overflow-hidden">
         <div className="my-12">
           <div className="mx-auto w-max text-mute-white">
             <h1 className="uppercase">

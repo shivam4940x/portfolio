@@ -1,4 +1,5 @@
 import TextIn from "@/components/anim/TextIn";
+import Frame from "@/components/ui/Frame";
 import TransitionLink from "@/components/ui/TransitionLink";
 import { work as workData } from "@/json/Work.json";
 import { animate } from "animejs";
@@ -80,20 +81,12 @@ const List = ({ heading, sub, techStack, name }: WorkItem) => {
               <span>&gt;</span>
             </div>
             <div className="space-y-4 max-w-full">
-              <div className="relative md:w-max w-full max-w-full py-2 px-4">
+              <Frame className="md:w-max w-full max-w-full py-2 px-4">
                 <h3 className="text-xl md:text-2xl text-center md:text-left font-semibold relative z-10 break-words">
                   <span className="text-complimentary">{heading}</span>
                 </h3>
-                <div className="absolute takeScreen">
-                  <div className="div relative">
-                    <div className="h-4 w-6 border-l border-t absolute top-0 left-0"></div>
-                    <div className="h-4 w-6 border-r border-b absolute bottom-0 right-0"></div>
-                  </div>
-                </div>
-              </div>
-              <p className="text-sm md:text-base text-muted break-words">
-                {sub}
-              </p>
+              </Frame>
+              <p className="text-base md:text-lg break-words">{sub}</p>
             </div>
           </div>
 
@@ -148,9 +141,9 @@ const Work = () => {
               >{`Professional work - ${workData["Client Work"].length}`}</TextIn>
             </h2>
           </div>
-          <div className="w-full border-t border-b border-border-light">
+          <div className="w-full border-t border-border-light">
             {workData["Client Work"].length == 0 ? (
-              <div className="center text-3xl py-5">
+              <div className="center md:text-3xl text-base py-5">
                 Nothing yet... but looking forward for it!
               </div>
             ) : (

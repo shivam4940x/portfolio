@@ -117,7 +117,7 @@ const Service = () => {
             className="sticky service md:pb-70 pb-40 last:pb-12 last:md:pb-32"
             style={{ top: `${Math.max(h2Height + 14, 60) * index}px` }}
           >
-            <div className="border-t py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start px-4 md:px-10">
+            <div className="border-t border-border-light py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start px-4 md:px-10">
               <div className="font-pixel text-5xl col-span-4 hidden lg:flex justify-center items-center w-max leading-20">
                 ({index + 1})
               </div>

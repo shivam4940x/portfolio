@@ -3,7 +3,7 @@ import Frame from "@/components/ui/Frame";
 import TransitionLink from "@/components/ui/TransitionLink";
 import { work as workData } from "@/json/Work.json";
 import { animate } from "animejs";
-import { useEffect, useRef } from "react";
+import { Fragment, useEffect, useRef } from "react";
 
 interface WorkItem {
   name: string;
@@ -69,12 +69,12 @@ const List = ({ heading, sub, techStack, name }: WorkItem) => {
       >
         <div
           ref={followTheMouseMr}
-          className="absolute aspect-square top-0 left-0 z-50 -translate-x-1/2 -translate-y-1/2 bg-complimentary rounded-full text-black font-semibold p-4 center border border-white pointer-events-none"
+          className="absolute aspect-square top-0 left-0 z-50 hidden md:flex -translate-x-1/2 -translate-y-1/2 bg-complimentary rounded-full text-black font-semibold p-4  justify-center items-center border border-white pointer-events-none"
           style={{ transform: "scale(0)" }}
         >
           View
         </div>
-        <div className="max-w-full flex flex-col grayscale-100 md:flex-row md:grid md:grid-cols-5 md:gap-4 items-center justify-between group-hover:scale-105 group-hover:grayscale-0 duration-300">
+        <div className="max-w-full flex flex-col md:grayscale-100 md:flex-row md:grid md:grid-cols-5 md:gap-4 items-center justify-between group-hover:scale-105 group-hover:grayscale-0 duration-300">
           {/* Left Section */}
           <div className="flex gap-6 col-span-3 items-center w-full md:max-w-full">
             <div className="font-pixel md:text-5xl text-center hidden lg:block text-secondary">
@@ -111,7 +111,7 @@ const List = ({ heading, sub, techStack, name }: WorkItem) => {
 const Work = () => {
   return (
     <>
-      <section className="min-h-full md:mt-8 mt-1">
+      <section className="md:min-h-full md:mt-8 mt-1">
         <div className="border-b md:px-8 md:py-2 pt-5.5 px-4">
           <h1 className="heading">
             <TextIn>Work</TextIn>
@@ -128,7 +128,7 @@ const Work = () => {
           </div>
           <div className="w-full border-t border-b border-border-light">
             {workData.personal.map((item) => {
-              return List(item);
+              return <Fragment key={item.heading}>{List(item)}</Fragment>;
             })}
           </div>
         </div>
@@ -147,8 +147,8 @@ const Work = () => {
                 Nothing yet... but looking forward for it!
               </div>
             ) : (
-              workData["Client Work"].map((item) => {
-                return List(item);
+              workData["Client Work"].map((item, ind) => {
+                return <Fragment key={ind}>{List(item)}</Fragment>;
               })
             )}
           </div>

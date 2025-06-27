@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { menu as menuData } from "@/json/Layout.json";
 import TransitionLink from "./TransitionLink";
+import { useLocation } from "react-router-dom";
+import { animate, utils } from "animejs";
 
 interface Props {
   closeFn: () => void;
@@ -9,16 +11,31 @@ interface Props {
 const Menu = ({ closeFn }: Props) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const total = menuData.links.length;
-
+  const location = useLocation();
+  const pixelArrows = useRef<(HTMLDivElement | null)[]>([]);
   // Dynamically calculate background Y position for pattern
   const getPatternPosition = (index: number, total: number) => {
     if (total <= 1) return "0% 0%";
     const step = 100 / (total - 1);
     return `0% -${index * step}%`;
   };
+  const liHover = (isActive: boolean, index: number) => {
+    const ourArrow = pixelArrows.current[index];
+    if (!ourArrow || window.innerWidth < 768) return;
 
-
-
+    const config = {
+      scale: isActive ? "1" : "0",
+      duration: 200,
+      ease: "linear",
+    };
+    if (isActive) {
+      utils.set(ourArrow, { display: "flex" });
+      animate(ourArrow, config);
+    } else {
+      animate(ourArrow, config);
+      utils.set(ourArrow, { display: "none" });
+    }
+  };
   return (
     <div
       id="Menu"
@@ -36,7 +53,7 @@ const Menu = ({ closeFn }: Props) => {
           <div
             className="absolute left-0 top-0 w-full h-full z-0 transition-all duration-[800ms] ease-in-out pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.1) 5%, transparent 9%)`,
+              backgroundImage: `radial-gradient(rgba(185, 57, 32, 0.3) 5%, transparent 9%)`,
               backgroundSize: "12vmin 12vmin",
               backgroundPosition:
                 activeIndex !== null
@@ -46,22 +63,53 @@ const Menu = ({ closeFn }: Props) => {
             }}
           />
 
-
           {/* Menu Items */}
-          <div className="div px-8 py-4 flex items-center justify-end text-[clamp(2.5rem,3vw,3rem)] font-montserrat font-bold">
+          <div className="div px-8 py-4 flex items-center justify-end md:justify-start text-[clamp(4rem,3vw,6rem)] font-montserrat font-bold">
             <ul className="group space-y-2">
-              {menuData.links.map((link, index) => (
-                <li
-                  key={`${link.href}_${link.text}`}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onMouseLeave={() => setActiveIndex(null)}
-                  className="capitalize group-hover:opacity-40 hover:opacity-100 duration-150 flex justify-end"
-                >
-                  <TransitionLink fn={closeFn} to={link.href} className="py-2">
-                    {link.text}
-                  </TransitionLink>
-                </li>
-              ))}
+              {menuData.links.map((link, index) => {
+                const isCurrent = link.href === location.pathname;
+
+                return (
+                  <li
+                    key={`${link.href}_${link.text}`}
+                    onMouseEnter={() => {
+                      liHover(true, index);
+                      setActiveIndex(index);
+                    }}
+                    onMouseLeave={() => {
+                      liHover(false, index);
+                      setActiveIndex(null);
+                    }}
+                    className={`capitalize hover:opacity-100 duration-150 flex justify-end md:justify-start md:opacity-50 `}
+                  >
+                    <div
+                      ref={(el) => {
+                        pixelArrows.current[index] = el;
+                      }}
+                      style={{
+                        transform: "scale(0)",
+                      }}
+                      className={`text-[clamp(2rem,2.5vw,4rem)] justify-center items-center mr-4 duration-150 pixelArrow hidden `}
+                    >
+                      <span className="font-pixel text-secondary">&gt;</span>
+                    </div>
+
+                    {isCurrent ? (
+                      <div className="text-complimentary/85 cursor-pointer">
+                        {link.text}
+                      </div>
+                    ) : (
+                      <TransitionLink
+                        fn={closeFn}
+                        to={link.href}
+                        className="py-2"
+                      >
+                        {link.text}
+                      </TransitionLink>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

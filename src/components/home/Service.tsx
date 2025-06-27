@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TextIn from "@/components/anim/TextIn";
 import { Service as ServiceData } from "@/json/Home.json";
+import { Shape1, Shape2, Shape3, Shape4 } from "../ui/Others";
 
 const commonSvgProps = {
   className: "h-[clamp(1.8rem,3vw,4rem)] w-auto opacity-90",
@@ -8,57 +9,20 @@ const commonSvgProps = {
   fill: "none" as const,
 };
 
-const Shape1 = () => (
-  <svg {...commonSvgProps} viewBox="0 0 100 100">
-    <g clipPath="url(#clip0)">
-      <path
-        d="M50 0L63.5 36.5L100 50L63.5 63.5L50 100L36.5 63.5L0 50L36.5 36.5L50 0Z"
-        fill="#a19d99"
-      />
-    </g>
-    <defs>
-      <clipPath id="clip0">
-        <rect width="100" height="100" fill="#a19d99" />
-      </clipPath>
-    </defs>
-  </svg>
-);
+const getShape = (i: number, ref?: React.Ref<SVGSVGElement>) => {
+  const props = { ...commonSvgProps, ref };
+  switch (i % 4) {
+    case 0:
+      return <Shape1 {...props} />;
+    case 1:
+      return <Shape2 {...props} />;
+    case 2:
+      return <Shape3 {...props} />;
+    case 3:
+      return <Shape4 {...props} />;
+  }
+};
 
-const Shape2 = () => (
-  <svg {...commonSvgProps} viewBox="0 0 96 91">
-    <path
-      d="M48 0L95.55 34.55L77.39 90.45H18.61L0.45 34.55L48 0Z"
-      fill="#a19d99"
-    />
-  </svg>
-);
-
-const Shape3 = () => (
-  <svg {...commonSvgProps} viewBox="0 0 88 100">
-    <path d="M44 0L87.3 25V75L44 100L0.7 75V25L44 0Z" fill="#a19d99" />
-  </svg>
-);
-
-const Shape4 = () => (
-  <svg
-    {...{
-      ...commonSvgProps,
-      className: "h-[clamp(1.8rem,2.3vw,4rem)] w-auto opacity-90",
-    }}
-    viewBox="0 0 88 75"
-  >
-    <path d="M44 0L87.3 75H0.7L44 0Z" fill="#a19d99" />
-  </svg>
-);
-
-const shapes = [
-  <Shape1 key={0} />,
-  <Shape2 key={1} />,
-  <Shape3 key={2} />,
-  <Shape4 key={3} />,
-];
-
-const getShape = (i: number) => shapes[i % shapes.length];
 
 const Service = () => {
   const [h2Height, setH2Height] = useState(0);
@@ -80,6 +44,8 @@ const Service = () => {
     window.onresize = getHeight;
     getHeight();
   }, []);
+  
+
   return (
     <div
       style={{
@@ -140,22 +106,15 @@ const Service = () => {
                 </div>
                 <ul>
                   {list.map((l, idx) => {
-                    const index = String(idx + 1).padStart(2, "0");
                     return (
                       <li
                         key={`${l}_${idx}`}
                         className="border-b border-white/30 last:border-b-0 py-4"
                       >
                         <div className="flex items-center gap-6 ">
-                          <h3 className="text-mute-white/50 text-2xl">
-                            <TextIn
-                              TextStagger={false}
-                              delay={400}
-                              duration={500}
-                            >
-                              {index}
-                            </TextIn>
-                          </h3>
+                          <span className="font-pixel text-secondary text-2xl">
+                            &gt;
+                          </span>
                           <h3 className="text-mute-white/70 text-3xl font-bold">
                             <TextIn
                               TextStagger={false}

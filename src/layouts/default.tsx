@@ -8,16 +8,21 @@ import { Outlet, useLocation } from "react-router-dom";
 
 const DefaultLayout = () => {
   const heroEl = useRef<HTMLElement>(null);
+  const LastRef = useRef<HTMLElement>(null);
+  const LastWrapperRef = useRef<HTMLElement>(null);
   const menuWrapper = useRef<HTMLDivElement>(null);
   const MenuRef = useRef<HTMLDivElement>(null);
+  const ServicesRef = useRef<HTMLDivElement[]>([]);
+  const ServiceShapesRef = useRef<SVGSVGElement[]>([]);
+  const stickState = useRef<boolean[]>([]);
+  const prevScrollY = useRef<number>(0);
   const location = useLocation();
 
   const handleFooterScroll = () => {
-    const Last = document.querySelector("#Last");
-    const wrapper = Last?.querySelector(".wrapper") as HTMLDivElement;
-    if (!Last || !wrapper || !menuWrapper.current) return;
+    if (!LastRef.current || !LastWrapperRef.current || !menuWrapper.current)
+      return;
 
-    const rect = Last.getBoundingClientRect();
+    const rect = LastRef.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
     const footerVisiblePx = Math.max(0, windowHeight - rect.top);
@@ -28,11 +33,11 @@ const DefaultLayout = () => {
     const targetY = progress * 100;
 
     // Convert to px based on wrapper height
-    const wrapperHeight = wrapper.offsetHeight;
+    const wrapperHeight = LastWrapperRef.current.offsetHeight;
     const targetPx = (targetY / 100) * wrapperHeight;
 
     // Smooth interpolation from current to target
-    animate(wrapper, {
+    animate(LastWrapperRef.current, {
       translateY: targetPx,
       duration: 0,
       easing: "linear",
@@ -80,16 +85,55 @@ const DefaultLayout = () => {
     }
   };
 
+  const handleServiceScroll = (scrollY: number) => {
+    const scrollingUp = scrollY < prevScrollY.current;
+    prevScrollY.current = scrollY;
+
+    ServicesRef.current.forEach((el, i) => {
+      if (!el) return;
+
+      const elementTop = el.getBoundingClientRect().top;
+      const stickyTop = parseFloat(el.style.top || "0");
+      const isStuck = Math.round(elementTop) === Math.round(stickyTop);
+
+      const shape = ServiceShapesRef.current[i];
+      const path = shape?.querySelector("path");
+
+      if (isStuck && !stickState.current[i]) {
+        stickState.current[i] = true;
+        el.style.filter = "grayscale(1)";
+        if (path) path.setAttribute("fill", "#928e8b");
+      } else if (!isStuck && stickState.current[i] && scrollingUp) {
+        stickState.current[i] = false;
+        if (path) path.setAttribute("fill", "#ffc857");
+      }
+    });
+  };
+
   const { containerRef, resetScroll } = useMomentumScroll({
     onScrollUpdate: (scrollY) => {
       handleScroll(scrollY);
       handleFooterScroll();
+      handleServiceScroll(scrollY);
     },
   });
 
   useEffect(() => {
     heroEl.current = document.querySelector("section#Hero");
     MenuRef.current = document.getElementById("Menu") as HTMLDivElement;
+    LastRef.current = document.querySelector("#Last") as HTMLDivElement;
+    LastWrapperRef.current = LastRef.current?.querySelector(
+      ".wrapper"
+    ) as HTMLDivElement;
+    const services = document.querySelectorAll(
+      "#Service .service"
+    ) as NodeListOf<HTMLDivElement>;
+
+    services.forEach((s, i) => {
+      const mrSvg = s.querySelector("svg") as SVGSVGElement;
+      ServiceShapesRef.current[i] = mrSvg;
+      ServicesRef.current[i] = s;
+    });
   }, []);
 
   const menu: {

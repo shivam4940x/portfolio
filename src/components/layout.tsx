@@ -72,7 +72,7 @@ export const Kitty = () => {
               </svg>
             </div>
             <div className="py-6 px-4 text-dull-black">
-              Welcome, visitor! I'm shivm and this is my personal portfolio
+              Welcome, visitor! I'm shivam and this is my personal portfolio
             </div>
           </div>
         </div>

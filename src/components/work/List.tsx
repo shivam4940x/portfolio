@@ -1,16 +1,15 @@
 import Frame from "@/components/ui/Frame";
-import TransitionLink from "@/components/ui/TransitionLink";
 import { animate } from "animejs";
 import { useEffect, useRef } from "react";
-
 
 interface WorkItem {
   name: string;
   heading: string;
   sub: string;
   techStack?: string[];
+  href?: string;
 }
-const List = ({ heading, sub, techStack, name }: WorkItem) => {
+const List = ({ heading, sub, techStack, href }: WorkItem) => {
   const followTheMouseMr = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const currentPos = useRef({ x: 0, y: 0 });
@@ -55,8 +54,9 @@ const List = ({ heading, sub, techStack, name }: WorkItem) => {
   };
 
   return (
-    <TransitionLink
-      to={`/work/${name}`}
+    <a
+      href={href}
+      target="_blank"
       className="border-b last:border-b-0 border-border-light"
     >
       <div
@@ -104,7 +104,7 @@ const List = ({ heading, sub, techStack, name }: WorkItem) => {
           </div>
         </div>
       </div>
-    </TransitionLink>
+    </a>
   );
 };
 

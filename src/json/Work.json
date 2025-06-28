@@ -4,6 +4,7 @@
       {
         "name": "portfolio",
         "heading": "Portfolio",
+        "href": "https://portfolio-ten-iota-tixiz0p0ve.vercel.app/",
         "sub": "A personal portfolio showcasing web projects, animations, and design capabilities.",
         "img": "/projects/pp.webp",
         "techStack": [
@@ -19,6 +20,7 @@
         "name": "e2e-chat-app",
         "heading": "End To End Encrypted messaging web app",
         "sub": "A secure chat application built with modern web technologies using end-to-end encryption.",
+        "href": "https://project-e-frontend.vercel.app/",
         "img": "/projects/pp.webp",
         "techStack": [
           "Nestjs",

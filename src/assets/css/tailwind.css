@@ -84,6 +84,9 @@ h5 {
 h4 {
   @apply text-[clamp(1.4rem,3vw,2.5rem)] tracking-tight font-bold leading-[clamp(1.5rem,8vw,3.5rem)] text-mute-white/80;
 }
-h5{
-  @apply text-[clamp(1.2rem,2.2vw,1.5rem)] tracking-tight;
+h5 {
+  @apply text-[clamp(1.5rem,2.5vw,1.9rem)] tracking-tight leading-[clamp(1.3rem,3vw,1.8rem)] text-mute-white/80;
+}
+h6 {
+  @apply text-[clamp(1.2rem,2vw,1.3rem)] tracking-wide;
 }

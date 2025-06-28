@@ -1,0 +1,52 @@
+{
+  "info": [
+    { "label": "name", "value": "shivam" },
+    { "label": "age", "value": "18" },
+    { "label": "gender", "value": "male" },
+    { "label": "country", "value": "India" },
+    { "label": "specialist", "value": "JS/TS" },
+    { "label": "Coding Experience", "value": "2 years+" },
+    { "label": "Work Experience", "value": "4 months" }
+  ],
+  "developerSkills": {
+    "core Languages": [
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Node.js",
+      "Rust"
+    ],
+    "backend": [
+      "NestJS",
+      "ExpressJS",
+      "Express.js",
+      "Prisma",
+      "Sequelize",
+      "PostgreSQL",
+      "SQL",
+      "NoSQL",
+      "mongoDB",
+      "mysql",
+      "Redis",
+      "Socket.io"
+    ],
+    "frontend": [
+      "React.js",
+      "Next.js",
+      "Nuxt.js",
+      "GSAP",
+      "mui",
+      "TailwindCss",
+      "Anime.js",
+      "MatterJs",
+      "mojs",
+      "Redux",
+      "Axios",
+      "Zustand",
+      "React jQuery",
+      "jQuery"
+    ],
+    "tooling": ["DigitalOcean", "Vs Code", "vercel"]
+  }
+}

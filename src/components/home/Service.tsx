@@ -51,12 +51,12 @@ const Service = () => {
       style={{
         minHeight: `calc((${containerHeight}px * 5) - 1rem)`,
       }}
-      className="relative md:pt-10 pt-4 border-t border-b bg-dull-black"
+      className="relative md:pt-10 pt-6 border-t border-b bg-dull-black"
     >
       {/* Intro */}
       <div className="w-full mb-4 md:mb-0 px-4 md:px-10">
         <div className="py-2 md:py-6 md:space-y-4">
-          <h1 style={{ wordSpacing: "3px" }} className="heading  ">
+          <h1 style={{ wordSpacing: "3px" }} className="heading">
             <TextIn>{ServiceData.Heading.main}</TextIn>
           </h1>
           <div className="grid grid-cols-1 lg:grid-cols-10">

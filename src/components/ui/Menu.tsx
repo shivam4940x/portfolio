@@ -51,9 +51,9 @@ const Menu = ({ closeFn }: Props) => {
         <div className="relative div h-full">
           {/* Background Pattern */}
           <div
-            className="absolute left-0 top-0 w-full h-full z-0 transition-all duration-[800ms] ease-in-out pointer-events-none"
+            className="absolute left-0 top-0 w-full h-full -z-10 transition-all duration-[800ms] ease-in-out pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(rgba(185, 57, 32, 0.3) 5%, transparent 9%)`,
+              backgroundImage: `radial-gradient(rgba(11, 26, 42, 1) 5%, transparent 9%)`,
               backgroundSize: "12vmin 12vmin",
               backgroundPosition:
                 activeIndex !== null
@@ -80,7 +80,7 @@ const Menu = ({ closeFn }: Props) => {
                       liHover(false, index);
                       setActiveIndex(null);
                     }}
-                    className={`capitalize hover:opacity-100 duration-150 flex justify-end md:justify-start md:opacity-50 `}
+                    className={`capitalize hover:opacity-100 duration-150 flex justify-end md:justify-start md:opacity-70 `}
                   >
                     <div
                       ref={(el) => {

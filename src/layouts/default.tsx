@@ -45,7 +45,8 @@ const DefaultLayout = () => {
   };
 
   const handleScroll = (scrollY: number) => {
-    if (!heroEl.current || !menuWrapper.current) return;
+    if (!heroEl.current || !menuWrapper.current || location.pathname !== "/")
+      return;
     const fadeDistance = 300; // px over which opacity fades
     const maxTranslateZ = -200; // maximum "depth" in px
 
@@ -101,7 +102,6 @@ const DefaultLayout = () => {
 
       if (isStuck && !stickState.current[i]) {
         stickState.current[i] = true;
-        el.style.filter = "grayscale(1)";
         if (path) path.setAttribute("fill", "#928e8b");
       } else if (!isStuck && stickState.current[i] && scrollingUp) {
         stickState.current[i] = false;

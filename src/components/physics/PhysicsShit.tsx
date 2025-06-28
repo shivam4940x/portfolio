@@ -1,57 +1,19 @@
 import {
   Bodies,
-  Body,
   Engine,
   Render,
   Runner,
   Composite,
   World,
-  Constraint,
   Mouse,
   MouseConstraint,
   Events,
 } from "matter-js";
 import { useLayoutEffect, useRef } from "react";
+import { breakpoints, getBreakpoint, getRender, getShape } from "./utils";
 
-interface PlusProps {
-  posX: number;
-  posY: number;
-  plusWidth: number;
-  plusThickness?: number;
-}
-
-interface BallProps {
-  posX: number;
-  posY: number;
-  plusWidth: number;
-  ballRadius: number;
-}
-const colors = {
-  ball: "#00809D",
-  plus: "#D64545 ",
-};
-const breakPoints = {
-  base: 0,
-  xs: 400,
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-  "2xl": 1536,
-};
-
-function getBreakpoint(width: number): keyof typeof breakPoints {
-  if (width >= breakPoints["2xl"]) return "2xl";
-  if (width >= breakPoints.xl) return "xl";
-  if (width >= breakPoints.lg) return "lg";
-  if (width >= breakPoints.md) return "md";
-  if (width >= breakPoints.sm) return "sm";
-  if (width >= breakPoints.xs) return "xs";
-  return "base";
-}
 const baseThickness = 10;
 const baseWidth = 90;
-const breakpoints = ["base", "xs", "sm", "md", "lg", "xl", "2xl"] as const;
 const balls = {
   base: [
     { offsetX: +20, offsetY: 0, radius: 30 },
@@ -136,106 +98,23 @@ const layoutMap = Object.fromEntries(
   })
 );
 
-const getShape = {
-  Plus: ({ posX, posY, plusWidth, plusThickness = 15 }: PlusProps) => {
-    const settings = {
-      render: {
-        fillStyle: colors.plus,
-        strokeStyle: "transparent",
-        lineWidth: 0,
-      },
-      restitution: 0.95,
-      frictionAir: 0.001,
-    };
-    const verticalBar = Bodies.rectangle(
-      posX,
-      posY,
-      plusThickness,
-      plusWidth,
-      settings
-    );
-
-    const horizontalBar = Bodies.rectangle(
-      posX,
-      posY,
-      plusWidth,
-      plusThickness,
-      settings
-    );
-
-    const plusShape = Body.create({
-      parts: [verticalBar, horizontalBar],
-      restitution: 0.1,
-      frictionAir: 0.01,
-      density: 0.002,
-    });
-
-    const pin = Constraint.create({
-      pointA: { x: posX, y: posY },
-      bodyB: plusShape,
-      pointB: { x: 0, y: 0 },
-      stiffness: 0.5,
-      length: 0,
-      render: {
-        visible: false,
-      },
-    });
-
-    return { pin, plusShape };
-  },
-  Ball: ({ posX, posY, plusWidth, ballRadius }: BallProps) => {
-    const ball = Bodies.circle(
-      posX,
-      posY - plusWidth - ballRadius - 20,
-      ballRadius,
-      {
-        render: {
-          fillStyle: colors.ball,
-          strokeStyle: "transparent",
-          lineWidth: 0,
-        },
-        restitution: 0.9,
-        frictionAir: 0.03,
-      }
-    );
-    return ball;
-  },
-};
-
 const PhysicsShit = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-
-
   useLayoutEffect(() => {
-    if (!containerRef.current || !canvasRef.current)
-      return;
+    if (!containerRef.current || !canvasRef.current) return;
     const windowWidth = window.innerWidth;
     const container = containerRef.current;
     const canvas = canvasRef.current;
     const { width: containerWidth, height: containerHeight } =
       container.getBoundingClientRect();
-    const pixelRatio = window.devicePixelRatio || 1;
 
-    canvas.style.width = `${containerWidth}px`;
-    canvas.style.height = `${containerHeight}px`;
-
-    const engine = Engine.create({
-      gravity: { x: 0, y: 1.3, scale: 0.0008 },
-    });
-
-    const render = Render.create({
-      element: container,
+    const { render, engine, pixelRatio, walls } = getRender({
+      container,
+      containerHeight,
+      containerWidth,
       canvas,
-      engine,
-      options: {
-        width: containerWidth,
-        height: containerHeight,
-        background: "transparent",
-        wireframes: false,
-        pixelRatio,
-      },
     });
 
     const breakpoint = getBreakpoint(windowWidth);
@@ -301,6 +180,7 @@ const PhysicsShit = () => {
 
     Composite.add(engine.world, [
       ...allPlusParts,
+      ...walls,
       ball1,
       ball2,
       ground,

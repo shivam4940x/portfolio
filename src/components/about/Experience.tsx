@@ -1,5 +1,6 @@
 import { exp } from "@/json/About.json";
 import { Fragment } from "react/jsx-runtime";
+import TextIn from "../anim/TextIn";
 
 const Experience = () => {
   return exp.map(({ companyName, startDate, endDate, desc }) => (
@@ -37,7 +38,7 @@ const Experience = () => {
           </div>
           <div className="lg:pl-40 pt-32 lg:pt-0">
             <div className="lg:py-12 lg:px-8 py-4 text-justify lg:text-lg text-mute-white/90 weight-[80] leading-relaxed tracking-tight">
-              {desc}
+              <TextIn duration={50}>{desc}</TextIn>
             </div>
           </div>
         </div>

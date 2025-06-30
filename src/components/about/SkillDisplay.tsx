@@ -1,17 +1,20 @@
 import { developerSkills } from "@/json/About.json";
+import TextIn from "../anim/TextIn";
 
 type SkillKey = keyof typeof developerSkills;
 
-const Skill = ({ keys }: { keys: SkillKey[] }) => {
+const Skill = ({ keys, d = 400 }: { keys: SkillKey[]; d?: number }) => {
   return (
     <>
-      {keys.map((key) => (
+      {keys.map((key, i) => (
         <div
           key={key}
           className="break-inside-avoid p-4 border border-border-light/50 grow"
         >
           <h6 className="mb-2 uppercase width-[115] tracking-wide lg:font-extrabold font-bold">
-            <span className="text-secondary/90">{key}</span>
+            <div className="text-secondary/90">
+              <TextIn delay={d * i}>{key}</TextIn>
+            </div>
           </h6>
           <ul className="list-disc list-inside text-sm lg:text-base lg:columns-2 columns-1">
             {developerSkills[key].map((item) => (
@@ -34,7 +37,7 @@ const SkillDisplay = () => {
         <Skill keys={leftSkills} />
       </div>
       <div className="flex flex-col grow gap-2">
-        <Skill keys={rightSkills} />
+        <Skill keys={rightSkills} d={800} />
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import Experience from "@/components/about/Experience";
 import Heading from "@/components/about/Heading";
 import SkillDisplay from "@/components/about/SkillDisplay";
+import Stats from "@/components/about/Stats";
 import TextIn from "@/components/anim/TextIn";
 import Frame from "@/components/ui/Frame";
 import Logo from "@/components/ui/Logo";
-import { info } from "@/json/About.json";
 
 const About = () => {
   return (
@@ -31,31 +31,11 @@ const About = () => {
           <div className="flex lg:mt-12 gap-10 flex-col lg:flex-row">
             <div id="stats" className="lg:px-4 lg:sticky top-4 h-max">
               <Heading>Stats</Heading>
-
-              <div className="space-y-3 px-2">
-                {info.map(({ label, value }) => (
-                  <div
-                    key={label}
-                    className="flex items-center capitalize lg:gap-6 gap-2"
-                  >
-                    <div>
-                      <span className="font-pixel text-secondary lg:text-xl lg:text-2xl text-lg">
-                        &gt;
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 lg:gap-3">
-                      <h6 className="">{label}:</h6>{" "}
-                      <p className="text-mute-white/75 font-medium lg:text-2xl text-lg">
-                        {value}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <Stats />
             </div>
             <div className="grow pr-4 lg:space-y-8 space-y-6">
               <div id="skils">
-                <Heading>Skills</Heading>
+                <Heading >Skills</Heading>
                 <div>
                   <SkillDisplay />
                 </div>

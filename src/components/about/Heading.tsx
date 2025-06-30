@@ -6,7 +6,7 @@ type HeadingProps = {
 
 const Heading = ({ children }: HeadingProps) => {
   return (
-    <div className="border-b border-border-light md:mb-4 mb-2 px-2 py-1">
+    <div className="border-b border-border-light lg:mb-4 mb-2 px-2 py-1">
       <h5 className="uppercase">
         <div className="text-complimentary">
           <TextIn>{children as string}</TextIn>

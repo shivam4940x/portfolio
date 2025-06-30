@@ -10,10 +10,10 @@ const Skill = ({ keys }: { keys: SkillKey[] }) => {
           key={key}
           className="break-inside-avoid p-4 border border-border-light/50 grow"
         >
-          <h6 className="mb-2 uppercase width-[115] tracking-wide md:font-extrabold font-bold">
+          <h6 className="mb-2 uppercase width-[115] tracking-wide lg:font-extrabold font-bold">
             <span className="text-secondary/90">{key}</span>
           </h6>
-          <ul className="list-disc list-inside text-sm md:text-base md:columns-2 columns-1">
+          <ul className="list-disc list-inside text-sm lg:text-base lg:columns-2 columns-1">
             {developerSkills[key].map((item) => (
               <li key={item}>{item}</li>
             ))}

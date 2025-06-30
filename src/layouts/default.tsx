@@ -45,8 +45,7 @@ const DefaultLayout = () => {
   };
 
   const handleScroll = (scrollY: number) => {
-    if (!heroEl.current || !menuWrapper.current || location.pathname !== "/")
-      return;
+    if (!menuWrapper.current) return;
     const fadeDistance = 300; // px over which opacity fades
     const maxTranslateZ = -200; // maximum "depth" in px
 
@@ -54,12 +53,14 @@ const DefaultLayout = () => {
     const opacity = 1 - clampedProgress;
     const translateY = maxTranslateZ * clampedProgress;
 
-    animate(heroEl.current, {
-      opacity,
-      translateY: -translateY * 2,
-      ease: "outSine",
-      duration: 0,
-    });
+    if (heroEl.current) {
+      animate(heroEl.current, {
+        opacity,
+        translateY: -translateY * 2,
+        ease: "outSine",
+        duration: 0,
+      });
+    }
     animate(".menu", {
       opacity,
       translateY: -translateY / 2,

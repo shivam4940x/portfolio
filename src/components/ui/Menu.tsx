@@ -64,7 +64,7 @@ const Menu = ({ closeFn }: Props) => {
           />
 
           {/* Menu Items */}
-          <div className="div px-8 py-4 flex items-center justify-end md:justify-start text-[clamp(4rem,3vw,6rem)] font-montserrat font-bold">
+          <div className="div px-8 py-4 flex items-center justify-end md:justify-start text-[clamp(3rem,6vw,5rem)] font-montserrat font-bold">
             <ul className="group space-y-2">
               {menuData.links.map((link, index) => {
                 const isCurrent = link.href === location.pathname;
@@ -80,7 +80,7 @@ const Menu = ({ closeFn }: Props) => {
                       liHover(false, index);
                       setActiveIndex(null);
                     }}
-                    className={`capitalize hover:opacity-100 duration-150 flex justify-end md:justify-start md:opacity-70 `}
+                    className={`uppercase hover:opacity-100 duration-150 flex justify-end md:justify-start md:opacity-70 `}
                   >
                     <div
                       ref={(el) => {

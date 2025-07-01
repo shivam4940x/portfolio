@@ -84,16 +84,16 @@ const TextIn = ({
 
   useEffect(() => {
     if (!inView) return;
-
+    const stag = TextStagger ? 20 : 50;
     scope.current?.add(() => {
       animate(".letter", {
         translateY: alternative ? "100%" : "-100%",
         duration,
-        delay: stagger(30, { start: delay }),
+        delay: stagger(stag, { start: delay }),
         ease: "outCirc",
       });
     });
-  }, [scope, delay, alternative, inView, duration]);
+  }, [scope, delay, alternative, inView, duration, TextStagger]);
 
   return (
     <div

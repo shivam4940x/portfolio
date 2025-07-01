@@ -13,7 +13,7 @@ const Skill = ({ keys, d = 400 }: { keys: SkillKey[]; d?: number }) => {
         >
           <h6 className="mb-2 uppercase width-[115] tracking-wide lg:font-extrabold font-bold">
             <div className="text-secondary/90">
-              <TextIn delay={d * i}>{key}</TextIn>
+              <TextIn delay={d * (i + 1)}>{key}</TextIn>
             </div>
           </h6>
           <ul className="list-disc list-inside text-sm lg:text-base lg:columns-2 columns-1">
@@ -37,7 +37,7 @@ const SkillDisplay = () => {
         <Skill keys={leftSkills} />
       </div>
       <div className="flex flex-col grow gap-2">
-        <Skill keys={rightSkills} d={800} />
+        <Skill keys={rightSkills} d={600} />
       </div>
     </div>
   );

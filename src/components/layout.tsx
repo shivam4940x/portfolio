@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
-import { footer as FooterData } from "@/json/Layout.json";
+import { footer as FooterData, yearName } from "@/json/Layout.json";
 import TransitionLink from "./ui/TransitionLink";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { animate, createDraggable, createSpring, utils } from "animejs";
+import TextIn from "./anim/TextIn";
 export const Kitty = () => {
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const { root, scope } = useAnimeScope();
@@ -141,8 +142,34 @@ export const Footer = () => {
           );
         })}
       </div>
-      <div className="w-full flex justify-center lg:justify-end">
-        <div className="text-complimentary text-sm">© 2025 Shivam Singh</div>
+      <div className="w-full flex justify-center lg:justify-between text-complimentary items-center text-sm">
+        <div className="gap-3 center h-5 tracking-wide">
+          <div className="w-2 aspect-square bg-green-500 rounded-full"></div>
+          <TextIn delay={500}>
+            Open for Collaboration or Freelance projects
+          </TextIn>
+        </div>
+
+        <div className="center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={15}
+            height={15}
+            viewBox="0 0 24 24"
+          >
+            <g fill="none" stroke="currentColor" strokeWidth={1.5}>
+              <path
+                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12Z"
+                opacity={0.5}
+              ></path>
+              <path
+                strokeLinecap="round"
+                d="M14 15.667a4.5 4.5 0 0 1-1.714.333C9.919 16 8 14.21 8 12s1.919-4 4.286-4c.61 0 1.189.119 1.714.333"
+              ></path>
+            </g>
+          </svg>
+          {yearName}
+        </div>
       </div>
     </footer>
   );

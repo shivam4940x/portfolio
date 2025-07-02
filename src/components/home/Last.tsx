@@ -66,9 +66,9 @@ const Last = () => {
             </div>
           </div>
           <div className="mx-auto w-max md:mx-0">
-            <h4 className="text-xl capitalize font-bold">
+            <h5 className="text-xl capitalize font-bold">
               For further inquiries
-            </h4>
+            </h5>
             <a
               href={`mailto:${lastData.mail}`}
               className=":hover:font-stretch-expanded duration-100 font-normal flex gap-3"

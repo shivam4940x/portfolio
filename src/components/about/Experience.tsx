@@ -1,6 +1,10 @@
 import { exp } from "@/json/About.json";
 import { Fragment } from "react/jsx-runtime";
 import TextIn from "../anim/TextIn";
+function formatter(str: string) {
+  const html = str.replace(/\n/g, "<br/>").replace(/_(.*?)_/g, "<i>$1</i>");
+  return { __html: html };
+}
 
 const Experience = () => {
   return exp.map(({ companyName, startDate, endDate, desc }) => (
@@ -21,7 +25,9 @@ const Experience = () => {
                   </div>
                 </div>
                 <h6 className="text-complimentary capitalize text-center">
-                  {companyName}
+                  <TextIn TextStagger={false} alternative={true} delay={500}>
+                    {companyName}
+                  </TextIn>
                 </h6>
                 <div className="h-1/2 w-px bg-secondary relative">
                   <div className="absolute left-2 bottom-0 text-xs lg:text-sm">
@@ -38,7 +44,7 @@ const Experience = () => {
           </div>
           <div className="lg:pl-40 pt-32 lg:pt-0">
             <div className="lg:py-12 lg:px-8 py-4 text-justify lg:text-lg text-mute-white/90 weight-[80] leading-relaxed tracking-tight">
-              <TextIn TextStagger={false} duration={800}>{desc}</TextIn>
+              <span dangerouslySetInnerHTML={formatter(desc)} />
             </div>
           </div>
         </div>

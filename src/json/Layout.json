@@ -42,5 +42,7 @@
       { "text": "About Me", "href": "/about" },
       { "text": "Contact", "href": "/contact" }
     ]
-  }
+  },
+
+  "yearName": "2025 Shivam Singh"
 }

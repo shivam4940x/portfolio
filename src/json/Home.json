@@ -21,28 +21,27 @@
         "heading": "Web Developer",
         "para": "I craft visually compelling websites engineered to convert and resonate with your audience. Every line of code is tailored to reflect your brand’s identity, with seamless UI and motion-driven interactivity that keeps users engaged and returning.",
         "list": [
-          "Custom Websites",
-          "Full Stack Web Apps",
-          "Interactive Animations"
+          "Responsive Brand Websites",
+          "Conversion-Optimized Landing Pages",
+          "Performance-Focused UI Architecture"
         ]
       },
       {
         "heading": "Frontend Expert",
         "para": "Focused on building high-performance, scalable UIs using cutting-edge tools and best practices. I work with modern frameworks and libraries to bring interfaces to life with precision and style.",
-        "list": ["Next.js", "TailwindCSS", "GSAP / Anime.js"]
+        "list": [
+          "Design-System Driven Components",
+          "Interactive Animations & Transitions",
+          "Pixel-Perfect UI Implementations"
+        ]
       },
       {
         "heading": "Backend Developer",
         "para": "I develop robust backend systems with clear architecture, secure data flows, and scalable APIs — ensuring everything runs fast, clean, and reliably under the hood.",
-        "list": ["Node.js", "TypeScript", "Nest.js"]
-      },
-      {
-        "heading": "UI/UX Design",
-        "para": "I design intuitive interfaces that fuse aesthetics with usability, ensuring every interaction feels natural and purposeful. My focus is on user-first experiences—strategically crafted to elevate engagement, build trust, and drive meaningful actions.",
         "list": [
-          "Figma",
-          "Mockups to functioning websites",
-          "Interactive Animations"
+          "REST & GraphQL API Development",
+          "Scalable Microservices Architecture",
+          "Authentication & Role-Based Access"
         ]
       }
     ]

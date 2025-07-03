@@ -142,7 +142,7 @@ export const Footer = () => {
           );
         })}
       </div>
-      <div className="w-full flex justify-center lg:justify-between text-complimentary items-center text-sm">
+      <div className="w-full flex justify-center lg:justify-between text-complimentary items-center text-sm flex-col gap-5 lg:flex-row">
         <div className="gap-3 center h-5 tracking-wide">
           <div className="w-2 aspect-square bg-green-500 rounded-full"></div>
           <TextIn delay={500}>

@@ -19,17 +19,17 @@ const Experience = () => {
                 </div>
               </div>
               <div className="grow flex justify-center lg:items-center items-start my-2 flex-col">
-                <div className="h-1/2 w-px bg-secondary relative">
+                <div className="lg:h-1/2 h-5 w-px bg-secondary relative">
                   <div className="absolute lg:right-2 left-2 lg:left-[unset] top-0 text-xs lg:text-sm">
                     <span>From</span>
                   </div>
                 </div>
-                <h6 className="text-complimentary capitalize text-center">
+                <h6 className="text-complimentary capitalize center">
                   <TextIn TextStagger={false} alternative={true} delay={500}>
                     {companyName}
                   </TextIn>
                 </h6>
-                <div className="h-1/2 w-px bg-secondary relative">
+                <div className="lg:h-1/2 h-5 w-px bg-secondary relative">
                   <div className="absolute left-2 bottom-0 text-xs lg:text-sm">
                     <span>To</span>
                   </div>

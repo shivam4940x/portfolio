@@ -84,13 +84,13 @@ const Service = () => {
             style={{ top: `${Math.max(h2Height + 14, 60) * index}px` }}
           >
             <div className="border-t border-border-light py-4 bg-dull-black grid grid-cols-1 lg:grid-cols-10 gap-y-10 items-start px-4 md:px-10">
-              <div className="font-pixel text-5xl col-span-4 hidden lg:flex justify-center items-center w-max leading-20">
-                ({index + 1})
-              </div>
+              <h2 className=" heading_2 col-span-4 hidden lg:flex justify-center items-center w-max font-bold">
+                {index + 1}.
+              </h2>
               <div className="col-span-1 md:col-span-6 ">
                 <div className="text-mute-white/95 font-bold tracking-tight flex justify-between items-center">
                   <h2 className="heading_2 flex items-start gap-2 md:leading-20 w-max">
-                    <div className="font-pixel text-lg md:hidden text-mute-white/70">
+                    <div className="md:hidden text-mute-white/70">
                       {index + 1}.
                     </div>
                     <TextIn alternative>{heading}</TextIn>
@@ -112,10 +112,10 @@ const Service = () => {
                         className="border-b border-white/30 last:border-b-0 py-4"
                       >
                         <div className="flex items-center gap-6 ">
-                          <span className="font-pixel text-secondary text-2xl">
+                          <div className="font-pixel h-full center text-secondary text-2xl">
                             &gt;
-                          </span>
-                          <h3 className="text-mute-white/70 text-3xl font-bold">
+                          </div>
+                          <h3 className="text-mute-white/70 md:text-3xl text-lg font-bold center">
                             <TextIn
                               TextStagger={false}
                               delay={400}

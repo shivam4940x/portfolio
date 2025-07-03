@@ -9,6 +9,5 @@ A clean and modular open-source personal portfolio built with TypeScript. All co
 - **Data-driven** – All personal details are stored in simple JSON files (`/json` folder).
 - **Easy to fork & customize** – No backend or CMS needed. Just update your JSON.
 - **Framework-friendly** – Built with modern tooling and clean structure.
-- **Fully open-source** – MIT licensed. Use it for free, forever.
 
 

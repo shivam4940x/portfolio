@@ -32,6 +32,22 @@
           "OAuth 2.0",
           "Typescript"
         ]
+      },
+      {
+        "name": "invoice-generator",
+        "heading": "Invoice Generator",
+        "sub": "A simple and responsive invoice generator with print support and Firebase integration.",
+        "href": "https://testing-44c76.web.app/",
+        "img": "/projects/invoice.webp",
+        "techStack": [
+          "React",
+          "Tailwind CSS",
+          "Vite",
+          "Firebase",
+          "React Router",
+          "React-to-Print",
+          "Typescript"
+        ]
       }
     ],
     "Client Work": []

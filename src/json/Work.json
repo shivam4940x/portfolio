@@ -2,11 +2,34 @@
   "work": {
     "personal": [
       {
+        "name": "client website",
+        "heading": "A modern home website for a client",
+        "sub": "A customized, responsive website designed to showcase the client’s brand and services",
+        "href": "https://mayatechvision.com/",
+        "status": {
+          "text": "Client website",
+          "color": "green"
+        },
+        "techStack": [
+          "Next.js",
+          "React",
+          "Tailwind CSS",
+          "TypeScript",
+          "Firebase",
+          "Firebase Admin",
+          "GSAP",
+          "Resend",
+          "TipTap"
+        ]
+      },
+      {
         "name": "portfolio",
         "heading": "Portfolio",
         "href": "https://portfolio-ten-iota-tixiz0p0ve.vercel.app/",
         "sub": "A personal portfolio showcasing web projects, animations, and design capabilities.",
-        "img": "/projects/pp.webp",
+        "status": {
+          "color": "blue"
+        },
         "techStack": [
           "React",
           "Vite",
@@ -16,12 +39,34 @@
           "Typescript"
         ]
       },
+
+      {
+        "name": "invoice-generator",
+        "heading": "Invoice Generator",
+        "sub": "A simple and responsive invoice generator with print support and Firebase integration.",
+        "status": {
+          "color": "blue"
+        },
+        "href": "https://testing-44c76.web.app/",
+        "techStack": [
+          "React",
+          "Tailwind CSS",
+          "Vite",
+          "Firebase",
+          "React Router",
+          "React-to-Print",
+          "Typescript"
+        ]
+      },
       {
         "name": "e2e-chat-app",
         "heading": "End To End Encrypted messaging web app",
         "sub": "A secure chat application built with modern web technologies using end-to-end encryption.",
         "href": "https://project-e-frontend.vercel.app/",
-        "img": "/projects/pp.webp",
+        "status": {
+          "text": "Closed due to inactivity",
+          "color": "red"
+        },
         "techStack": [
           "Nestjs",
           "React",
@@ -30,22 +75,6 @@
           "socket.io",
           "Prisma",
           "OAuth 2.0",
-          "Typescript"
-        ]
-      },
-      {
-        "name": "invoice-generator",
-        "heading": "Invoice Generator",
-        "sub": "A simple and responsive invoice generator with print support and Firebase integration.",
-        "href": "https://testing-44c76.web.app/",
-        "img": "/projects/invoice.webp",
-        "techStack": [
-          "React",
-          "Tailwind CSS",
-          "Vite",
-          "Firebase",
-          "React Router",
-          "React-to-Print",
           "Typescript"
         ]
       }

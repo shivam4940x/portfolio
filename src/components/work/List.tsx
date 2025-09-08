@@ -8,8 +8,26 @@ interface WorkItem {
   sub: string;
   techStack?: string[];
   href?: string;
+  status?: {
+    text?: string;
+    color?: string;
+  };
 }
-const List = ({ heading, sub, techStack, href }: WorkItem) => {
+const getColor = (color: string) => {
+  switch (color) {
+    case "red":
+      return "#FF4C4C";
+    case "green":
+      return "#5CB338";
+    case "blue":
+      return "#4C9AFF";
+    case "yellow":
+      return "#FFD24C";
+    default:
+      return "#5CB338";
+  }
+};
+const List = ({ heading, sub, techStack, href, status }: WorkItem) => {
   const followTheMouseMr = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0, y: 0 });
   const currentPos = useRef({ x: 0, y: 0 });
@@ -57,8 +75,17 @@ const List = ({ heading, sub, techStack, href }: WorkItem) => {
     <a
       href={href}
       target="_blank"
-      className="border-b last:border-b-0 border-border-light"
+      className="border-b last:border-b-0 border-border-light relative "
     >
+      <div className="absolute gap-3 h-10 pt-2 top-0 left-0 overflow-hidden pointer-events-none z-50 center w-max px-2 text-sm">
+        <div
+          className="w-1.5 aspect-square rounded-full"
+          style={{
+            backgroundColor: status?.color ? getColor(status.color) : "#5CB338",
+          }}
+        ></div>
+        <div className="text-white">{status?.text || "Currently Live"}</div>
+      </div>
       <div
         key={heading}
         onMouseMove={mouseMove}

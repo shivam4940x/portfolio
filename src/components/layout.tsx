@@ -73,7 +73,9 @@ export const Kitty = () => {
               </svg>
             </div>
             <div className="py-6 px-4 text-dull-black">
-              Welcome, visitor! I'm shivam and this is my personal portfolio
+              Welcome, visitor! I'm Shivam — a freelance developer passionate
+              about crafting modern web solutions. I’m open to exciting
+              projects, new projects and collaborations. Feel free to reach out!
             </div>
           </div>
         </div>

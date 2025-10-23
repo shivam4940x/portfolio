@@ -39,7 +39,45 @@
           "Typescript"
         ]
       },
-
+      {
+        "name": "Ecommerce Dashboard",
+        "heading": "Ecommerce Dashboard template",
+        "href": "https://e-com-template-admin.vercel.app/",
+        "sub": "An admin dashboard template for managing ecommerce operations, including product listings, orders, and user management. (Its a demo not a ready to use product)",
+        "status": {
+          "color": "blue"
+        },
+        "techStack": [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "Anime.js",
+          "Matter.js",
+          "TypeScript",
+          "MUI",
+          "Emotion",
+          "TanStack React Query",
+          "Tiptap",
+          "Axios",
+          "Chart.js",
+          "React Chart.js 2",
+          "React Hook Form",
+          "React Router DOM",
+          "Sonner",
+          "Zustand",
+          "ESLint",
+          "Node.js",
+          "NestJS",
+          "Prisma",
+          "Serverless Express",
+          "Bcrypt",
+          "Cloudinary",
+          "RxJS",
+          "Jest",
+          "Prettier",
+          "ts-jest"
+        ]
+      },
       {
         "name": "invoice-generator",
         "heading": "Invoice Generator",

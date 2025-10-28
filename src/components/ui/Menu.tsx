@@ -10,15 +10,15 @@ interface Props {
 
 const Menu = ({ closeFn }: Props) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const total = menuData.links.length;
+  // const total = menuData.links.length;
   const location = useLocation();
   const pixelArrows = useRef<(HTMLDivElement | null)[]>([]);
   // Dynamically calculate background Y position for pattern
-  const getPatternPosition = (index: number, total: number) => {
-    if (total <= 1) return "0% 0%";
-    const step = 100 / (total - 1);
-    return `0% -${index * step}%`;
-  };
+  // const getPatternPosition = (index: number, total: number) => {
+  //   if (total <= 1) return "0% 0%";
+  //   const step = 100 / (total - 1);
+  //   return `0% -${index * step}%`;
+  // };
   const liHover = (isActive: boolean, index: number) => {
     const ourArrow = pixelArrows.current[index];
     if (!ourArrow || window.innerWidth < 768) return;
@@ -52,15 +52,15 @@ const Menu = ({ closeFn }: Props) => {
           {/* Background Pattern */}
           <div
             className="absolute left-0 top-0 w-full h-full -z-10 transition-all duration-[800ms] ease-in-out pointer-events-none"
-            style={{
-              backgroundImage: `radial-gradient(rgba(11, 26, 42, 1) 5%, transparent 9%)`,
-              backgroundSize: "12vmin 12vmin",
-              backgroundPosition:
-                activeIndex !== null
-                  ? getPatternPosition(activeIndex, total)
-                  : "0% 0%",
-              opacity: activeIndex !== null ? 0.5 : 1,
-            }}
+            // style={{
+            //   backgroundImage: `radial-gradient(rgba(11, 26, 42, 1) 5%, transparent 9%)`,
+            //   backgroundSize: "12vmin 12vmin",
+            //   backgroundPosition:
+            //     activeIndex !== null
+            //       ? getPatternPosition(activeIndex, total)
+            //       : "0% 0%",
+            //   opacity: activeIndex !== null ? 0.5 : 1,
+            // }}
           />
 
           {/* Menu Items */}

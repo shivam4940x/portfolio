@@ -39,7 +39,7 @@
     "links": [
       { "text": "Home", "href": "/" },
       { "text": "Work", "href": "/work" },
-      { "text": "About Me", "href": "/about" },
+      { "text": "About", "href": "/about" },
       { "text": "Contact", "href": "/contact" }
     ]
   },

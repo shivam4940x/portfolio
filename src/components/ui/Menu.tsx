@@ -25,7 +25,7 @@ const Menu = ({ closeFn }: Props) => {
       >
         <div className="relative div h-full">
           {/* Menu Items */}
-          <div className="div px-8 py-4 flex items-center justify-end md:justify-start text-[clamp(3rem,6vw,5rem)] font-montserrat font-bold">
+          <div className="div px-4 sm:px-8 py-4 flex items-center justify-end md:justify-start text-[clamp(3.5rem,6vw,5.6rem)] font-montserrat font-bold">
             <ul className="group space-y-2 w-full uppercase">
               {menuData.links.map((link, index) => {
                 const isCurrent = link.href === location.pathname;
@@ -43,7 +43,7 @@ const Menu = ({ closeFn }: Props) => {
                   >
                     {/* fade it in when its in, like when clicked on open menu i want it to be visible */}
                     <div
-                      className="translate-y-6 animateInDownToUp"
+                      className="translate-y-4 lg:translate-y-6 animateInDownToUp"
                       style={{
                         animationDelay: `${index * 100}ms`,
                       }}

@@ -137,48 +137,58 @@ const DefaultLayout = () => {
     });
   }, []);
 
-  const menu: {
-    div: Element | null;
-    refill: () => void;
-    open: () => void;
-    close: () => void;
-  } = {
-    div: null,
-    refill() {
-      if (!this.div && MenuRef.current) {
-        this.div = MenuRef.current.querySelector("div.wrapper");
-      }
-    },
-    open() {
-      this.refill();
-      if (!MenuRef.current || !this.div) return;
-      utils.set(MenuRef.current, {
-        display: "block",
-        opacity: 1,
-      });
-      animate(this.div, {
-        x: 0,
-        duration: 800,
-        ease: "outQuart",
-      });
-    },
-    close() {
-      this.refill();
-      if (!MenuRef.current || !this.div) return;
-      animate(MenuRef.current, {
-        opacity: 0,
-        ease: "linear",
-        duration: 400,
-        onComplete: () => {
-          if (!MenuRef.current || !this.div) return;
-          utils.set(MenuRef.current, {
-            display: "none",
-          });
-          utils.set(this.div, { x: "100%" });
-        },
-      });
-    },
-  };
+const menu: {
+  div: Element | null;
+  isAnimating: boolean;
+  refill: () => void;
+  open: () => void;
+  close: () => void;
+} = {
+  div: null,
+  isAnimating: false,
+
+  refill() {
+    if (!this.div && MenuRef.current) {
+      this.div = MenuRef.current.querySelector("div.wrapper");
+    }
+  },
+
+  open() {
+    this.refill();
+    if (!MenuRef.current || !this.div || this.isAnimating) return;
+    this.isAnimating = true;
+
+    utils.set(MenuRef.current, { display: "block", opacity: 1 });
+
+    animate(this.div, {
+      x: 0,
+      duration: 800,
+      ease: "outQuart",
+      onComplete: () => {
+        this.isAnimating = false;
+      },
+    });
+  },
+
+  close() {
+    this.refill();
+    if (!MenuRef.current || !this.div || this.isAnimating) return;
+    this.isAnimating = true;
+
+    animate(MenuRef.current, {
+      opacity: 0,
+      ease: "linear",
+      duration: 400,
+      onComplete: () => {
+        if (!MenuRef.current || !this.div) return;
+        utils.set(MenuRef.current, { display: "none" });
+        utils.set(this.div, { x: "100%" });
+        this.isAnimating = false;
+      },
+    });
+  },
+};
+
 
   return (
     <div className="h-dvh w-screen flex overflow-hidden">
@@ -194,7 +204,7 @@ const DefaultLayout = () => {
         ref={menuWrapper}
         className="top-0 gap-5 md:sticky pb-2 absolute right-0 h-full md:w-20 max-h-dvh flex flex-col justify-between md:border-l menuWrapper md:bg-primary"
       >
-        <div className="aspect-square md:w-full bg-deep-steel menu w-15">
+        <div className="aspect-square md:w-full bg-deep-steel menu w-15 center">
           <MenuIcon fn={menu} />
         </div>
         <Kitty />

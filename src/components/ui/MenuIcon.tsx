@@ -1,142 +1,143 @@
-import { useAnimeScope } from "@/hooks/useAnimeScope";
-import { animate } from "animejs";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-
-const movers = {
-  0: { translateX: -20, translateY: -20 },
-  2: { translateX: 20, translateY: -20 },
-  6: { translateX: -20, translateY: 20 },
-  8: { translateX: 20, translateY: 20 },
-};
+import { animate, stagger } from "animejs";
 
 interface Props {
   fn: { open: () => void; close: () => void };
 }
 
 const MenuIcon = ({ fn }: Props) => {
-  const { root, scope } = useAnimeScope();
+  const [, setIsOpen] = useState(false);
   const location = useLocation();
+  const elementsRef = useRef<HTMLDivElement[]>([]);
+  const burgerLinesRef = useRef<NodeListOf<HTMLDivElement> | null>(null);
 
-  const [track, setTrack] = useState({ hover: false, active: false });
-  const trackRef = useRef(track);
-
-  useEffect(() => {
-    trackRef.current = track;
-  }, [track]);
-
-  const hoverIn = useCallback(() => {
-    if (trackRef.current.active) return;
-    setTrack((prev) => ({ ...prev, hover: true }));
-    Object.entries(movers).forEach(([index, transform]) => {
-      animate(`.dot-${index}`, {
-        ...transform,
-        duration: 300,
-        ease: "inOutExpo",
-      });
-    });
-  }, []);
-
-  const hoverOut = useCallback(() => {
-    if (trackRef.current.active) return;
-    setTrack((prev) => ({ ...prev, hover: false }));
-    Object.keys(movers).forEach((index) => {
-      animate(`.dot-${index}`, {
-        translateX: 0,
-        translateY: 0,
-        duration: 300,
-        ease: "inOutExpo",
-      });
-    });
-  }, []);
-
-  const handleClick = useCallback(() => {
-    const isActive = trackRef.current.active;
-    setTrack((prev) => ({ ...prev, active: !isActive }));
-    if (fn) {
-      if (isActive) {
-        fn.close();
-      } else {
-        fn.open();
-      }
+  // Capture cover + menu elements once
+  const getElements = useCallback(() => {
+    if (!elementsRef.current.length) {
+      const cover = document.querySelector(".mrMenu .cover") as HTMLDivElement;
+      const menu = document.querySelector(".mrMenu .menu") as HTMLDivElement;
+      if (cover && menu) elementsRef.current = [cover, menu];
     }
-    animate(".burgerWrapper", {
-      rotate: isActive ? "0deg" : "45deg",
-      duration: 300,
-      ease: "inOutExpo",
-      delay: 1,
-    });
+    if (!burgerLinesRef.current) {
+      burgerLinesRef.current = document.querySelectorAll(
+        ".burger-line"
+      ) as NodeListOf<HTMLDivElement>;
+    }
+  }, []);
 
-    const animation = isActive ? { translateX: 0, translateY: 0 } : undefined;
-    Object.entries(movers).forEach(([index, transform]) => {
-      animate(`.dot-${index}`, {
-        ...(animation || transform),
+  const animateMenu = useCallback(
+    (open: boolean) => {
+      getElements();
+      const [cover, menu] = elementsRef.current;
+      const [line1, line2] = burgerLinesRef.current || [];
+
+      if (!cover || !menu || !line1 || !line2) return;
+
+      // Animate burger lines
+      animate(line1, {
+        top: open ? "50%" : "40%",
+        rotate: open ? 45 : 0,
         duration: 300,
-        ease: "inOutExpo",
+        easing: "easeInOutExpo",
       });
-    });
-  }, [fn]);
-
-  useEffect(() => {
-    scope.current?.add((self) => {
-      self.add("hoverIn", hoverIn);
-      self.add("hoverOut", hoverOut);
-      self.add("click", handleClick);
-    });
-  }, [scope, hoverIn, hoverOut, handleClick]);
-
-  useEffect(() => {
-    // Reset state
-    setTrack({ hover: false, active: false });
-
-    // Reset dot positions
-    Object.keys(movers).forEach((index) => {
-      animate(`.dot-${index}`, {
-        translateX: 0,
-        translateY: 0,
+      animate(line2, {
+        top: open ? "50%" : "60%",
+        rotate: open ? -45 : 0,
         duration: 300,
-        ease: "inOutExpo",
+        easing: "easeInOutExpo",
       });
-    });
 
-    // Reset burger rotation
-    animate(".burgerWrapper", {
-      rotate: "0deg",
-      duration: 300,
-      ease: "inOutExpo",
+      // Animate menu + cover
+      const targets = open ? [cover, menu] : [menu, cover];
+      animate(targets, {
+        translateY: open ? ["-100%", "0%"] : ["0%", "-100%"],
+        duration: 900,
+        delay: stagger(200),
+        easing: "easeInOutExpo",
+      });
+    },
+    [getElements]
+  );
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen((prev) => {
+      const next = !prev;
+      animateMenu(next);
+
+      if (fn) {
+        if (next) fn.open();
+        else fn.close();
+      }
+
+      return next;
     });
-  }, [location]);
-  
+  }, [animateMenu, fn]);
+
+  // Close on route change
+  useEffect(() => {
+    setIsOpen(false);
+    animateMenu(false);
+  }, [location, animateMenu]);
 
   return (
-    <div ref={root} className="center relative div fadeIn">
-      <div
-        onMouseEnter={() => scope.current?.methods.hoverIn()}
-        onMouseLeave={() => scope.current?.methods.hoverOut()}
-        onClick={() => scope.current?.methods.click()}
-        className="cursor-pointer grid-cols-3 grid-rows-3 grid xl:gap-2 gap-1 overflow-hidden md:p-2 relative burgerWrapper"
-      >
-        {Array.from({ length: 9 }, (_, i) => (
-          <div key={i}>
-            <svg
-              className={`dot-${i} w-2 h-2`}
-              viewBox="0 0 4 4"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="0.5"
-                y="0.5"
-                width="3"
+    <>
+      <button onClick={toggleMenu} className="z-[9999999]">
+        <div>
+          <div
+            className="burger aspect-square h-14 center flex-col gap-1 cursor-pointer text-white relative"
+            data-cursor-hover
+          >
+            <div className="burger-line h-1 top-[40%] absolute left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <svg
+                width="35"
                 height="3"
-                stroke="#DAF9FF"
-                strokeWidth="0.5"
-              />
-            </svg>
+                viewBox="0 0 35 2"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="1"
+                  y1="1"
+                  x2="34"
+                  y2="1"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <div className="burger-line h-1 top-[60%] absolute left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <svg
+                width="35"
+                height="3"
+                viewBox="0 0 35 2"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="1"
+                  y1="1"
+                  x2="34"
+                  y2="1"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
           </div>
-        ))}
+        </div>
+      </button>
+
+      <div className="mrMenu relative">
+        <div
+          className="menu fixed top-0 bottom-0 left-0 right-0 div bg-black z-[9999] -translate-y-full overflow-y-scroll no-scroll-bar"
+          data-dark-bg
+        ></div>
+        <div className="cover fixed top-0 bottom-0 left-0 right-0 div bg-primary z-[999] -translate-y-full"></div>
       </div>
-    </div>
+    </>
   );
 };
 

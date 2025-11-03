@@ -40,7 +40,15 @@ body {
     transform: scale(1.2);
   }
 }
-
+@keyframes animateInDownToUpAnimation {
+  to {
+    transform: translateY(0%);
+  }
+}
+.animateInDownToUp{
+  transform: translateY(100%);
+  animation: animateInDownToUpAnimation 1s cubic-bezier(0.22, 1, 0.36, 1) forwards ;
+}
 .kitty .kitty_div {
   animation: kitty 1.5s steps(3) alternate infinite;
 }

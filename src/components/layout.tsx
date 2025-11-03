@@ -3,7 +3,7 @@ import { footer as FooterData, yearName } from "@/json/Layout.json";
 import TransitionLink from "./ui/TransitionLink";
 import { useAnimeScope } from "@/hooks/useAnimeScope";
 import { animate, createDraggable, createSpring, utils } from "animejs";
-import TextIn from "./anim/TextIn";
+import { useLocation } from "react-router-dom";
 export const Kitty = () => {
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   const { root, scope } = useAnimeScope();
@@ -100,6 +100,7 @@ export const Kitty = () => {
 };
 
 export const Footer = () => {
+  const location = useLocation();
   return (
     <footer className="bg-dull-black py-12 border-t px-6 sm:px-10 space-y-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-y-10 gap-x-6 lg:gap-x-12">
@@ -115,14 +116,22 @@ export const Footer = () => {
               <ul className="px-3 mt-5 text-lg capitalize space-y-3">
                 {items.map(({ text, href }) => {
                   if (title == "Menu") {
+                    const isCurrent = href === location.pathname;
                     return (
                       <li key={text}>
-                        <TransitionLink
-                          to={href}
-                          className="md:hover:font-stretch-expanded duration-150 font-normal cursor-pointer"
-                        >
-                          {text}
-                        </TransitionLink>
+                        {isCurrent ? (
+                          <div className=" cursor-pointer flex items-center gap-2">
+                            <div className="text-secondary translate-y-1">*</div>
+                            <div className="text-complimentary/85">{text}</div>
+                          </div>
+                        ) : (
+                          <TransitionLink
+                            to={href}
+                            className="md:hover:font-stretch-expanded duration-150 font-normal cursor-pointer"
+                          >
+                            {text}
+                          </TransitionLink>
+                        )}
                       </li>
                     );
                   }
@@ -147,9 +156,7 @@ export const Footer = () => {
       <div className="w-full flex justify-center lg:justify-between text-complimentary items-center text-sm flex-col gap-5 lg:flex-row">
         <div className="gap-3 center h-5 tracking-wide">
           <div className="w-2 aspect-square bg-green-500 rounded-full"></div>
-          <TextIn delay={500}>
-            Open for Collaboration or Freelance projects
-          </TextIn>
+          Open for Collaboration or Freelance projects
         </div>
 
         <div className="center gap-2">

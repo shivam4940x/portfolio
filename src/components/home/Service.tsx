@@ -49,7 +49,7 @@ const Service = () => {
   return (
     <div
       style={{
-        minHeight: `calc((${containerHeight}px * 5) - 1rem)`,
+        minHeight: `calc((${containerHeight}px * ${ServiceData.services.length}) + 1rem)`,
       }}
       className="relative md:pt-10 pt-6 border-t border-b bg-dull-black"
     >
@@ -97,8 +97,8 @@ const Service = () => {
                   </h2>
                   {getShape(index)}
                 </div>
-                <div className="mb-6 lg:w-3/4 lg:mt-8 mt-4">
-                  <div className="text-base md:text-xl text-mute-white/80 width-[80] font-medium tracking-wider leading-5">
+                <div className="mb-6 lg:w-3/4 mt-4">
+                  <div className="text-base md:text-xl text-mute-white opacity-[55%] width-[80] font-medium tracking-wider leading-5">
                     <TextIn TextStagger={false} delay={400} duration={500}>
                       {para}
                     </TextIn>
@@ -113,7 +113,7 @@ const Service = () => {
                       >
                         <div className="flex items-center gap-6 ">
                           <div className="font-pixel h-full center text-secondary text-2xl">
-                            &gt;
+                            &#42;
                           </div>
                           <h3 className="text-mute-white/70 md:text-3xl text-lg font-bold center">
                             <TextIn

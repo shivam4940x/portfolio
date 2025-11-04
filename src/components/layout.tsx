@@ -121,7 +121,6 @@ export const Footer = () => {
                       <li key={text}>
                         {isCurrent ? (
                           <div className=" cursor-pointer flex items-center gap-2">
-                            <div className="text-secondary translate-y-1">*</div>
                             <div className="text-complimentary/85">{text}</div>
                           </div>
                         ) : (

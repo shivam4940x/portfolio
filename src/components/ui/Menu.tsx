@@ -39,8 +39,8 @@ const Menu = ({ closeFn }: Props) => {
                     onMouseLeave={() => {
                       setActiveIndex(null);
                     }}
-                    className={`hover:opacity-100 duration-150 flex justify-end md:justify-start md:opacity-50 border-b overflow-hidden px-1 ${
-                      isCurrent ? "opacity-100" : ""
+                    className={`hover:opacity-100 duration-150 flex justify-end md:justify-start border-b overflow-hidden px-1 ${
+                      isCurrent ? "opacity-100" : "md:opacity-50"
                     }`}
                   >
                     {/* fade it in when its in, like when clicked on open menu i want it to be visible */}

@@ -28,7 +28,7 @@
         "href": "https://portfolio-ten-iota-tixiz0p0ve.vercel.app/",
         "sub": "A personal portfolio showcasing web projects, animations, and design capabilities.",
         "status": {
-          "color": "blue"
+          "color": "green"
         },
         "techStack": [
           "React",
@@ -45,7 +45,7 @@
         "href": "https://e-com-template-admin.vercel.app/",
         "sub": "An admin dashboard template for managing ecommerce operations, including product listings, orders, and user management. (Its a demo not a ready to use product)",
         "status": {
-          "color": "blue"
+          "color": "green"
         },
         "techStack": [
           "React",
@@ -116,7 +116,7 @@
         "heading": "Invoice Generator",
         "sub": "A simple and responsive invoice generator with print support and Firebase integration.",
         "status": {
-          "color": "blue"
+          "color": "green"
         },
         "href": "https://testing-44c76.web.app/",
         "techStack": [

@@ -79,6 +79,39 @@
         ]
       },
       {
+        "name": "AI Note-Taking App",
+        "heading": "AI-Powered Note Taking Application",
+        "href": "https://ai-note-taking-app-rho.vercel.app/",
+        "sub": "A full-stack note-taking platform with AI-powered summarization, clarity enhancement, and auto-tag generation. Features authentication, rich-text notes, search, and a clean responsive UI.",
+        "status": {
+          "color": "green"
+        },
+        "techStack": [
+          "Next.js 14",
+          "TypeScript",
+          "Tailwind CSS",
+          "shadcn/ui",
+          "React Hook Form",
+          "Zod",
+          "Zustand",
+          "Tiptap",
+          "Hono.js",
+          "Prisma",
+          "MongoDB",
+          "Better Auth",
+          "Google GenAI (@google/genai)",
+          "bcrypt",
+          "Sonner",
+          "Radix UI",
+          "Lucide React",
+          "clsx",
+          "class-variance-authority",
+          "PostCSS",
+          "ESLint",
+          "Prettier"
+        ]
+      },
+      {
         "name": "invoice-generator",
         "heading": "Invoice Generator",
         "sub": "A simple and responsive invoice generator with print support and Firebase integration.",

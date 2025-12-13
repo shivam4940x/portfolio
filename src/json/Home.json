@@ -2,12 +2,12 @@
   "Hero": {
     "subHeading": "Hello, I'm a",
     "mainTxt": {
-      "mobile": ["full stack", "developer"],
-      "desktop": "web developer"
+      "mobile": ["Software", "developer"],
+      "desktop": "Software dev"
     },
     "subText": [
       "Design. Code. Develop.",
-      "A Full-Cycle Web Journey",
+      "A Full-Cycle code Journey",
       "by One Developer"
     ]
   },
@@ -27,21 +27,30 @@
         ]
       },
       {
-        "heading": "Frontend Expert",
-        "para": "Focused on building high-performance, scalable UIs using cutting-edge tools and best practices. I work with modern frameworks and libraries to bring interfaces to life with precision and style.",
-        "list": [
-          "Design-System Driven Components",
-          "Interactive Animations & Transitions",
-          "Pixel-Perfect UI Implementations"
-        ]
-      },
-      {
         "heading": "Backend Developer",
         "para": "I develop robust backend systems with clear architecture, secure data flows, and scalable APIs — ensuring everything runs fast, clean, and reliably under the hood.",
         "list": [
           "REST & GraphQL API Development",
           "Scalable Microservices Architecture",
           "Authentication & Role-Based Access"
+        ]
+      },
+      {
+        "heading": "App Developer",
+        "para": "I build high-quality mobile applications with smooth performance, intuitive UX, and scalable architecture. From idea to deployment, I focus on reliability, speed, and real-world usability.",
+        "list": [
+          "Cross-Platform App Development",
+          "Performance-Optimized Mobile UIs",
+          "API & Backend Integration"
+        ]
+      },
+      {
+        "heading": "System & API Engineer",
+        "para": "I design and implement efficient system architectures and APIs that scale seamlessly, ensuring maintainability, security, and optimal performance across services.",
+        "list": [
+          "System Design & Architecture",
+          "High-Performance API Engineering",
+          "Database Modeling & Optimization"
         ]
       }
     ]

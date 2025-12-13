@@ -7,7 +7,7 @@ function formatter(str: string) {
 }
 
 const Experience = () => {
-  return exp.map(({ companyName, startDate, endDate, desc }) => (
+  return exp.map(({ companyName, startDate, endDate, desc }, index) => (
     <Fragment key={startDate}>
       <div className="p-4">
         <div className="txt relative ">
@@ -49,6 +49,9 @@ const Experience = () => {
           </div>
         </div>
       </div>
+      {index !== exp.length - 1 && (
+        <div className="w-full h-0.5 my-6 md:my-12 bg-white/10 rounded-full"></div>
+      )}
     </Fragment>
   ));
 };

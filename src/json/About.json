@@ -6,54 +6,71 @@
     { "label": "country", "value": "India" },
     { "label": "specialist", "value": "JS/TS" },
     { "label": "Coding Experience", "value": "2 years+" },
-    { "label": "Work Experience", "value": "4 months" }
+    { "label": "Work Experience", "value": "5 months" }
   ],
-  "developerSkills": {
-    "core Languages": [
-      "JavaScript",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "Node.js",
-      "Rust"
-    ],
-    "backend": [
-      "NestJS",
-      "Express.js",
-      "Prisma",
-      "Sequelize",
-      "PostgreSQL",
-      "SQL",
-      "NoSQL",
-      "mongoDB",
-      "mysql",
-      "Redis",
-      "Socket.io"
-    ],
-    "frontend": [
-      "React.js",
-      "Next.js",
-      "Nuxt.js",
-      "GSAP",
-      "Mui",
-      "TailwindCss",
-      "Anime.js",
-      "MatterJs",
-      "Mojs",
-      "Redux",
-      "Axios",
-      "Zustand",
-      "React jQuery",
-      "jQuery"
-    ],
-    "tooling": ["DigitalOcean", "Vs Code", "vercel"]
-  },
+"developerSkills": {
+  "core Languages": [
+    "JavaScript",
+    "TypeScript",
+    "HTML",
+    "CSS",
+    "Node.js",
+    "Rust",
+    "Dart"
+  ],
+  "backend": [
+    "NestJS",
+    "Express.js",
+    "Prisma",
+    "Sequelize",
+    "PostgreSQL",
+    "SQL",
+    "NoSQL",
+    "mongoDB",
+    "mysql",
+    "Redis",
+    "Socket.io"
+  ],
+  "frontend": [
+    "React.js",
+    "Next.js",
+    "Nuxt.js",
+    "GSAP",
+    "Mui",
+    "TailwindCss",
+    "Anime.js",
+    "MatterJs",
+    "Mojs",
+    "Redux",
+    "Axios",
+    "Zustand",
+    "React jQuery",
+    "jQuery",
+    "Flutter"
+  ],
+  "tooling": [
+    "DigitalOcean",
+    "Vs Code",
+    "vercel",
+    "Android Studio",
+    "Git",
+    "Docker"
+  ]
+}
+,
   "exp": [
     {
       "startDate": "14th Jan 2025",
       "endDate": "30th April 2025",
-      "companyName":"Kanakdristi infotech pvt ltd",
-      "desc": "_Internship At Kanakdristi_ \n I contributed to multiple client-facing and internal web platforms. I developed responsive layouts using Next.js and Nuxt.js, styled with Tailwind CSS, and enhanced user experience with GSAP animations. On the backend, I maintained and extended features in an Express.js application, handled API integrations across admin and client interfaces, and showcased backend proficiency through a NestJS demo project. I also collaborated on a travel CRM, utilizing React (Vite), Zustand, React Query, NestJS APIs, and MUI components, ensuring seamless data handling and scalable UI."
+      "companyName": "Kanakdristi infotech pvt ltd",
+      "desc": "_Internship At Kanakdristi_ \n Worked across frontend and backend on client-facing and internal platforms. Built responsive UIs with Next.js, Nuxt.js, Tailwind CSS, and GSAP, and developed backend features and API integrations using Express.js and NestJS. Contributed to a travel CRM using React (Vite), Zustand, React Query, and MUI."
+    },
+    {
+      "startDate": "17th Nov 2025",
+      "endDate": "Present",
+      "companyName": "ETH Infra",
+      "desc": "_SDE Trainee at ETH Infra_ \n Core contributor across frontend, backend, and system-level tasks — acting as a central execution layer for the team. I work on building and maintaining scalable web and app solutions, integrating APIs, optimizing performance, and ensuring smooth cross-team delivery. I contribute wherever impact is needed, keeping systems stable, fast, and production-ready."
     }
+
   ]
 }

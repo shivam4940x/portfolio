@@ -5,7 +5,7 @@
       "title": "Menu",
       "items": [
         { "text": "Home", "href": "/" },
-        { "text": "Work", "href": "/work" },
+        { "text": "Projects", "href": "/work" },
         { "text": "About Me", "href": "/about" },
         { "text": "Contact", "href": "/contact" }
       ]

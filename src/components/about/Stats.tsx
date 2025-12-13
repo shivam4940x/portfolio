@@ -46,7 +46,7 @@ const Stats = () => {
             key={label}
             className="capitalize lg:gap-6 gap-2 overflow-hidden"
           >
-            <div className="flex items-center anime -translate-y-full">
+            <div className="flex items-center anime -translate-y-full gap-2">
               <div>
                 <span className="font-pixel text-secondary lg:text-2xl text-lg">
                   &gt;

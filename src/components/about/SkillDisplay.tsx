@@ -11,11 +11,12 @@ const Skill = ({ keys, d = 400 }: { keys: SkillKey[]; d?: number }) => {
           key={key}
           className="break-inside-avoid p-4 border border-border-light/50 grow"
         >
-          <h6 className="mb-2 uppercase width-[115] tracking-wide lg:font-extrabold font-bold">
-            <div className="text-secondary/90">
+          <h6 className="mb-2 uppercase w-[115px] tracking-wide font-bold lg:font-extrabold">
+            <div className="text-secondary/90 whitespace-nowrap break-keep">
               <TextIn delay={d * (i + 1)}>{key}</TextIn>
             </div>
           </h6>
+
           <ul className="list-disc list-inside text-sm lg:text-base lg:columns-2 columns-1">
             {developerSkills[key].map((item) => (
               <li key={item}>{item}</li>
@@ -32,7 +33,7 @@ const rightSkills: SkillKey[] = ["frontend", "tooling"];
 
 const SkillDisplay = () => {
   return (
-    <div className="flex gap-2">
+    <div className="md:flex gap-2">
       <div className="flex flex-col grow gap-2">
         <Skill keys={leftSkills} />
       </div>

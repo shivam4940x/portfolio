@@ -25,7 +25,7 @@
     {
       "title": "Resource",
       "items": [
-        { "text": "Anime Js, Matter Js", "href": "https://animejs.com/" },
+        { "text": "Anime Js", "href": "https://animejs.com/" },
         { "text": " Matter Js", "href": "https://brm.io/matter-js/" },
         { "text": "Tailwind css", "href": "https://tailwindcss.com/" },
         {

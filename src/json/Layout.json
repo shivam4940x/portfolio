@@ -38,7 +38,7 @@
   "menu": {
     "links": [
       { "text": "Home", "href": "/" },
-      { "text": "Work", "href": "/work" },
+      { "text": "Projects", "href": "/work" },
       { "text": "About", "href": "/about" },
       { "text": "Contact", "href": "/contact" }
     ]

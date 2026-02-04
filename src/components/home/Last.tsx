@@ -51,7 +51,7 @@ const Last = () => {
         </div>
         <div className="flex justify-between items-end">
           <div className="md:flex hidden">
-            <div className="w-22 aspect-square border px-2 flex items-end">
+            <div className="w-22 aspect-square border px-2 flex items-center">
               <img src="/mainKitty.webp" alt="kitty" />
             </div>
             <div className="border border-l-0 grid grid-row-2 text-mute-white/90">

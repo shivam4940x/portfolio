@@ -51,7 +51,7 @@ export const Kitty = () => {
   };
 
   return (
-    <div ref={root}>
+    <div ref={root} className="center">
       <div
         style={{ display: "none" }}
         className="fixed top-0 left-0 w-screen h-screen bg-black/40 opacity-0 pointer-events-none guide"
@@ -81,14 +81,14 @@ export const Kitty = () => {
         </div>
       </div>
       <div
-        className="kitty aspect-square md:w-full w-20 -ml-8 md:ml-0 z-50 relative"
+        className="kitty aspect-square w-16 max-w-14 -ml-8 md:ml-0 z-50 relative"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div className="div fadeIn">
           <div className="kitty_div">
             <img
-              src="/eppyKitty.webp"
+              src="/mainKitty.webp"
               alt="kitty"
               className="div pointer-events-none"
             />

@@ -2,8 +2,27 @@
   "work": {
     "personal": [
       {
+        "name": "Codeential",
+        "heading": "Business website",
+        "sub": "Designed and developed a fully responsive, performance-optimized website tailored to the client's brand identity and business goals.",
+        "href": "https://www.codeential.com/",
+        "status": {
+          "text": "Completed Client Project",
+          "color": "green"
+        },
+        "techStack": [
+          "Next.js",
+          "React",
+          "Tailwind CSS",
+          "TypeScript",
+          "Firebase",
+          "GSAP",
+          "Resend"
+        ]
+      },
+      {
         "name": "client website",
-        "heading": "A modern home website for a client",
+        "heading": "Business website",
         "sub": "A customized, responsive website designed to showcase the client’s brand and services",
         "href": "https://mayatechvision.com/",
         "status": {
@@ -40,78 +59,6 @@
         ]
       },
       {
-        "name": "Ecommerce Dashboard",
-        "heading": "Ecommerce Dashboard template",
-        "href": "https://e-com-template-admin.vercel.app/",
-        "sub": "An admin dashboard template for managing ecommerce operations, including product listings, orders, and user management. (Its a demo not a ready to use product)",
-        "status": {
-          "color": "green"
-        },
-        "techStack": [
-          "React",
-          "Vite",
-          "Tailwind CSS",
-          "Anime.js",
-          "Matter.js",
-          "TypeScript",
-          "MUI",
-          "Emotion",
-          "TanStack React Query",
-          "Tiptap",
-          "Axios",
-          "Chart.js",
-          "React Chart.js 2",
-          "React Hook Form",
-          "React Router DOM",
-          "Sonner",
-          "Zustand",
-          "ESLint",
-          "Node.js",
-          "NestJS",
-          "Prisma",
-          "Serverless Express",
-          "Bcrypt",
-          "Cloudinary",
-          "RxJS",
-          "Jest",
-          "Prettier",
-          "ts-jest"
-        ]
-      },
-      {
-        "name": "AI Note-Taking App",
-        "heading": "AI-Powered Note Taking Application",
-        "href": "https://ai-note-taking-app-rho.vercel.app/",
-        "sub": "A full-stack note-taking platform with AI-powered summarization, clarity enhancement, and auto-tag generation. Features authentication, rich-text notes, search, and a clean responsive UI.",
-        "status": {
-          "color": "green"
-        },
-        "techStack": [
-          "Next.js 14",
-          "TypeScript",
-          "Tailwind CSS",
-          "shadcn/ui",
-          "React Hook Form",
-          "Zod",
-          "Zustand",
-          "Tiptap",
-          "Hono.js",
-          "Prisma",
-          "MongoDB",
-          "Better Auth",
-          "Google GenAI (@google/genai)",
-          "bcrypt",
-          "Sonner",
-          "Radix UI",
-          "Lucide React",
-          "clsx",
-          "class-variance-authority",
-          "PostCSS",
-          "ESLint",
-          "Prettier"
-        ]
-      },
-      {
         "name": "invoice-generator",
         "heading": "Invoice Generator",
         "sub": "A simple and responsive invoice generator with print support and Firebase integration.",
@@ -129,6 +76,68 @@
           "Typescript"
         ]
       },
+      {
+        "name": "Ecommerce Dashboard",
+        "heading": "Ecommerce Dashboard template",
+        "href": "https://github.com/shivam4940x/eComTemplate_backend/",
+        "sub": "An admin dashboard template for managing ecommerce operations, including product listings, orders, and user management. (Its a demo not a ready to use product)",
+        "status": {
+          "text": "Closed due to inactivity (Backend code available on git)",
+          "color": "red"
+        },
+        "techStack": [
+          "React",
+          "Tailwind CSS",
+          "Anime.js",
+          "Matter.js",
+          "TypeScript",
+          "MUI",
+          "TanStack React Query",
+          "Tiptap",
+          "Axios",
+          "Chart.js",
+          "React Chart.js 2",
+          "Sonner",
+          "Zustand",
+          "Node.js",
+          "NestJS",
+          "Prisma",
+          "Serverless Express",
+          "Bcrypt",
+          "Cloudinary",
+          "RxJS",
+          "Jest",
+          "ts-jest"
+        ]
+      },
+      {
+        "name": "AI Note-Taking App",
+        "heading": "AI-Powered Note Taking Application",
+        "href": "https://github.com/shivam4940x/AI-Note-Taking-App",
+        "sub": "A full-stack note-taking platform with AI-powered summarization, clarity enhancement, and auto-tag generation. Features authentication, rich-text notes, search, and a clean responsive UI.",
+        "status": {
+          "text": "Closed due to inactivity (code available on git)",
+          "color": "red"
+        },
+        "techStack": [
+          "Next.js 14",
+          "TypeScript",
+          "Tailwind CSS",
+          "shadcn/ui",
+          "Zod",
+          "Zustand",
+          "Tiptap",
+          "Hono.js",
+          "Prisma",
+          "MongoDB",
+          "Better Auth",
+          "Google GenAI",
+          "bcrypt",
+          "Sonner",
+          "Radix UI"
+        ]
+      },
+
       {
         "name": "e2e-chat-app",
         "heading": "End To End Encrypted messaging web app",

@@ -5,6 +5,7 @@ import { useMomentumScroll } from "@/hooks/useMomentumScroll";
 import { animate, utils } from "animejs";
 import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import ClickSpark from "@/components/ui/ClickSpark";
 
 const DefaultLayout = () => {
   const heroEl = useRef<HTMLElement>(null);
@@ -124,10 +125,10 @@ const DefaultLayout = () => {
     MenuRef.current = document.getElementById("Menu") as HTMLDivElement;
     LastRef.current = document.querySelector("#Last") as HTMLDivElement;
     LastWrapperRef.current = LastRef.current?.querySelector(
-      ".wrapper"
+      ".wrapper",
     ) as HTMLDivElement;
     const services = document.querySelectorAll(
-      "#Service .service"
+      "#Service .service",
     ) as NodeListOf<HTMLDivElement>;
 
     services.forEach((s, i) => {
@@ -137,58 +138,57 @@ const DefaultLayout = () => {
     });
   }, []);
 
-const menu: {
-  div: Element | null;
-  isAnimating: boolean;
-  refill: () => void;
-  open: () => void;
-  close: () => void;
-} = {
-  div: null,
-  isAnimating: false,
+  const menu: {
+    div: Element | null;
+    isAnimating: boolean;
+    refill: () => void;
+    open: () => void;
+    close: () => void;
+  } = {
+    div: null,
+    isAnimating: false,
 
-  refill() {
-    if (!this.div && MenuRef.current) {
-      this.div = MenuRef.current.querySelector("div.wrapper");
-    }
-  },
+    refill() {
+      if (!this.div && MenuRef.current) {
+        this.div = MenuRef.current.querySelector("div.wrapper");
+      }
+    },
 
-  open() {
-    this.refill();
-    if (!MenuRef.current || !this.div || this.isAnimating) return;
-    this.isAnimating = true;
+    open() {
+      this.refill();
+      if (!MenuRef.current || !this.div || this.isAnimating) return;
+      this.isAnimating = true;
 
-    utils.set(MenuRef.current, { display: "block", opacity: 1 });
+      utils.set(MenuRef.current, { display: "block", opacity: 1 });
 
-    animate(this.div, {
-      x: 0,
-      duration: 800,
-      ease: "outQuart",
-      onComplete: () => {
-        this.isAnimating = false;
-      },
-    });
-  },
+      animate(this.div, {
+        x: 0,
+        duration: 800,
+        ease: "outQuart",
+        onComplete: () => {
+          this.isAnimating = false;
+        },
+      });
+    },
 
-  close() {
-    this.refill();
-    if (!MenuRef.current || !this.div || this.isAnimating) return;
-    this.isAnimating = true;
+    close() {
+      this.refill();
+      if (!MenuRef.current || !this.div || this.isAnimating) return;
+      this.isAnimating = true;
 
-    animate(MenuRef.current, {
-      opacity: 0,
-      ease: "linear",
-      duration: 400,
-      onComplete: () => {
-        if (!MenuRef.current || !this.div) return;
-        utils.set(MenuRef.current, { display: "none" });
-        utils.set(this.div, { x: "100%" });
-        this.isAnimating = false;
-      },
-    });
-  },
-};
-
+      animate(MenuRef.current, {
+        opacity: 0,
+        ease: "linear",
+        duration: 400,
+        onComplete: () => {
+          if (!MenuRef.current || !this.div) return;
+          utils.set(MenuRef.current, { display: "none" });
+          utils.set(this.div, { x: "100%" });
+          this.isAnimating = false;
+        },
+      });
+    },
+  };
 
   return (
     <div className="h-dvh w-screen flex overflow-hidden">
@@ -196,7 +196,10 @@ const menu: {
         ref={containerRef}
         className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)] fateIn"
       >
-        <Outlet key={location.pathname} />
+        <ClickSpark>
+          <Outlet key={location.pathname} />
+        </ClickSpark>
+
         <Footer />
       </main>
       <Menu closeFn={() => menu.close()} />

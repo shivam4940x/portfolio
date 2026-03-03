@@ -59,24 +59,6 @@
         ]
       },
       {
-        "name": "invoice-generator",
-        "heading": "Invoice Generator",
-        "sub": "A simple and responsive invoice generator with print support and Firebase integration.",
-        "status": {
-          "color": "green"
-        },
-        "href": "https://testing-44c76.web.app/",
-        "techStack": [
-          "React",
-          "Tailwind CSS",
-          "Vite",
-          "Firebase",
-          "React Router",
-          "React-to-Print",
-          "Typescript"
-        ]
-      },
-      {
         "name": "Ecommerce Dashboard",
         "heading": "Ecommerce Dashboard template",
         "href": "https://github.com/shivam4940x/eComTemplate_backend/",
@@ -135,27 +117,6 @@
           "bcrypt",
           "Sonner",
           "Radix UI"
-        ]
-      },
-
-      {
-        "name": "e2e-chat-app",
-        "heading": "End To End Encrypted messaging web app",
-        "sub": "A secure chat application built with modern web technologies using end-to-end encryption.",
-        "href": "https://project-e-frontend.vercel.app/",
-        "status": {
-          "text": "Closed due to inactivity",
-          "color": "red"
-        },
-        "techStack": [
-          "Nestjs",
-          "React",
-          "Material Ui",
-          "Tailwind CSS",
-          "socket.io",
-          "Prisma",
-          "OAuth 2.0",
-          "Typescript"
         ]
       }
     ],

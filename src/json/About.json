@@ -5,8 +5,8 @@
     { "label": "gender", "value": "male" },
     { "label": "country", "value": "India" },
     { "label": "specialist", "value": "JS/TS" },
-    { "label": "Coding Experience", "value": "2 years+" },
-    { "label": "Work Experience", "value": "5 months" }
+    { "label": "Coding Experience", "value": "3 years+" },
+    { "label": "Work Experience", "value": "1 year" }
   ],
 "developerSkills": {
   "core Languages": [
@@ -67,9 +67,9 @@
     },
     {
       "startDate": "17th Nov 2025",
-      "endDate": "Present",
+      "endDate": "17th Feb 2026",
       "companyName": "ETH Infra",
-      "desc": "_SDE Trainee at ETH Infra_ \n Core contributor across frontend, backend, and system-level tasks — acting as a central execution layer for the team. I work on building and maintaining scalable web and app solutions, integrating APIs, optimizing performance, and ensuring smooth cross-team delivery. I contribute wherever impact is needed, keeping systems stable, fast, and production-ready."
+      "desc": "_SDE Trainee at ETH Infra_ \n Built and delivered a Flutter-based mobile application for an employee management system, improving internal workflow accessibility by providing a unified mobile interface for employees and management. \n \n Architected the foundational backend system structure (modules, API contracts, and service boundaries) that enabled backend development to scale in a structured manner and reduced implementation friction for the backend team. \n \n Maintained platform reliability and deployment infrastructure by managing hosting, database operations, and uptime monitoring, ensuring stable production releases and continuous system availability."
     }
 
   ]

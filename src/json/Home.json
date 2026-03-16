@@ -18,39 +18,40 @@
     },
     "services": [
       {
-        "heading": "Web Developer",
-        "para": "I craft visually compelling websites engineered to convert and resonate with your audience. Every line of code is tailored to reflect your brand’s identity, with seamless UI and motion-driven interactivity that keeps users engaged and returning.",
+        "heading": "Web Engineering",
+        "para": "I build production-grade web applications with clean architecture, responsive interfaces, and performance-focused frontends designed for real-world scale and usability.",
         "list": [
-          "Responsive Brand Websites",
-          "Conversion-Optimized Landing Pages",
-          "Performance-Focused UI Architecture"
+          "Responsive Web Applications",
+          "Conversion-Focused Landing Pages",
+          "Performance-Oriented UI Architecture",
+          "SEO Optimized"
         ]
       },
       {
-        "heading": "Backend Developer",
-        "para": "I develop robust backend systems with clear architecture, secure data flows, and scalable APIs — ensuring everything runs fast, clean, and reliably under the hood.",
+        "heading": "Mobile Development",
+        "para": "I develop high-performance cross-platform mobile applications using Flutter, focusing on reliability, intuitive UX, and seamless integration with backend services.",
         "list": [
-          "REST & GraphQL API Development",
-          "Scalable Microservices Architecture",
-          "Authentication & Role-Based Access"
+          "Flutter Cross-Platform Apps",
+          "Performance-Optimized Mobile UI",
+          "Backend & API Integration"
         ]
       },
       {
-        "heading": "App Developer",
-        "para": "I build high-quality mobile applications with smooth performance, intuitive UX, and scalable architecture. From idea to deployment, I focus on reliability, speed, and real-world usability.",
+        "heading": "Backend Systems",
+        "para": "I design and implement scalable backend services with clear architecture, secure data flows, and well-structured APIs built for production workloads.",
         "list": [
-          "Cross-Platform App Development",
-          "Performance-Optimized Mobile UIs",
-          "API & Backend Integration"
+          "REST API Development",
+          "Authentication & Role-Based Access",
+          "Service-Oriented Backend Architecture"
         ]
       },
       {
-        "heading": "System & API Engineer",
-        "para": "I design and implement efficient system architectures and APIs that scale seamlessly, ensuring maintainability, security, and optimal performance across services.",
+        "heading": "System Architecture",
+        "para": "I architect backend systems and manage platform infrastructure including deployments, databases, and uptime monitoring to ensure stable and scalable production environments.",
         "list": [
-          "System Design & Architecture",
-          "High-Performance API Engineering",
-          "Database Modeling & Optimization"
+          "System Architecture Design",
+          "Database Modeling & Optimization",
+          "Hosting, Deployment & Uptime Monitoring"
         ]
       }
     ]

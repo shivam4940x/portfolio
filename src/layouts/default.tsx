@@ -5,7 +5,6 @@ import { useMomentumScroll } from "@/hooks/useMomentumScroll";
 import { animate, utils } from "animejs";
 import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import ClickSpark from "@/components/ui/ClickSpark";
 
 const DefaultLayout = () => {
   const heroEl = useRef<HTMLElement>(null);
@@ -196,9 +195,7 @@ const DefaultLayout = () => {
         ref={containerRef}
         className="grow fadeIn duration-500 max-w-full max-h-full overflow-y-scroll relative md:max-w-[calc(100%_-_5rem)] fateIn"
       >
-        <ClickSpark>
-          <Outlet key={location.pathname} />
-        </ClickSpark>
+        <Outlet key={location.pathname} />
 
         <Footer />
       </main>

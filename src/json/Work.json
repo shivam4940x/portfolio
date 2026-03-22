@@ -21,27 +21,6 @@
         ]
       },
       {
-        "name": "client website",
-        "heading": "Business website",
-        "sub": "A customized, responsive website designed to showcase the client’s brand and services",
-        "href": "https://mayatechvision.com/",
-        "status": {
-          "text": "Client website",
-          "color": "green"
-        },
-        "techStack": [
-          "Next.js",
-          "React",
-          "Tailwind CSS",
-          "TypeScript",
-          "Firebase",
-          "Firebase Admin",
-          "GSAP",
-          "Resend",
-          "TipTap"
-        ]
-      },
-      {
         "name": "portfolio",
         "heading": "Portfolio",
         "href": "https://portfolio-ten-iota-tixiz0p0ve.vercel.app/",

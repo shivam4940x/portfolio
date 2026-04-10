@@ -97,6 +97,35 @@
           "Sonner",
           "Radix UI"
         ]
+      },
+      {
+        "name": "mr-crm",
+        "heading": "Multi-tenant CRM & Donation Platform",
+        "href": "",
+        "sub": "A production-grade multi-tenant SaaS CRM for NGOs with subdomain-based tenant isolation, RBAC, subscription billing, and donation processing via Razorpay. Built as a modular monorepo with API, web app, and background workers.",
+        "status": {
+          "text": "Active (in development / production-ready architecture)",
+          "color": "green"
+        },
+        "techStack": [
+          "TypeScript",
+          "Node.js",
+          "NestJS",
+          "Fastify",
+          "Prisma",
+          "PostgreSQL",
+          "Redis",
+          "BullMQ",
+          "React",
+          "Vite",
+          "MUI",
+          "Zustand",
+          "TanStack React Query",
+          "Razorpay",
+          "Cloudinary",
+          "Resend",
+          "Docker"
+        ]
       }
     ],
     "Client Work": []
